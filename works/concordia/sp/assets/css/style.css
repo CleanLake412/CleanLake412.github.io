@@ -1,0 +1,272 @@
+@charset "UTF-8";
+/* 変数 */
+/* 基礎のスタイル */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html, body {
+  overflow-x: hidden; }
+
+body {
+  position: relative;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  color: #333; }
+
+a {
+  text-decoration: none !important; }
+
+* a {
+  text-decoration: none !important;
+  color: unset; }
+
+h1, h2, h3, h4, h5, h6, p {
+  line-height: 1.0; }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
+fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0; }
+
+input[type=text], input[type=number], input[type=email] {
+  height: 30px;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 15px;
+  line-height: 28px;
+  color: #111;
+  padding: 0 10px;
+  border: 1px solid #B3B3B3;
+  border-radius: 3px; }
+  input[type=text]:focus, input[type=number]:focus, input[type=email]:focus {
+    outline: none; }
+
+label {
+  color: #000; }
+
+.page-title {
+  text-align: center;
+  line-height: 2;
+  margin: 10px 15px;
+  font-size: 26px; }
+
+/* 共通のスタイル */
+section {
+  position: relative;
+  padding: 50px 0; }
+
+.sec-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px; }
+
+.btn-container {
+  text-align: center; }
+
+.button {
+  background-color: #F18F01;
+  color: #fff;
+  font-size: 15px;
+  border: 0;
+  border-radius: 7px;
+  padding: 15px 40px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #BE7000;
+  transition: all .3s ease;
+  position: relative;
+  display: inline-block;
+  max-width: 100%; }
+  .button:after {
+    content: '';
+    border: 2px solid;
+    border-width: 0 2px 2px 0;
+    display: block;
+    width: 6px;
+    height: 6px;
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin: -4px 0 0 0; }
+  .button:hover {
+    opacity: .9; }
+  .button:focus {
+    outline: none; }
+
+#header {
+  padding: 10px 15px;
+  border-bottom: 3px solid #d2ecf8; }
+
+#footer {
+  text-align: center;
+  background: #0F5A9B;
+  font-size: 12px;
+  color: #fff;
+  padding: 24px 0 105px; }
+  #footer.footer-default {
+    padding-bottom: 24px; }
+
+/* ナビーメニュー */
+/* トップページのスタイル */
+#contact-us-success {
+  min-height: calc(100vh - 267px);
+  padding: 0 0 50px; }
+  #contact-us-success .sec-inner {
+    background-color: #f2f8fa;
+    text-align: center;
+    padding: 40px 15px; }
+    #contact-us-success .sec-inner h2 {
+      line-height: 1.7;
+      margin-bottom: 15px;
+      font-size: 20px; }
+      #contact-us-success .sec-inner h2 > span {
+        display: block; }
+    #contact-us-success .sec-inner p {
+      line-height: 1.7; }
+  #contact-us-success .btn-container {
+    margin-top: 43px; }
+    #contact-us-success .btn-container .button {
+      width: 400px;
+      max-width: calc(100% - 30px);
+      font-weight: bold;
+      line-height: 25px;
+      font-size: 16px; }
+
+body.contact-form .page-title {
+  margin-bottom: 15px; }
+body.contact-form .error-msg {
+  border: 1px solid #d94350;
+  background: #fff2f2;
+  font-weight: bold;
+  color: #d94350;
+  margin-top: 20px;
+  letter-spacing: -0.03em;
+  display: none;
+  padding: 10px 20px;
+  font-size: 15px; }
+  body.contact-form .error-msg svg {
+    fill: #d94350;
+    height: 18px;
+    width: 18px;
+    display: block;
+    margin: 10px auto; }
+  body.contact-form .error-msg p {
+    line-height: 1.7; }
+body.contact-form .step-container {
+  padding: 0 15px;
+  text-align: center; }
+  body.contact-form .step-container .step-item {
+    display: inline-block;
+    line-height: 26px;
+    background: #ccc;
+    color: #fff;
+    font-weight: bold;
+    padding: 7px 20px 7px 10px;
+    position: relative;
+    font-size: 16px; }
+    body.contact-form .step-container .step-item:first-child:after {
+      content: '';
+      border: 20px solid transparent;
+      border-left-color: #ccc;
+      border-width: 20px 22px;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      z-index: 2; }
+    body.contact-form .step-container .step-item:last-child {
+      padding-left: 30px;
+      padding-right: 30px; }
+      body.contact-form .step-container .step-item:last-child:before {
+        content: '';
+        border: 20px solid transparent;
+        border-left-color: #fff;
+        border-width: 20px 22px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1; }
+    body.contact-form .step-container .step-item .step-num {
+      width: 26px;
+      background-color: #fff;
+      color: #ccc;
+      margin-right: 10px;
+      display: none; }
+    body.contact-form .step-container .step-item.active:first-child {
+      background-color: #348ed1; }
+      body.contact-form .step-container .step-item.active:first-child:after {
+        border-left-color: #348ed1; }
+      body.contact-form .step-container .step-item.active:first-child .step-num {
+        color: #348ed1; }
+    body.contact-form .step-container .step-item.active:last-child {
+      background-color: #f18f01; }
+      body.contact-form .step-container .step-item.active:last-child .step-num {
+        color: #f18f01; }
+body.contact-form #contact-us-form {
+  padding: 30px 0 70px; }
+  body.contact-form #contact-us-form .sec-inner {
+    background-color: #f2f8fa;
+    text-align: left;
+    padding: 40px 15px; }
+    body.contact-form #contact-us-form .sec-inner label.input-text-label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 18px; }
+    body.contact-form #contact-us-form .sec-inner label.input-radio {
+      display: block; }
+      body.contact-form #contact-us-form .sec-inner label.input-radio input[type=radio] {
+        margin-right: 10px; }
+    body.contact-form #contact-us-form .sec-inner input[type=text], body.contact-form #contact-us-form .sec-inner input[type=number], body.contact-form #contact-us-form .sec-inner input[type=email] {
+      width: 100%;
+      height: 40px;
+      border: 2px solid #dfe2e3;
+      border-radius: 5px; }
+    body.contact-form #contact-us-form .sec-inner .input-text {
+      margin: 0 0 10px;
+      line-height: 2; }
+    body.contact-form #contact-us-form .sec-inner .input-text-label.is-required:after {
+      content: '必須';
+      font-size: 11px;
+      display: inline-block;
+      background-color: #F18F01;
+      height: 13px;
+      line-height: 13px;
+      border-radius: 2px;
+      color: #fff;
+      padding: 3px 5px;
+      position: relative;
+      top: -2px;
+      margin: 0 0 0 9px; }
+    body.contact-form #contact-us-form .sec-inner .require-note {
+      color: #d94350;
+      font-weight: normal;
+      font-size: 15px;
+      font-weight: bold;
+      margin: -5px 0 5px; }
+  body.contact-form #contact-us-form .msg-wrapper {
+    padding: 0 15px; }
+    body.contact-form #contact-us-form .msg-wrapper .error-msg {
+      margin-top: 30px; }
+  body.contact-form #contact-us-form .btn-container {
+    margin-top: 30px; }
+    body.contact-form #contact-us-form .btn-container .button {
+      width: 100%;
+      max-width: calc(100% - 30px);
+      font-weight: bold;
+      line-height: 25px;
+      font-size: 16px; }
+body.contact-form #contact-us-success {
+  margin-top: 50px;
+  min-height: calc(100vh - 337px); }
+
+body.contact-form-success #contact-us-success {
+  min-height: calc(100vh - 282px);
+  padding: 0 0 50px; }
+
+/*# sourceMappingURL=style.css.map */

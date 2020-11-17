@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/* 基礎のスタイル */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    font-family: $base-font;
+    color: $color-base;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+* a {
+    text-decoration: none !important;
+    color: unset;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    line-height: 1.0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+fieldset {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+input[type=text], input[type=number], input[type=email] {
+    height: 30px;
+    font-family: $base-font;
+    font-size: 15px;
+    line-height: 28px;
+    color: #111;
+    padding: 0 10px;
+    border: 1px solid #B3B3B3;
+    border-radius: 3px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+label {
+    color: #000;
+}
+
+.page-title {
+    text-align: center;
+    line-height: 2;
+    margin: 10px 15px;
+    font-size: 26px;
+}

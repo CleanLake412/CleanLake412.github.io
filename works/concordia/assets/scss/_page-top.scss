@@ -1,0 +1,1704 @@
+@charset "utf-8";
+
+#main-visual {
+	padding: 165px 0 0 0;
+	background: url(../img/main-visual.png) center no-repeat;
+	background-size: cover;
+
+	@media only screen and (max-width: 768px) {
+		background: url(../img/main-visual-SP.png) left top repeat;
+		background-size: initial;
+		padding: 85px 0 20px 0;
+	}
+
+	.sec-inner {
+		width: 1300px;
+		display: flex;
+
+		@media only screen and (max-width: 768px) {
+			flex-direction: column;
+		    justify-content: center;
+		    align-items: center;
+		    padding: 0 15px;
+		}
+	}
+
+	.mv-ttl {
+		flex: 1;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    margin: -50px 0 115px 0;
+
+    	@media only screen and (max-width: 768px) {
+    		margin: 0;
+    	}
+	}
+
+	.contact-form {
+		width: 376px;
+		max-width: 100%;
+	    background-color: #fff;
+	    margin: 20px 0 0 0;
+	    border-radius: 10px 10px 0 0;
+
+	    @media only screen and (max-width: 768px) {
+	    	margin: 70px 0 0 0;
+	    }
+
+	    .title {
+	    	background-color: $color-primary;
+	    	border-radius: 10px 10px 0 0;
+	    	color: #fff;
+	    	font-size: 22px;
+	    	letter-spacing: -0.05em;
+	    	line-height: 50px;
+	    	text-align: center;
+	    }
+
+	    .form-control {
+		    padding: 23px 36px;
+
+		    @media only screen and (max-width: 768px) {
+		    	padding: 23px 20px;
+		    }
+
+		    label {
+		    	display: block;
+		    	font-weight: bold;
+		    }
+
+		    input[type=text], input[type=number], input[type=email], select, textarea, button {
+		    	width: 100%;
+		    }
+
+		    .input-text {
+		    	margin: 0 0 5px;
+
+				&.validation-ok span.validation {
+					display: inline-block;
+					font-weight: normal;
+				}
+		    }
+
+		    .input-text-label.is-required:before {
+			    content: '必須';
+			    font-size: 11px;
+			    display: inline-block;
+			    background-color: $color-secondary;
+			    height: 13px;
+			    line-height: 13px;
+			    border-radius: 2px;
+			    color: #fff;
+			    padding: 0 3px 0 3px;
+			    position: relative;
+			    top: -1px;
+			    margin: 0 9px 0 0;
+			}
+
+			.input-text-label.is-optional:before {
+			    content: '任意';
+			    font-size: 11px;
+			    display: inline-block;
+			    background-color: #8d8d8d;
+			    height: 13px;
+			    line-height: 13px;
+			    border-radius: 2px;
+			    color: #fff;
+			    padding: 0 3px 0 3px;
+			    position: relative;
+			    top: -1px;
+			    margin: 0 9px 0 0;
+			}
+
+			input, select, textarea {
+				&.focusBox {
+				    background-color: #ffdddd;
+				    border: 1px #df937f solid;
+				    animation: focusItem 1.2s linear infinite;
+				}
+			}
+
+			span.validation {
+				font-size: 12px;
+				vertical-align: top;
+				display: none;
+				margin-left: 10px;
+
+			    span {
+				    background-color: #1fa232;
+				    color: #fff;
+				    border-radius: 3px;
+				    display: inline-block;
+				    padding: 3px 5px 1px 4px;
+				    margin-right: 5px;
+				    line-height: 1;
+				    vertical-align: middle;
+				}
+
+				svg {
+					fill: #1fa232;
+				    width: 14px;
+				    height: 14px;
+				    vertical-align: middle;
+				}
+			}
+
+			.require-note {
+			    color: #d94350;
+			    font-weight: normal;
+			    font-size: 13px;
+			    margin: -5px 0 5px;
+			    visibility: hidden;
+
+			    &.show {
+			    	visibility: visible;
+			    }
+			}
+		}
+	}
+}
+
+#issue-head {
+	padding: 92px 0 177px 0;
+
+	@media only screen and (max-width: 768px) {
+		padding: 50px 0 100px 0;
+	}
+
+	.sec-content {
+		position: relative;
+		padding: 20px 0;
+
+		img.issue-head-bg {
+			margin: 0 auto;
+		}
+
+		.scroller {
+		    display: block;
+		    position: absolute;
+		    left: 58%;
+		    bottom: 10px;
+		    text-align: center;
+		    font-size: 15px;
+		    line-height: 1;
+
+		    @media only screen and (max-width: 768px) {
+		    	bottom: -25px;
+		    }
+
+		    img {
+		    	margin: 0 auto 25px;
+
+		    	@media only screen and (max-width: 768px) {
+		    		max-width: 16px;
+    				margin-bottom: 15px;
+		    	}
+		    }
+		}
+	}
+}
+
+#issue-01 {
+	background: #f6f6f6;
+	padding: 0 0 92px;
+
+	@media only screen and (max-width: 768px) {
+		padding-bottom: 0;
+	}
+
+	&:before {
+	    display: block;
+	    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+	    padding: 10vw 0 0 0;
+	    background: #f6f6f6;
+	    content: '';
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    bottom: 100%;
+	}
+
+	.sec-inner {
+		.sec-desc {
+		    font-size: 18px;
+		    line-height: 1.77;
+		    text-align: center;
+		    margin: 0 0 35px 0;
+
+		    @media only screen and (max-width: 1200px) {
+		    	br {
+		    		display: none;
+		    	}
+		    }
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 15px;
+		    	text-align: left;
+
+		    	br {
+				    display: none;
+				}
+		    }
+		}
+
+		.tuition-university {
+		    display: flex;
+		    justify-content: space-between;
+
+		    @media only screen and (max-width: 768px) {
+		    	flex-direction: column;
+		    }
+		}
+
+		.tuition-item {
+		    background-color: #fff;
+		    padding: 25px 30px 40px 30px;
+
+		    h3 {
+			    font-size: 20px;
+			    line-height: 1.4;
+			    margin-bottom: 17px;
+				letter-spacing: -0.05em;
+
+			    &:before {
+				    content: '';
+				    display: inline-block;
+				    background: url(../img/tuituion-ttl.png) center no-repeat;
+					width: 24px;
+					height: 16px;
+					vertical-align: middle;
+					margin: -2px 7px 0 0;
+				}
+			}
+		}
+
+		table {
+			border-collapse: collapse;
+		    border-bottom: 1px solid #ccc;
+		    border-left: 1px solid #ccc;
+		    background: #fff;
+		    margin-top: 18px;
+    		min-width: 1100px;
+
+			th,td {
+			    border-top: 1px solid #ccc;
+			    border-right: 1px solid #ccc;
+			    padding: 15px;
+			    vertical-align: top;
+
+			    @media only screen and (max-width: 768px) {
+			    	padding: 7px;
+			    }
+			}
+
+			th {
+			    text-align: center;
+			    font-size: 20px;
+
+			    &.concordia {
+			    	position: relative;
+
+			    	span {
+					    display: flex;
+					    background: $color-primary;
+					    position: absolute;
+					    left: -1px;
+					    right: -1px;
+					    bottom: -1px;
+					    top: -18px;
+					    border: 1px solid #ccc;
+					    color: #fff;
+					    align-items: center;
+					    justify-content: center;
+					}
+				}
+			}
+
+			td {
+				font-size: 16px;
+
+				&:first-child {
+					font-weight: 700;
+				}
+
+				&:last-child {
+					background: #d2effa;
+				}
+			}
+
+			ul {
+			    list-style: circle;
+			    padding-left: 20px;
+
+			    li::marker {
+				    color: $color-primary;
+				    font-size: 20px;
+				}
+			}
+		}
+
+		.btn-container {
+			margin: 30px 0 40px 0;
+
+			.button {
+			    height: 60px;
+			    line-height: 30px;
+			    width: 400px;
+
+			    &:after {
+				    width: 8px;
+				    height: 8px;
+				}
+			}
+		}
+	}
+}
+
+#cta-01 {
+	background: #f6f6f6;
+	padding: 70px 0 0 0;
+
+	@media only screen and (max-width: 768px) {
+		padding-top: 40px;
+
+		.sec-inner {
+		    padding-bottom: 50px;
+		}
+	}
+
+	.sec-ttl {
+		margin-bottom: 60px;
+	}
+
+	.why-2years {
+	    display: flex;
+	    justify-content: space-between;
+	    margin: 0 0 125px;
+
+	    @media only screen and (max-width: 768px) {
+	    	flex-direction: column;
+	    	margin-bottom: 0;
+	    }
+
+	    .fig-2years {
+		    margin: 0 0 0 20px;
+
+		    @media only screen and (max-width: 768px) {
+		    	margin: 0 0 50px 0;
+		    }
+		}
+
+		.shortended-2years {
+		    background: #fff;
+		    padding: 43px 50px 60px 50px;
+		    position: relative;
+
+		    @media only screen and (max-width: 768px) {
+		        padding: 43px 20px 20px;
+		    }
+
+		    h4 {
+			    position: absolute;
+			    left: -8px;
+			    top: -15px;
+			}
+
+			h3 {
+				margin: 0 0 34px;
+			}
+
+			p {
+			    font-size: 15px;
+			    line-height: 2.133;
+
+			    @media only screen and (max-width: 1200px) {
+			    	br {
+			    		display: none;
+			    	}
+			    }
+
+			    @media only screen and (max-width: 768px) {
+			    	text-align: left;
+
+			    	br {
+					    display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+.cta {
+	.consultation {
+		background: #D2ECF8;
+		padding: 50px 15px;
+
+		h3 {
+		    margin: 0 0 45px;
+		    text-align: center;
+		    line-height: 1.2;
+		    color: #000;
+		    font-size: 20px;
+		    font-weight: bold;
+
+		    @media only screen and (max-width: 768px) {
+		    	margin-bottom: 30px;
+		    }
+
+		    img {
+			    display: inline-block;
+			}
+		}
+
+		.button {
+		    font-size: 20px;
+		    height: 75px;
+		    line-height: 45px;
+		    padding: 18px 135px 12px 135px;
+		    font-weight: bold;
+
+		    @media only screen and (max-width: 768px) {
+				font-size: 16px;
+				height: 55px;
+				line-height: 25px;
+				padding: 15px 45px;
+			}
+
+		    &:after {
+		    	display: none;
+		    }
+
+		    &:before {
+		    	content: '';
+		    	display: inline-block;
+		    	vertical-align: middle;
+		    	background: url(../img/user-icon.png) center no-repeat;
+		    	width: 32px;
+		    	height: 32px;
+		    	margin: 0 40px 0 0;
+
+		    	@media only screen and (max-width: 768px) {
+					width: 20px;
+					height: 20px;
+					margin: 0 20px 0 0;
+					background-size: contain;
+				}
+		    }
+
+		    .btn-desc {
+			    position: absolute;
+			    font-size: 12px;
+			    top: -15px;
+				left: 50%;
+				transform: translateX(-50%);
+			    line-height: 25px;
+			    background: #fff;
+			    border: 2px solid $color-secondary;
+			    color: $color-secondary;
+			    padding: 0 26px;
+			    white-space: nowrap;
+			    border-radius: 5px;
+			    font-weight: bold;
+			}
+
+			span:not(.btn-desc) {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+.issue-item {
+	background: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 0 15px 0 rgba(0,0,0,0.2);
+
+	h3 {
+		background: $color-third;
+		font-size: 20px;
+		line-height: 1.6;
+		color: #fff;
+		text-align: center;
+		padding: 15px 10px;
+
+		@media only screen and (max-width: 768px) {
+			font-size: 16px;
+		}
+	}
+
+	img {
+		width: 100%;
+	}
+
+	.issue-desc {
+	    padding: 25px 30px;
+
+	    h4 {
+		    font-size: 16px;
+		    margin: 0 0 15px;
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 15px;
+		    }
+
+		    .large-font {
+		    	font-size: 26px;
+
+		    	@media only screen and (max-width: 768px) {
+		    		font-size: 20px;
+		    	}
+		    }
+		}
+
+		p {
+		    font-size: 17px;
+		    line-height: 1.88;
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 14px;
+		    }
+		}
+	}
+}
+
+#issue-02 {
+	padding-bottom: 75px;
+
+	.sec-inner {
+		.sec-desc {
+		    font-size: 18px;
+		    line-height: 1.77;
+		    text-align: center;
+		    margin: 0 0 35px 0;
+
+		    @media only screen and (max-width: 1200px) {
+		    	br {
+		    		display: none;
+		    	}
+		    }
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 15px;
+		    	text-align: left;
+
+		    	br {
+				    display: none;
+				}
+		    }
+		}
+
+		.sec-sub-ttl {
+		    font-size: 30px;
+		    line-height: 1.8;
+		    background-color: $color-primary;
+		    text-align: center;
+		    color: #fff;
+		    position: relative;
+		    margin: 0 0 30px;
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 18px;
+		    	margin: 0 -15px 30px -15px;
+    			padding: 10px 15px;
+    			line-height: 1.4;
+		    }
+
+		    &:before {
+			    content: '';
+			    width: 135px;
+			    height: 134px;
+			    background: url(../img/baloon.png) center no-repeat;
+			    display: inline-block;
+			    margin: 0 -134px -135px 0;
+			    position: relative;
+			    right: 200px;
+			    top: -93px;
+			}
+		}
+
+		.online-campus-ttl {
+		    text-align: center;
+		    margin: 0 0 25px;
+
+		    img {
+			    display: inline-block;
+			}
+
+			p {
+				font-size: 25px;
+    			line-height: 1.4;
+			}
+		}
+
+		.online-campus-desc {
+		    text-align: center;
+		    font-size: 18px;
+		    line-height: 1.78;
+		    margin: 0 0 35px;
+
+		    @media only screen and (max-width: 1200px) {
+		    	br {
+		    		display: none;
+		    	}
+		    }
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 15px;
+		    	text-align: left;
+
+		    	br {
+				    display: none;
+				}
+		    }
+		}
+
+		.issue-list {
+		    display: flex;
+		    margin: 0 -7px;
+		    align-items: self-start;
+		    flex-wrap: wrap;
+
+		    @media only screen and (max-width: 768px) {
+		    	margin: 0;
+		    }
+
+		    .issue-item {
+				flex: 0 0 calc(33.33% - 14px);
+				max-width: calc(33.33% - 14px);
+				margin: 0 7px 35px 7px;
+
+				@media only screen and (max-width: 768px) {
+					flex: 0 0 100%;
+					max-width: 100%;
+					margin: 0 0 35px;
+				}
+
+				&:nth-child(2) {
+					margin-top: 55px;
+
+					@media only screen and (max-width: 768px) {
+						margin-top: 0;
+					}
+				}
+		    }
+		}
+
+		.twok-hrs {
+			text-align: center;
+			margin: 0 0 95px;
+
+			img {
+				display: inline-block;
+			}
+		}
+
+		.graduation-desc {
+		    text-align: center;
+		    font-size: 18px;
+		    line-height: 1.78;
+		    margin: 45px 0 55px 0;
+
+		    @media only screen and (max-width: 1200px) {
+		    	br {
+		    		display: none;
+		    	}
+		    }
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 15px;
+		    	margin: 30px 0 40px 0;
+		    	text-align: left;
+
+		    	br {
+				    display: none;
+				}
+		    }
+		}
+
+		.graduation-rate {
+		    display: flex;
+		    align-items: center;
+		    justify-content: space-evenly;
+		    margin: 0 0 60px;
+		}
+
+		.button {
+			line-height: 30px;
+
+			@media only screen and (max-width: 768px) {
+				line-height: 20px;
+			}
+
+			.btn-desc {
+			    position: absolute;
+			    font-size: 12px;
+			    top: -15px;
+			    left: 50%;
+			    transform: translateX(-50%);
+			    line-height: 25px;
+			    background: #fff;
+			    border: 2px solid #F18F01;
+			    color: #F18F01;
+			    padding: 0 26px;
+			    white-space: nowrap;
+			    border-radius: 5px;
+			}
+		}
+	}
+}
+
+#cta-02 {
+    padding-top: 0;
+
+    @media only screen and (max-width: 768px) {
+    	padding-bottom: 0;
+    }
+}
+
+#issue-03 {
+	.sec-inner {
+		.sec-desc {
+		    font-size: 18px;
+		    line-height: 1.77;
+		    text-align: center;
+		    margin: 0 0 60px 0;
+
+		    @media only screen and (max-width: 1200px) {
+		    	br {
+		    		display: none;
+		    	}
+		    }
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 15px;
+		    	text-align: left;
+
+		    	br {
+				    display: none;
+				}
+		    }
+		}
+
+		.issue-list {
+		    display: flex;
+		    margin: 0 -25px 40px -25px;
+		    align-items: self-start;
+		    flex-wrap: wrap;
+
+		    @media only screen and (max-width: 768px) {
+		    	margin: 0 0 40px 0;
+		    }
+
+		    .issue-item {
+				flex: 0 0 calc(50% - 50px);
+				max-width: calc(50% - 50px);
+				margin: 0 25px 35px 25px;
+
+				@media only screen and (max-width: 768px) {
+					flex: 0 0 100%;
+					max-width: 100%;
+					margin: 0 0 35px 0;
+				}
+		    }
+		}
+
+		.sec-sub-ttl {
+		    font-size: 30px;
+		    line-height: 1.8;
+		    background-color: $color-primary;
+		    text-align: center;
+		    color: #fff;
+		    position: relative;
+		    margin: 0 0 50px;
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 18px;
+		    }
+
+		    &:before {
+			    content: '';
+			    width: 135px;
+			    height: 134px;
+			    background: url(../img/baloon03.png) center no-repeat;
+			    display: inline-block;
+			    margin: 0 -134px -135px 0;
+			    position: relative;
+			    right: 200px;
+			    top: -93px;
+			}
+		}
+
+		.example-case {
+		    display: flex;
+		    margin: 0 -25px;
+		    flex-wrap: wrap;
+
+		    @media only screen and (max-width: 992px) {
+		    	margin: 0 -15px;
+		    }
+
+		    @media only screen and (max-width: 768px) {
+		    	margin: 0;
+		    }
+
+		    .case-item {
+			    margin: 0 25px 40px 25px;
+			    flex: 0 0 calc(25% - 50px);
+			    max-width: calc(25% - 50px);
+
+			    @media only screen and (max-width: 992px) {
+			    	margin: 0 15px 30px 15px;
+			    	flex: 0 0 calc(50% - 30px);
+			    	max-width: calc(50% - 30px);
+			    }
+
+			    @media only screen and (max-width: 768px) {
+			    	flex: 0 0 100%;
+			    	max-width: 100%;
+			    	margin: 0 0 30px 0;
+					padding-bottom: 30px;
+					border-bottom: 1px solid #B8C0C4;
+			    }
+
+			    em {
+				    display: inline-block;
+				    background: $color-third;
+				    color: #fff;
+				    font-size: 13px;
+				    line-height: 30px;
+				    padding: 0 10px;
+				    font-style: normal;
+				    width: 67px;
+				    text-align: center;
+				    margin: 0 0 20px;
+				    position: relative;
+
+				    &:after {
+					    content: '';
+					    border: 5px solid transparent;
+					    border-left-color: $color-third;
+					    border-top-color: $color-third;
+					    width: 0;
+					    height: 0;
+					    display: block;
+					    position: absolute;
+					    top: 100%;
+					    left: 0;
+					}
+				}
+
+				h4 {
+					font-size: 18px;
+					line-height: 1.22;
+					color: $color-primary;
+					margin: 0 0 20px;
+				}
+
+				p {
+				    font-size: 17px;
+				    line-height: 1.88;
+				    color: #000;
+				    margin-bottom: 20px;
+
+				    @media only screen and (max-width: 768px) {
+				    	font-size: 14px;
+				    }
+				}
+			}
+		}
+
+		.button {
+		    font-size: 18px;
+		    line-height: 30px;
+		    width: 400px;
+		    max-width: 100%;
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 15px;
+		    	line-height: 20px;
+		    }
+		}
+	}
+}
+
+#cta-03 {
+    padding: 0;
+}
+
+#issue-04 {
+	padding: 60px 0;
+
+	.sec-inner {
+		.sec-desc {
+		    font-size: 18px;
+		    line-height: 1.77;
+		    text-align: center;
+		    margin: 0 0 45px 0;
+
+		    @media only screen and (max-width: 1200px) {
+		    	br {
+		    		display: none;
+		    	}
+		    }
+
+		    @media only screen and (max-width: 768px) {
+		    	font-size: 15px;
+		    	text-align: left;
+
+		    	br {
+		    		display: none;
+		    	}
+
+		    	.yellow-border{
+		    		display: inline;
+
+		    		&:after {
+		    			display: none;
+		    		}
+		    	}
+		    }
+		}
+
+		.difficulty {
+			display: flex;
+			margin: 0 -25px;
+			flex-wrap: wrap;
+
+			@media only screen and (max-width: 768px) {
+				margin: 0;
+			}
+
+			.difficulty-item {
+				flex: 0 0 calc(50% - 50px);
+				max-width: calc(50% - 50px);
+				margin: 0 25px 35px 25px;
+
+				@media only screen and (max-width: 768px) {
+					flex: 0 0 100%;
+					max-width: 100%;
+					margin: 0;
+				}
+
+				h3 {
+				    font-size: 25px;
+				    line-height: 1.36;
+					padding: 0 0 11px;
+					border-bottom: 1px solid #ccc;
+					margin: 0 0 20px;
+
+					@media only screen and (max-width: 768px) {
+						font-size: 18px;
+					}
+
+				    &:before {
+					    content: '';
+					    display: inline-block;
+					    background: url(../img/difficulty-ttl.png) center no-repeat;
+						width: 38px;
+						height: 26px;
+						vertical-align: middle;
+						margin: -2px 7px 0 0;
+
+						@media only screen and (max-width: 768px) {
+							width: 30px;
+							height: 20px;
+							background-size: contain;
+						}
+					}
+				}
+
+				.difficulty-content {
+				    padding: 0 12px;
+					font-size: 16px;
+					line-height: 2;
+
+					.figure {
+					    margin-bottom: 15px;
+					}
+
+					p {
+					    line-height: 2;
+					    margin-bottom: 35px;
+					}
+
+					.note {
+					    font-size: 14px;
+					    line-height: 20px;
+					    margin-bottom: 35px;
+
+					    @media only screen and (max-width: 768px) {
+					    	font-size: 12px;
+					    }
+					}
+
+					ul {
+					    list-style: circle;
+					    padding-left: 20px;
+					    margin-bottom: 70px;
+
+					    @media only screen and (max-width: 768px) {
+					    	margin-bottom: 30px;
+					    }
+
+					    li::marker {
+						    color: $color-primary;
+						    font-size: 20px;
+						}
+					}
+				}
+			}
+
+			.btn-container {
+			    text-align: right;
+
+			    .button {
+			    	font-size: 18px;
+			    	line-height: 30px;
+			    	width: 400px;
+			    	max-width: 100%;
+			    	text-align: center;
+
+			    	@media only screen and (max-width: 768px) {
+			    		font-size: 15px;
+			    		line-height: 20px;
+			    	}
+			    }
+			}
+		}
+	}
+}
+
+#cta-04 {
+    padding: 0;
+}
+
+#voices {
+	background: #f6f6f6;
+
+	.sec-inner {
+		.sec-ttl {
+			margin-bottom: 40px;
+		}
+
+		.review-list {
+			.review-item {
+				width: 990px;
+				max-width: 100%;
+				border-left: 9px solid $color-third;
+				border-radius: 10px;
+				background: #fff;
+				padding: 30px 25px 25px 25px;
+				margin: 0 0 20px;
+				box-shadow: 0 0 15px rgba(0,0,0,0.35);
+				display: flex;
+
+				@media only screen and (max-width: 575px) {
+					flex-direction: column;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+
+				&:nth-child(2n) {
+					margin-left: clamp(0px, calc(100% - 990px), 210px);
+				}
+
+				.reviewer-info {
+				    flex: 0 0 105px;
+				    max-width: 105px;
+				    margin-right: 28px;
+
+				    @media only screen and (max-width: 575px) {
+				    	flex: 0 0 100%;
+				    	max-width: 100%;
+				    	margin-right: 0;
+				    	display: flex;
+				    }
+
+				    .figure {
+					    margin-bottom: 10px;
+
+					    @media only screen and (max-width: 575px) {
+					    	margin-right: 20px;
+					    }
+					}
+
+					h4 {
+					    font-size: 16px;
+					    line-height: 1.625;
+					    color: $color-primary;
+					}
+
+					label {
+					    background: #B8C0C4;
+					    border-radius: 6px;
+					    color: #fff;
+					    font-size: 13px;
+					    line-height: 21px;
+					    padding: 0 5px;
+					    margin-bottom: 5px;
+					    display: inline-block;
+					}
+
+					p {
+					    font-size: 14px;
+					    line-height: 1.78;
+					    margin-bottom: 10px;
+					    color: #000;
+					}
+				}
+
+				.review-content {
+					h3 {
+						color: $color-primary;
+						font-size: 18px;
+						padding-bottom: 10px;
+						border-bottom: 1px solid #B8C0C4;
+						margin-bottom: 15px;
+						line-height: 1.4;
+					}
+
+					p {
+						font-size: 15px;
+						line-height: 1.6;
+						color: #000;
+						margin-bottom: 10px;
+					}
+
+					.review-footer {
+						p {
+							font-size: 16px;
+							line-height: 1.625;
+						}
+
+						span.label {
+							display: inline-block;
+							background: $color-third;
+							min-width: 102px;
+							text-align: center;
+							margin-right: 18px;
+							border-radius: 6px;
+							color: #fff;
+							font-size: 14px;
+							line-height: 1.86;
+
+							@media only screen and (max-width: 768px) {
+								display: block;
+								width: max-content;
+								margin-bottom: 10px;
+							}
+						}
+
+						i {
+							line-height: 1;
+							display: inline-block;
+							vertical-align: middle;
+							margin-left: 20px;
+						}
+
+						img {
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#cta-05 {
+    padding: 0;
+}
+
+#faq {
+	.accordion {
+        .accordion-item {
+            border-top: 2px solid #B8C0C4;
+
+            @media only screen and (max-width: 768px) {
+            	border-top-width: 1px;
+            }
+
+            &:last-child {
+                border-bottom: 2px solid #B8C0C4;
+
+                @media only screen and (max-width: 768px) {
+                	border-bottom-width: 1px;
+                }
+            }
+
+            .accordion-title {
+                font-size: 20px;
+			    line-height: 1;
+			    font-weight: 700;
+			    cursor: pointer;
+			    padding: 25px 70px;
+			    position: relative;
+			    color: $color-primary;
+
+			    @media only screen and (max-width: 768px) {
+			    	font-size: 18px;
+			    	line-height: 1.4;
+			    	padding: 15px 40px;
+			    }
+
+                &:before {
+                    content: '';
+				    display: block;
+				    position: absolute;
+				    left: 30px;
+    				top: 23px;
+				    width: 19px;
+				    height: 25px;
+				    background: url(../img/faq-q.png) center no-repeat;
+
+				    @media only screen and (max-width: 768px) {
+				    	top: 15px;
+				    	left: 10px;
+				    }
+                }
+
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    right: 35px;
+    				top: 26px;
+                    background: url(../img/faq-plus.png) center no-repeat;
+                    width: 18px;
+                    height: 18px;
+
+				    @media only screen and (max-width: 768px) {
+				    	top: 18px;
+				    	right: 10px;
+				    }
+                }
+            }
+
+            .accordion-content {
+                overflow: hidden;
+                height: 0;
+                padding: 0 70px;
+                transition: all .3s ease;
+
+			    @media only screen and (max-width: 768px) {
+			    	padding: 0 15px;
+			    }
+
+                p {
+					font-size: 16px;
+					line-height: 1.75;
+                }
+            }
+
+            &.active {
+                .accordion-title {
+                    &:after {
+                        background: url(../img/faq-minus.png) center no-repeat;
+                    }
+                }
+
+                .accordion-content {
+                    padding: 0 70px 25px;
+                    height: auto;
+
+				    @media only screen and (max-width: 768px) {
+				    	padding: 0 15px 25px;
+				    }
+                }
+            }
+        }
+    }
+}
+
+#company {
+	padding: 60px 0 90px 0;
+	background: #f6f6f6;
+
+	@media only screen and (max-width: 768px) {
+		padding: 60px 0;
+	}
+
+	table {
+		border-collapse: collapse;
+	    border-bottom: 2px solid #ccc;
+	    border-left: 2px solid #ccc;
+	    background: #fff;
+	    min-width: 700px;
+	    width: 100%;
+
+		th,td {
+		    border-top: 2px solid #ccc;
+		    border-right: 2px solid #ccc;
+		    padding: 15px 20px;
+
+		    @media only screen and (max-width: 768px) {
+		    	padding: 7px 10px;
+		    }
+		}
+
+		th {
+		    width: 210px;
+		    text-align: left;
+		    background: #348ED1;
+		    color: #fff;
+		    vertical-align: top;
+
+		    @media only screen and (max-width: 768px) {
+		    	width: 110px;
+		    }
+		}
+
+		ul {
+		    list-style: circle;
+		    padding-left: 20px;
+
+		    li::marker {
+			    color: $color-primary;
+			    font-size: 20px;
+			}
+		}
+	}
+}
+
+.personal-info {
+    text-align: center;
+    padding: 13px 0;
+
+    a {
+    	color: #000;
+    	font-size: 15px;
+    	line-height: 2;
+
+    	&:before {
+		    content: '';
+		    width: 5px;
+		    height: 5px;
+		    border-right: 2px solid;
+		    border-top: 2px solid;
+		    color: #0F5A9B;
+		    transform: rotate(45deg);
+		    display: inline-block;
+		    vertical-align: middle;
+		    margin-right: 8px;
+		    margin-top: -1px;
+		}
+    }
+}
+
+#contact-us-success {
+	padding: 0 0 90px;
+	min-height: calc(100vh - 267px);
+
+	@media only screen and (max-width: 768px) {
+		padding: 0 0 50px;
+	}
+
+	.sec-inner {
+		background-color: #f2f8fa;
+		padding: 70px 15px;
+		text-align: center;
+
+		@media only screen and (max-width: 768px) {
+			padding: 40px 15px;
+		}
+
+		h2 {
+		    line-height: 2;
+		    margin-bottom: 25px;
+
+		    @media only screen and (max-width: 768px) {
+		    	line-height: 1.7;
+		    	margin-bottom: 15px;
+		    	font-size: 20px;
+		    }
+
+		    > span {
+		    	display: inline-block;
+
+		    	@media only screen and (max-width: 768px) {
+		    		display: block;
+		    	}
+		    }
+		}
+
+	    p {
+	    	line-height: 2;
+
+	    	@media only screen and (max-width: 768px) {
+	    		line-height: 1.7;
+	    	}
+	    }
+	}
+
+	.btn-container {
+	    margin-top: 50px;
+
+	    @media only screen and (max-width: 768px) {
+	    	margin-top: 43px;
+	    }
+
+	    .button {
+		    line-height: 30px;
+		    width: 400px;
+		    max-width: calc(100% - 30px);
+		    font-size: 18px;
+		    font-weight: bold;
+
+		    @media only screen and (max-width: 768px) {
+		    	line-height: 25px;
+		    	font-size: 16px;
+		    }
+		}
+	}
+}
+
+body.contact-form {
+	header {
+		.sec-inner {
+			width: 800px;
+		}
+	}
+
+	.page-title {
+		margin-bottom: 15px;
+	}
+
+	.sec-inner {
+		width: 700px;
+	}
+
+	.error-msg {
+	    border: 1px solid #d94350;
+	    background: #fff2f2;
+	    padding: 10px 50px;
+	    font-weight: bold;
+	    color: #d94350;
+	    margin-top: 20px;
+	    letter-spacing: -0.03em;
+	    display: none;
+
+	    @media only screen and (max-width: 768px) {
+	    	padding: 10px 20px;
+	    	font-size: 15px;
+	    }
+
+	    svg {
+		    fill: #d94350;
+		    height: 18px;
+		    width: 18px;
+		    display: inline-block;
+		    vertical-align: middle;
+		    margin-right: 13px;
+		    margin-top: -1px;
+
+		    @media only screen and (max-width: 768px) {
+		    	display: block;
+		    	margin: 10px auto;
+		    }
+		}
+
+		p {
+		    line-height: 2;
+
+		    @media only screen and (max-width: 768px) {
+		    	line-height: 1.7;
+		    }
+		}
+	}
+
+	.step-container {
+	    padding: 0 15px;
+	    text-align: center;
+
+	    .step-item {
+		    display: inline-block;
+		    line-height: 26px;
+		    background: #ccc;
+		    color: #fff;
+		    font-weight: bold;
+		    font-size: 18px;
+		    padding: 7px 130px 7px 7px;
+		    position: relative;
+
+		    @media only screen and (max-width: 768px) {
+		    	padding-left: 10px;
+			    padding-right: 20px;
+	    		font-size: 16px;
+	    	}
+
+			&:first-child {
+				&:after {
+				    content: '';
+				    border: 20px solid transparent;
+				    border-left-color: #ccc;
+				    border-width: 20px 22px;
+				    position: absolute;
+				    left: 100%;
+				    top: 0;
+				    z-index: 2;
+				}
+			}
+
+		    &:last-child {
+			    padding-left: 30px;
+			    padding-right: 100px;
+
+			    @media only screen and (max-width: 768px) {
+			    	padding-left: 30px;
+			    	padding-right: 30px;
+			    }
+
+			    &:before {
+				    content: '';
+				    border: 20px solid transparent;
+				    border-left-color: #fff;
+				    border-width: 20px 22px;
+				    position: absolute;
+				    left: 0;
+				    top: 0;
+				    z-index: 1;
+			    }
+			}
+
+			.step-num {
+				display: inline-block;
+				width: 26px;
+				background-color: #fff;
+				color: #ccc;
+				margin-right: 10px;
+
+				@media only screen and (max-width: 768px) {
+					display: none;
+				}
+			}
+
+			&.active {
+				&:first-child {
+					background-color: #348ed1;
+
+					&:after {
+					    border-left-color: #348ed1;
+					}
+
+					.step-num {
+						color: #348ed1;
+					}
+				}
+
+			    &:last-child {
+			    	background-color: #f18f01;
+
+					.step-num {
+						color: #f18f01;
+					}
+				}
+			}
+		}
+	}
+
+	#contact-us-form {
+		padding: 30px 0 70px;
+
+		.sec-inner {
+			background-color: #f2f8fa;
+			padding: 60px 70px;
+			text-align: left;
+			width: 700px;
+
+			@media only screen and (max-width: 768px) {
+				padding: 40px 15px;
+			}
+
+			label.input-text-label {
+		    	display: block;
+		    	font-weight: bold;
+		    	margin-bottom: 5px;
+		    	font-size: 18px;
+		    }
+
+		    label.input-radio {
+		    	display: block;
+
+		    	input[type=radio] {
+		    		margin-right: 10px;
+		    	}
+		    }
+
+		    input[type=text], input[type=number], input[type=email] {
+		    	width: 100%;
+		    	height: 40px;
+		    	border: 2px solid #dfe2e3;
+		    	border-radius: 5px;
+		    }
+
+		    .input-text {
+		    	margin: 0 0 10px;
+		    	line-height: 2;
+		    }
+
+		    .input-text-label.is-required:after {
+			    content: '必須';
+			    font-size: 11px;
+			    display: inline-block;
+			    background-color: $color-secondary;
+			    height: 13px;
+			    line-height: 13px;
+			    border-radius: 2px;
+			    color: #fff;
+			    padding: 3px 5px;
+			    position: relative;
+			    top: -2px;
+			    margin: 0 0 0 9px;
+			}
+
+			.require-note {
+			    color: #d94350;
+			    font-weight: normal;
+			    font-size: 15px;
+			    font-weight: bold;
+			    margin: -5px 0 5px;
+			}
+		}
+
+		.btn-container {
+		    margin-top: 50px;
+
+		    @media only screen and (max-width: 768px) {
+		    	margin-top: 43px;
+		    }
+
+		    .button {
+			    line-height: 30px;
+			    width: 400px;
+			    max-width: calc(100% - 30px);
+			    font-size: 18px;
+			    font-weight: bold;
+
+			    @media only screen and (max-width: 768px) {
+			    	line-height: 25px;
+			    	font-size: 16px;
+			    }
+			}
+		}
+	}
+
+	#contact-us-success {
+		margin-top: 50px;
+		min-height: calc(100vh - 337px);
+	}
+}
+
+body.contact-form-success #contact-us-success {
+	padding: 0 0 90px;
+	min-height: calc(100vh - 282px);
+
+	@media only screen and (max-width: 768px) {
+	    padding: 0 0 50px;
+	}
+}

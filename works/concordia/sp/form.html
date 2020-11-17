@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <title>お問い合わせ｜ コンコーディア国際大学｜ 2年で学士資格が取得可能な海外留学</title>
+
+    <meta name="description" content="2年で学士資格が取得できるコンコーディア国際大学の受付窓口となります。学費のこと、プログラムのことなど受験生が知りたい内容をお伝えさせていただきます。進路相談も受け付けておりますのでお気軽にご相談ください。" />
+    <meta name="keywords" content="コンコーディア国際大学" />
+
+    <meta property="og:title" content="コンコーディア国際大学｜ 2年で学士資格が取得可能な海外留学 " />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="一般的な海外留学よりも圧倒的に費用を抑えて学士取得が可能な留学プログラムを提供しています。" />
+    <meta property="og:url" content="https://concordiauniv.com" />
+    <meta property="og:image" content="assets/img/thumbnail.jpg"/>
+    <meta name="twitter:image" content="https://concordiauniv.com/assets/img/thumbnail.jpg" />
+
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- javascript -->
+    <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+</head>
+
+<body class="contact-form">
+    <header id="header" class="page-header">
+        <div class="sec-inner">
+            <a href="../index.html" class="logo">
+                <img src="./assets/img/header-pc.png" alt="" />
+            </a>
+        </div>
+    </header>
+    <h1 class="page-title">お問い合わせ</h1>
+    <div class="step-container">
+        <div class="step-item active">
+            <span class="step-num">1</span><span>お客様情報⼊⼒</span>
+        </div>
+        <div class="step-item">
+            <span class="step-num">2</span><span>お問い合わせ完了</span>
+        </div>
+    </div>
+    <section id="contact-us-form">
+        <form id="contact_us_form" name="form-contact-us" action="mail.php" method="post">
+            <div class="sec-inner">
+                <fieldset>
+                    <div class="input-text">
+                        <label class="input-text-label is-required">お問い合わせ内容</label>
+                        <label class="input-radio"><input type="radio" name="contact-inquiry" id="field-contact-inquiry-1" value="資料請求をしたい" /><span>資料請求をしたい</span></label>
+                        <label class="input-radio"><input type="radio" name="contact-inquiry" id="field-contact-inquiry-2" value="留学相談をしたい" /><span>留学相談をしたい</span></label>
+                    </div>
+                    <div class="input-text">
+                        <label class="input-text-label is-required" for="field-contact-name">お名前</label>
+                        <input type="text" class="input-text-input" name="contact-name" id="field-contact-name" placeholder="例）留学　太郎" maxlength="50" />
+                    </div>
+                    <div class="input-text">
+                        <label class="input-text-label is-required" for="field-contact-email">メールアドレス</label>
+                        <input type="email" class="input-text-input" name="contact-email" id="field-contact-email" placeholder="例）xxx@gmail.com" maxlength="50" />
+                    </div>
+                    <div class="input-text">
+                        <label class="input-text-label is-required" for="field-contact-age">ご年齢</label>
+                        <input type="number" class="input-text-input" name="contact-age" id="field-contact-age" placeholder="例）30" min="1" max="200" />
+                    </div>
+                </fieldset>
+            </div>
+            <div class="msg-wrapper">
+                <div class="error-msg">
+                    <p><svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 512 512" xml:space="preserve"><g><g><path d="M501.362,383.95L320.497,51.474c-29.059-48.921-99.896-48.986-128.994,0L10.647,383.95            c-29.706,49.989,6.259,113.291,64.482,113.291h361.736C495.039,497.241,531.068,433.99,501.362,383.95z M256,437.241            c-16.538,0-30-13.462-30-30c0-16.538,13.462-30,30-30c16.538,0,30,13.462,30,30C286,423.779,272.538,437.241,256,437.241z             M286,317.241c0,16.538-13.462,30-30,30c-16.538,0-30-13.462-30-30v-150c0-16.538,13.462-30,30-30c16.538,0,30,13.462,30,30 V317.241z"/></g></g></svg>⼊⼒内容に誤りがあります。⾚で表⽰された項⽬を確認の上、⼊⼒してください</p>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="button" type="submit"><span>お問い合わせする</span></button>
+            </div>
+        </form>
+    </section>
+    <footer id="footer" class="footer-default">
+        <div class="copyright">
+            <p>Copyright © 留学タイムズ All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+$base-font: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+
+$color-base: #333;
+$color-primary: #0F5A9B;
+$color-secondary: #F18F01;
+$color-third: #348ED1;
+$color-yellow: #FDF34F;
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-center-v {
+    display: flex;
+    align-items: center;
+}

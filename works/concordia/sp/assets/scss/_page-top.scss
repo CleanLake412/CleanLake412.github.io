@@ -1,0 +1,235 @@
+@charset "utf-8";
+
+/* トップページのスタイル */
+
+#contact-us-success {
+	min-height: calc(100vh - 267px);
+	padding: 0 0 50px;
+
+	.sec-inner {
+		background-color: #f2f8fa;
+		text-align: center;
+		padding: 40px 15px;
+
+		h2 {
+	    	line-height: 1.7;
+	    	margin-bottom: 15px;
+	    	font-size: 20px;
+
+		    > span {
+		    	display: block;
+		    }
+		}
+
+	    p {
+	    	line-height: 1.7;
+	    }
+	}
+
+	.btn-container {
+	    margin-top: 43px;
+
+	    .button {
+		    width: 400px;
+		    max-width: calc(100% - 30px);
+		    font-weight: bold;
+	    	line-height: 25px;
+	    	font-size: 16px;
+		}
+	}
+}
+
+body.contact-form {
+	.page-title {
+		margin-bottom: 15px;
+	}
+
+	.error-msg {
+	    border: 1px solid #d94350;
+	    background: #fff2f2;
+	    font-weight: bold;
+	    color: #d94350;
+	    margin-top: 20px;
+	    letter-spacing: -0.03em;
+    	display: none;
+    	padding: 10px 20px;
+    	font-size: 15px;
+
+	    svg {
+		    fill: #d94350;
+		    height: 18px;
+		    width: 18px;
+	    	display: block;
+	    	margin: 10px auto;
+		}
+
+		p {
+		    line-height: 1.7;
+		}
+	}
+
+	.step-container {
+	    padding: 0 15px;
+	    text-align: center;
+
+	    .step-item {
+		    display: inline-block;
+		    line-height: 26px;
+		    background: #ccc;
+		    color: #fff;
+		    font-weight: bold;
+		    padding: 7px 20px 7px 10px;
+		    position: relative;
+	    	font-size: 16px;
+
+			&:first-child {
+				&:after {
+				    content: '';
+				    border: 20px solid transparent;
+				    border-left-color: #ccc;
+				    border-width: 20px 22px;
+				    position: absolute;
+				    left: 100%;
+				    top: 0;
+				    z-index: 2;
+				}
+			}
+
+		    &:last-child {
+		    	padding-left: 30px;
+		    	padding-right: 30px;
+
+			    &:before {
+				    content: '';
+				    border: 20px solid transparent;
+				    border-left-color: #fff;
+				    border-width: 20px 22px;
+				    position: absolute;
+				    left: 0;
+				    top: 0;
+				    z-index: 1;
+			    }
+			}
+
+			.step-num {
+				width: 26px;
+				background-color: #fff;
+				color: #ccc;
+				margin-right: 10px;
+				display: none;
+			}
+
+			&.active {
+				&:first-child {
+					background-color: #348ed1;
+
+					&:after {
+					    border-left-color: #348ed1;
+					}
+
+					.step-num {
+						color: #348ed1;
+					}
+				}
+
+			    &:last-child {
+			    	background-color: #f18f01;
+
+					.step-num {
+						color: #f18f01;
+					}
+				}
+			}
+		}
+	}
+
+	#contact-us-form {
+		padding: 30px 0 70px;
+
+		.sec-inner {
+			background-color: #f2f8fa;
+			text-align: left;
+			padding: 40px 15px;
+
+			label.input-text-label {
+		    	display: block;
+		    	font-weight: bold;
+		    	margin-bottom: 5px;
+		    	font-size: 18px;
+		    }
+
+		    label.input-radio {
+		    	display: block;
+
+		    	input[type=radio] {
+		    		margin-right: 10px;
+		    	}
+		    }
+
+		    input[type=text], input[type=number], input[type=email] {
+		    	width: 100%;
+		    	height: 40px;
+		    	border: 2px solid #dfe2e3;
+		    	border-radius: 5px;
+		    }
+
+		    .input-text {
+		    	margin: 0 0 10px;
+		    	line-height: 2;
+		    }
+
+		    .input-text-label.is-required:after {
+			    content: '必須';
+			    font-size: 11px;
+			    display: inline-block;
+			    background-color: $color-secondary;
+			    height: 13px;
+			    line-height: 13px;
+			    border-radius: 2px;
+			    color: #fff;
+			    padding: 3px 5px;
+			    position: relative;
+			    top: -2px;
+			    margin: 0 0 0 9px;
+			}
+
+			.require-note {
+			    color: #d94350;
+			    font-weight: normal;
+			    font-size: 15px;
+			    font-weight: bold;
+			    margin: -5px 0 5px;
+			}
+		}
+
+		.msg-wrapper {
+			padding: 0 15px;
+
+			.error-msg {
+				margin-top: 30px;
+			}
+		}
+
+		.btn-container {
+		    margin-top: 30px;
+
+		    .button {
+			    width: 100%;
+			    max-width: calc(100% - 30px);
+			    font-weight: bold;
+		    	line-height: 25px;
+		    	font-size: 16px;
+			}
+		}
+	}
+
+	#contact-us-success {
+		margin-top: 50px;
+		min-height: calc(100vh - 337px);
+	}
+}
+
+body.contact-form-success #contact-us-success {
+	min-height: calc(100vh - 282px);
+	padding: 0 0 50px;
+}

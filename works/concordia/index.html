@@ -1,0 +1,679 @@
+<!-- HTMLコード -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <title>コンコーディア国際大学｜ 2年で学士資格が取得可能な海外留学</title>
+    
+    <meta name="description" content="2年で学士資格が取得できるコンコーディア国際大学の受付窓口となります。学費のこと、プログラムのことなど受験生が知りたい内容をお伝えさせていただきます。進路相談も受け付けておりますのでお気軽にご相談ください。" />
+    <meta name="keywords" content="コンコーディア国際大学" />
+
+    <meta property="og:title" content="コンコーディア国際大学｜ 2年で学士資格が取得可能な海外留学 " />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="一般的な海外留学よりも圧倒的に費用を抑えて学士取得が可能な留学プログラムを提供しています。" />
+    <meta property="og:url" content="https://concordiauniv.com" />
+    <meta property="og:image" content="assets/img/thumbnail.jpg"/>
+    <meta name="twitter:image" content="https://concordiauniv.com/assets/img/thumbnail.jpg" />
+
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+
+    <!-- javascript -->
+    <script src="./libs/jquery/jquery-3.4.1.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N7F34TG');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7F34TG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <section id="main-visual" class="main-visual">
+        <div class="sec-inner">
+            <h2 class="mv-ttl"><img src="./assets/img/mv-ttl.png" alt="" /></h2>
+            <div class="contact-form">
+                <h3 class="title">お問い合わせ</h3>
+                <div class="form-control">
+                    <form name="contact-form" id="contact_form" action="mail.php" method="post" autocomplete="off">
+                        <fieldset>
+                            <div class="input-text">
+                                <label class="input-text-label is-required" for="field-contact-inquiry">お問い合わせ内容<span class="validation"><span>OK</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></label>
+                                <select class="input-select focusBox" name="contact-inquiry" id="field-contact-inquiry">
+                                    <option value="" selected>選択してください</option>
+                                    <option value="資料請求をしたい">資料請求をしたい</option>
+                                    <option value="留学相談をしたい">留学相談をしたい</option>
+                                </select>
+                            </div>
+                            <div class="input-text">
+                                <label class="input-text-label is-required" for="field-contact-name">お名前<span class="validation"><span>OK</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></label>
+                                <input type="text" class="input-text-input" name="contact-name" id="field-contact-name" placeholder="例）留学　太郎" maxlength="50" />
+                            </div>
+                            <div class="input-text">
+                                <label class="input-text-label is-required" for="field-contact-age">年齢<span class="validation"><span>OK</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></label>
+                                <input type="number" class="input-text-input" name="contact-age" id="field-contact-age" placeholder="例）30" min="1" max="200" />
+                            </div>
+                            <div class="input-text">
+                                <label class="input-text-label is-required" for="field-contact-email">メールアドレス<span class="validation"><span>OK</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></label>
+                                <input type="email" class="input-text-input" name="contact-email" id="field-contact-email" placeholder="例）xxx@gmail.com" maxlength="50" />
+                            </div>
+                            <div class="input-text">
+                                <label class="input-text-label is-optional" for="field-contact-message">ご相談内容<span class="validation"><span>OK</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></label>
+                                <textarea class="input-text-area" name="contact-message" id="field-contact-message" placeholder="例）受験準備について詳しく知りたいです。" maxlength="500"></textarea>
+                            </div>
+                            <div class="form-action">
+                                <p class="require-note">⼊⼒されていない項⽬があります。</p>
+                                <button class="button" type="submit"><span class="effect"></span><span>送信する</span></button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="issue-head" class="issue-head">
+        <div class="sec-inner">
+            <h2 class="sec-ttl">コンコーディア国際大学なら、<br>海外大学進学の<span class="highlight">4つの不安</span>を解消</h2>
+            <div class="sec-content">
+                <img class="issue-head-bg sp-d-none" src="./assets/img/issue-head.png" alt="" />
+                <img class="issue-head-bg d-none sp-d-block" src="./assets/img/issue-head-sp.png" alt="" />
+                <a href="#issue-01" class="scroller"><img src="./assets/img/arrow-down.png" alt="" /><span>SCROLL</span></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="issue-01" class="issue">
+        <div class="sec-inner">
+            <h2 class="sec-ttl"><span class="ribbon">不安１</span>海外大学は学費が高い？</h2>
+            <p class="sec-desc">コンコーディア国際大学のTop-upプログラムとは、イギリス国内の大学が取り入れている「編入制度」です。<br>イギリスの大学2年目までを受講した証明があれば、イギリスの大学の最終年度に編入が可能です。<br>コンコーディアでは、カナダバンクーバーのキャンパスでオンライン+オンキャンパス授業を1年行うことで<br>編入資格が取得でき、2年目にイギリス、ニュージーランド・アイルランド・スイスの<br>提携大学の最終学年に編入することができます。</p>
+            <div class="tuition-university">
+                <div class="tuition-item">
+                    <h3>海外/日本の大学に進学する際の費用比較</h3>
+                    <div class="tuition-chart">
+                        <img src="./assets/img/tuition-chart.png" alt="" />
+                    </div>
+                </div>
+                <div class="tuition-item">
+                    <h3>編入先大学例</h3>
+                    <div class="tuition-map">
+                        <img src="./assets/img/tuition-map.png" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span>具体的な提携大学を確認する</span></a>
+            </div>
+            <div class="tuition-compare">
+                <div class="tuition-item">
+                    <h3>海外/日本の大学に進学する際の費用比較</h3>
+                    <div class="tuition-table js-scrollable">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="144"></th>
+                                    <th width="21.8%">⻑期語学留</th>
+                                    <th width="21.8%">コミュニティカレッジ</th>
+                                    <th width="21.8%">海外⼤学</th>
+                                    <th width="21.8%" class="concordia"><span>コンコーディア</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>卒業までの期間</td>
+                                    <td align="center">1年以上</td>
+                                    <td align="center">2年</td>
+                                    <td align="center">4年</td>
+                                    <td align="center">コンコーディア1年<br>+海外大学編入1年<br>2年</td>
+                                </tr>
+                                <tr>
+                                    <td>卒業までの合計学費</td>
+                                    <td align="center">120万 (1年間の場合)</td>
+                                    <td align="center">240万 (2年間)</td>
+                                    <td align="center">1500-2500万 (4年間)</td>
+                                    <td align="center">470万 (2年間)</td>
+                                </tr>
+                                <tr>
+                                    <td>有給インターンシップ給与目安</td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center">約90万円</td>
+                                </tr>
+                                <tr>
+                                    <td>取得できる学歴</td>
+                                    <td align="center">無し</td>
+                                    <td align="center">短期⼤学卒業</td>
+                                    <td align="center">海外4年制⼤学卒</td>
+                                    <td align="center">海外4年生大学卒業程度</td>
+                                </tr>
+                                <tr>
+                                    <td>メリット</td>
+                                    <td>
+                                        <ul>
+                                            <li>現在の英語⼒に関係なく、誰でも語学⼒向上に特化したプログラムを受けられる。</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>短期⼤学として、割安で4年制⼤学に編⼊することができる。</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>最終学歴として就職に有利な4年制⼤学を卒業できる。</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>学費を抑えて4年制⼤学を2年間で卒業できる。</li>
+                                            <li>2ヵ国経験とインターン経験も同時にできる。</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>デメリット</td>
+                                    <td>
+                                        <ul>
+                                            <li>学校修了時に学位や資格などの学歴に認められるものは得られない。</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>⼊学基準に英語⼒が求められる。</li>
+                                            <li>短期⼤学の卒業資格なので就職の学歴としては不⼗分。</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>学費が⾼額で進学できる⼈が限られる。</li>
+                                            <li>⼊学前にパスウェイコースなどの事前学習期間が必要な場合、4年以上かかる。</li>
+                                            <li>ネイティブに近いレベルの英語⼒が⼊学時点で求められる。</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>短期集中型のプログラムになる。</li>
+                                            <li>オンラインとオンキャンパスの両⽅に対応する必要がある。</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cta-01" class="cta">
+        <div class="sec-inner">
+            <h2 class="sec-ttl">なぜ2年で卒業できるの？</h2>
+            <div class="why-2years">
+                <div class="fig-2years">
+                    <img src="./assets/img/why-2years.png" alt="" />
+                </div>
+                <div class="shortended-2years">
+                    <h4><img src="./assets/img/because.png" alt="" /></h4>
+                    <h3><img src="./assets/img/shortended-2years.png" alt="" /></h3>
+                    <p>1年目に、「英語学習」「選択した学科の卒業課題12課題」<br>「インターン」を実施します。<br>2年目に、世界5ヶ国50校の提携大学にて最終学年に編入。<br>編入先の大学で継続して専門分野を学び、学位を取得します。</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-link-dp consultation">
+            <h3>＼<span class="yellow-marker">憧れの海外大学を2年で費用を抑えて卒業！具体的に知りたい方は</span>／</h3>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span class="effect"></span><span class="btn-desc">海外大学進学の”不安な点”ご相談ください</span><span class="txt-anime1">留学相談をする</span><span class="txt-anime2">【無料】</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="contact-link-sp cta">
+        <div class="sec-inner">
+            <h3><span class="yellow-marker">憧れの海外大学を2年で卒業！</span><br><span>＼<span class="yellow-marker">具体的に知りたい方は</span>／</span></h3>
+            <div class="btn-container">
+                <a href="https://lin.ee/WX25TY3" class="button line-button"><span class="effect"></span><span class="btn-desc">24時間 無料受付中！</span><span class="txt-anime1">LINEで問い合わせ</span></a>
+                <a href="./sp/form.html" class="button btn-cta"><span class="effect"></span><span class="txt-anime1">メールで問い合わせ</span><span class="txt-anime2"><small>（無料）</small></span></a>
+            </div>
+        </div>
+    </div>
+
+    <section id="issue-02" class="issue">
+        <div class="sec-inner">
+            <h2 class="sec-ttl"><span class="ribbon">不安2</span>英語力が不安で授業についていけないかも？</h2>
+            <p class="sec-desc">海外の大学で授業を受ける上で、そもそもレポートを英語で書いたことすらないという方でも安心。<br>コンコーディア専任のチューターが、レポート添削・アドバイス、進路相談など学生をサポートします。<br>1クラス最大15名の少人数制のため、英語力も伸ばしやすい環境です。</p>
+            <h3 class="sec-sub-ttl">コンコーディアの年間カリキュラム内容</h3>
+            <h4 class="online-campus-ttl">
+                <img src="./assets/img/online-campus-ttl.png" alt="" />
+                <p>オンライン＋オンキャンパスが融合されたカリキュラム</p>
+            </h4>
+            <p class="online-campus-desc">ビジネス、⼜は、ホスピタリティに関するレポート形式の課題 + 講義 + 有給インターンが<br>コンコーディア国際⼤学での1年間のカリキュラム内容です。</p>
+            <div class="issue-list">
+                <div class="issue-item">
+                    <h3>レポート形式の課題</h3>
+                    <div class="issue-figure"><img src="./assets/img/issue02-01.png" alt="" /></div>
+                    <div class="issue-desc">
+                        <h4>毎⽇<span class="large-font">3</span>時間以上/<span class="theme-color"><span class="large-font">12</span>ヵ⽉間</span></h4>
+                        <p>ビジネスコースか、ホスピタリティコースのどちらかを選び、チューターと⼆⼈三脚で⼀つ⼀つ課題を突破しましょう。</p>
+                    </div>
+                </div>
+                <div class="issue-item">
+                    <h3>講義 （ビジネス⼜はホスピタリティ）</h3>
+                    <div class="issue-figure"><img src="./assets/img/issue02-02.png" alt="" /></div>
+                    <div class="issue-desc">
+                        <h4>15:30-21:00/週<span class="large-font">5</span>/<span class="theme-color"><span class="large-font">6</span>ヵ⽉間</span></h4>
+                        <p>ビジネスコースか、ホスピタリティコースを選び、6ヵ⽉間講義を受けます。課題を進める上でヒントとなる講義内容です。実際に海外インターンを⾏う際に役に⽴つ内容を学ぶことができます。</p>
+                    </div>
+                </div>
+                <div class="issue-item">
+                    <h3>有給インターン</h3>
+                    <div class="issue-figure"><img src="./assets/img/issue02-03.png" alt="" /></div>
+                    <div class="issue-desc">
+                        <h4>週<span class="large-font">40</span>時間/<span class="theme-color"><span class="large-font">6</span>ヵ⽉間</span></h4>
+                        <p>6ヵ⽉間の講義を受けた後、後半の6ヵ⽉間では実際に海外インターンを⾏います。⾯接の練習や、履歴書の書き⽅、仕事の探し⽅などもカリキュラム内に組み込まれているので、初めての⽅でも取り組みやすい内容です。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="twok-hrs"><img src="./assets/img/2k-hrs.png" alt="" /></div>
+            <h3 class="sec-sub-ttl">卒業率98.8%。学習を支えてくれるチューター制度</h3>
+            <p class="graduation-desc">コンコーディア専任のチューターが、学⽣をサポートをします。<br>課題を進める際、チューターから課題の進め⽅やヒントを貰い、⾃分でレポートにまとめます。<br><span class="yellow-marker"><strong>１クラス最⼤１5名の少⼈数制</strong></span>で英語を伸ばしやすい環境です。</p>
+            <div class="graduation-rate">
+                <div class="jpn-tutors">
+                    <img src="./assets/img/jpn-tutors.png" alt="" />
+                </div>
+                <div class="cnc-gallery">
+                    <img src="./assets/img/tutor-gallery.png" alt="" />
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span class="btn-desc">オンライン受講も可能</span><span>カリキュラムについて相談する</span></a>
+            </div>
+        </div>
+    </section>
+
+    <div id="cta-02" class="contact-link-dp cta">
+        <div class="consultation">
+            <h3>＼<span class="yellow-marker">憧れの海外大学を2年で費用を抑えて卒業！具体的に知りたい方は</span>／</h3>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span class="effect"></span><span class="btn-desc">海外大学進学の”不安な点”ご相談ください</span><span class="txt-anime1">留学相談をする</span><span class="txt-anime2">【無料】</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="contact-link-sp cta">
+        <div class="sec-inner">
+            <h3><span class="yellow-marker">憧れの海外大学を2年で卒業！</span><br><span>＼<span class="yellow-marker">具体的に知りたい方は</span>／</span></h3>
+            <div class="btn-container">
+                <a href="https://lin.ee/WX25TY3" class="button line-button"><span class="effect"></span><span class="btn-desc">24時間 無料受付中！</span><span class="txt-anime1">LINEで問い合わせ</span></a>
+                <a href="./sp/form.html" class="button btn-cta"><span class="effect"></span><span class="txt-anime1">メールで問い合わせ</span><span class="txt-anime2"><small>（無料）</small></span></a>
+            </div>
+        </div>
+    </div>
+
+    <section id="issue-03" class="issue">
+        <div class="sec-inner">
+            <h2 class="sec-ttl"><span class="ribbon">不安3</span>卒業後の就職は大丈夫？</h2>
+            <p class="sec-desc">コンコーディア国際大学を卒業し、日本の外資系企業・グローバル日系企業、外資系ホテル・航空会社、<br>海外現地での就職など様々なキャリアを歩んでいる先輩がいます。</p>
+            <div class="issue-list">
+                <div class="issue-item">
+                    <h3>海外インターンシップ</h3>
+                    <div class="issue-figure"><img src="./assets/img/issue03-01.png" alt="" /></div>
+                    <div class="issue-desc">
+                        <p>1年次に必須となっている海外インターンシップを通じて、将来やりたいことを考える機会となります。<span class="yellow-marker"><strong>海外の大学に進学するからこそ経験できるプログラムです。</strong></span></p>
+                    </div>
+                </div>
+                <div class="issue-item">
+                    <h3>ボストンキャリアフォーラム</h3>
+                    <div class="issue-figure"><img src="./assets/img/issue03-02.png" alt="" /></div>
+                    <div class="issue-desc">
+                        <p>アメリカボストンで開催されるキャリアフォーラムに多くの卒業生が参加しています。日本のグローバル企業や外資系企業も多く出展しており<span class="yellow-marker"><strong>毎年内定者が出ています。</strong></span></p>
+                    </div>
+                </div>
+            </div>
+            <h3 class="sec-sub-ttl">海外インターンシップ受け入れ先例</h3>
+            <div class="example-case">
+                <div class="case-item">
+                    <em>Case1</em><br>
+                    <h4>River Rock Casino Resort Hotel River Rock Food & Beverage</h4>
+                    <p>空港から電⾞で5分圏内にある⾼級ホテル内で様々なインターンポジションを提供しています。フロントデスク、レストラン関連、ハウスキーピング関連など。ダウンタウンへは電⾞で15分で⾏けるため、交通の便も最適です。<b>ホテルに関する様々な業務内容に携わってみたい⽅に最適</b>なインターン先です。</p>
+                    <img src="./assets/img/case01.png" alt="" />
+                </div>
+                <div class="case-item">
+                    <em>Case2</em><br>
+                    <h4>Marriott Hotel</h4>
+                    <p>バンクーバーのダウンタウンの中でも最も美しいエリアにある⼀流ホテルでインターン経験ができます。海辺の近くで豪華な眺めと癒しを提供します。すべての従業員はしっかりした研修を受けているため、<b>ホスピタリティ⼒を上げたい⽅</b>には⼀押しのインターン先です。</p>
+                    <img src="./assets/img/case02.png" alt="" />
+                </div>
+                <div class="case-item">
+                    <em>Case3</em><br>
+                    <h4>Yaletown Wellness Center</h4>
+                    <p>ダウンタウンに位置する美容関連のクリニック。様々な国籍の⽅が⼀緒に働いています。フロントデスク、カウンセラー、マッサージなどの施術、マネジメントなど。働く時間を楽しむことをモットーにしている企業です。<b>アットホームな職場環境で留学経験したい⽅</b>に⼀押しのインターン先です。</p>
+                    <img src="./assets/img/case03.png" alt="" />
+                </div>
+                <div class="case-item">
+                    <em>Case4</em>
+                    <h4>Ari beauty Salon</h4>
+                    <p>ダウンタウンの⾼級エリアに位置するネイルサロン。お客様と英語での会話を楽しみながら働くことができます。フロントデスク、予約受付担当、ネイリストなど様々な職種でインターンができます。<b>未経験でも受⼊れしているので、新しいことに挑戦してみたい⽅</b>に⼀押しのインターン先です。</p>
+                    <img src="./assets/img/case04.png" alt="" />
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span>全てのインターン先を確認する</span></a>
+            </div>
+        </div>
+    </section>
+
+    <div id="cta-03" class="contact-link-dp cta">
+        <div class="consultation">
+            <h3>＼<span class="yellow-marker">憧れの海外大学を2年で費用を抑えて卒業！具体的に知りたい方は</span>／</h3>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span class="effect"></span><span class="btn-desc">海外大学進学の”不安な点”ご相談ください</span><span class="txt-anime1">留学相談をする</span><span class="txt-anime2">【無料】</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="contact-link-sp cta">
+        <div class="sec-inner">
+            <h3><span class="yellow-marker">憧れの海外大学を2年で卒業！</span><br><span>＼<span class="yellow-marker">具体的に知りたい方は</span>／</span></h3>
+            <div class="btn-container">
+                <a href="https://lin.ee/WX25TY3" class="button line-button"><span class="effect"></span><span class="btn-desc">24時間 無料受付中！</span><span class="txt-anime1">LINEで問い合わせ</span></a>
+                <a href="./sp/form.html" class="button btn-cta"><span class="effect"></span><span class="txt-anime1">メールで問い合わせ</span><span class="txt-anime2"><small>（無料）</small></span></a>
+            </div>
+        </div>
+    </div>
+
+    <section id="issue-04" class="issue">
+        <div class="sec-inner">
+            <h2 class="sec-ttl"><span class="ribbon">不安4</span>入学する難易度は？</h2>
+            <p class="sec-desc">入学の条件は、<span class="yellow-marker"><strong>”英語レベルが以下の基準に達していること”</strong></span>のみで、その他科目の受験は必要ありません。<br>日本の受験者が多い<span class="yellow-marker"><strong>英検やTOEICなども入学条件に含まれている</strong></span>ため<span class="yellow-marker"><strong>日本の受験生にとっても受験しやすい</strong></span>要件となっています。<br>※仮に入学条件に満たない方でも、半年間の語学留学プランを受講することで入学が可能となります。</p>
+            <div class="difficulty">
+                <div class="difficulty-item">
+                    <h3>入学条件</h3>
+                    <div class="difficulty-content">
+                        <div class="figure"><img src="./assets/img/difficulty-table.png" alt="" /></div>
+                        <p class="note">『ご注意点』<br>・オンラインスピーキングテストは、CNCの教師との10分程度のテストです。<br>・オンラインスピーキングテストの合否は翌日までにメールでお知らせいたします。<br>・オンラインスピーキングテストは一回限りです。基準に満たなかった場合は、6ヶ月間英語コースを受講すれば、試験免除でコンコーディアに入学ができます。</p>
+                    </div>
+                    <h3>その他入学条件</h3>
+                    <div class="difficulty-content">
+                        <ul>
+                            <li>16歳以上</li>
+                            <li>高校卒業済み、又は、高卒認定試験合格の方</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="difficulty-item">
+                    <h3>コンコーディア入学日</h3>
+                    <div class="difficulty-content">
+                        <p>1月、5月、8月、10月<br>詳細日程は別紙オリエンテーション資料を下さい。</p>
+                    </div>
+                    <h3>その他入学条件</h3>
+                    <div class="difficulty-content">
+                        <ul>
+                            <li>パスポートのコピー</li>
+                            <li>最終学歴の卒業証明書(英文をお取り寄せ下さい)</li>
+                            <li>最終学歴の成績証明書(英文をお取り寄せ下さい)</li>
+                            <li>英語力を証明する書類(上記の表内のいずれか)</li>
+                        </ul>
+                    </div>
+                    <div class="btn-container">
+                        <a href="./form.html" class="button btn-cta"><span>受験準備について相談する</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cta-04" class="contact-link-dp cta">
+        <div class="consultation">
+            <h3>＼<span class="yellow-marker">憧れの海外大学を2年で費用を抑えて卒業！具体的に知りたい方は</span>／</h3>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span class="effect"></span><span class="btn-desc">海外大学進学の”不安な点”ご相談ください</span><span class="txt-anime1">留学相談をする</span><span class="txt-anime2">【無料】</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="contact-link-sp cta">
+        <div class="sec-inner">
+            <h3><span class="yellow-marker">憧れの海外大学を2年で卒業！</span><br><span>＼<span class="yellow-marker">具体的に知りたい方は</span>／</span></h3>
+            <div class="btn-container">
+                <a href="https://lin.ee/WX25TY3" class="button line-button"><span class="effect"></span><span class="btn-desc">24時間 無料受付中！</span><span class="txt-anime1">LINEで問い合わせ</span></a>
+                <a href="./sp/form.html" class="button btn-cta"><span class="effect"></span><span class="txt-anime1">メールで問い合わせ</span><span class="txt-anime2"><small>（無料）</small></span></a>
+            </div>
+        </div>
+    </div>
+
+    <section id="voices" class="voices">
+        <div class="sec-inner">
+            <h2 class="sec-ttl"><span class="ribbon">VOICES</span>卒業生の声</h2>
+            <div class="review-list">
+                <div class="review-item">
+                    <div class="reviewer-info">
+                        <div class="figure">
+                            <img src="./assets/img/user01.png" alt="" />
+                        </div>
+                        <div class="info">
+                            <h4>S.Kさん</h4>
+                            <label>コース</label>
+                            <p>ビジネスコース</p>
+                            <label>コンコーディア<br>開始時の年齢</label>
+                            <p>17歳</p>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <h3>チューターによるケアがあったからこそ、本当の意味での『勉強』ができた</h3>
+                        <p>アメリカの⼤学に進学を希望していてましたが、⼊学基準が⾼く、学費も想定よりも⾼額だったため、2 年という短い期間で学費を抑えて留学できるコンコーディアのプログラムを受講することを決意しました。</p>
+                        <p>ここでの課題は、<b>将来必ず役に⽴つであろう内容を英語で学ぶ</b>ことができます。例えば、英語でのプレゼンテーションのまとめ⽅では、本格的で学術的な英語を⽤いつつ、⼤⼈の前で発表しても恥ずかしくないようなまとめ⽅を教えてくれます。</p>
+                        <p>⾼校まで、たくさんの知識を頭に⼊れてきましたが、実際に活⽤したことは⼀度もありませんでした。だからこそ、<b>学んだことが実際に⾝に付くような教育⽅法</b>に価値を感じました。⼀⼈⼀⼈を指導してくれるチューターによるケアがあったからこそ、本当の意味での『勉強』ができたと感じています。</p>
+                        <div class="review-footer">
+                            <p><span class="label">編⼊先⼤学</span><span>2019年9⽉UCBを卒業</span><i><img src="./assets/img/flag01.png" alt="" /></i></p>
+                            <p><span class="label">卒業後の進路</span><span>2019年1⽉イギリスの⼤学院に⼊学し、国際ビジネス学を専攻中。</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <div class="reviewer-info">
+                        <div class="figure">
+                            <img src="./assets/img/user02.png" alt="" />
+                        </div>
+                        <div class="info">
+                            <h4>S.Kさん</h4>
+                            <label>コース</label>
+                            <p>ビジネスコース</p>
+                            <label>コンコーディア<br>開始時の年齢</label>
+                            <p>19歳</p>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <h3>具体的にやりたいことがない⼈ほど、海外の⼤学に挑戦してほしい</h3>
+                        <p>漠然と、⼤学には⾏った⽅が就職に有利なんだろうとは思っていましたが、具体的にやりたいことは決まっておらず進路に迷っている時に、コンコーディアを知り、将来に役に⽴つことが学べる点に魅⼒を感じ、コンコーディアに⼊学を決断しました。</p>
+                        <p>海外の⼤学に進学すると、⼤学⽣活を送りながら英語が習得できる上に、異⽂化を理解できるようになるので、<b>就職に有利な⾃分のストロングポイントに繋がります。</b>実際に、留学前より⾃分に対して⾃信が付き、⼈と違う経験ができた分、枠にとらわれない考え⽅も⾝に付きました。</p>
+                        <p>現在は、英語圏ではない国の英語教育に貢献するために、<b>教育業界に就職</b>しました。アドバイスとして、具体的にやりたいことがない⼈ほど、海外の⼤学に挑戦してほしいです。私が実際に経験したように、<b>留学を通して、多くの⼈にもっと世界に視野を広げてほしい</b>と思っています。</p>
+                        <div class="review-footer">
+                            <p><span class="label">編⼊先⼤学</span><span>2019年1⽉Anglia Ruskin Universityを卒業</span><i><img src="./assets/img/flag01.png" alt="" /></i></p>
+                            <p><span class="label">卒業後の進路</span><span>国際的に知られる英語教育期間に⼊社。</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <div class="reviewer-info">
+                        <div class="figure">
+                            <img src="./assets/img/user03.png" alt="" />
+                        </div>
+                        <div class="info">
+                            <h4>S.Kさん</h4>
+                            <label>コース</label>
+                            <p>ホスピタリティ<br>コース</p>
+                            <label>コンコーディア<br>開始時の年齢</label>
+                            <p>20歳</p>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <h3>こんな⾵になりたいと思って⾏動すれば、⾃然に⽬標が⾒つかるし、挑戦すれば実現できます</h3>
+                        <p>接客業や英語を学べる⼤学に⾏きたいと考えていましたが、経済的な理由で進路に迷っている中、コンコーディアなら<b>期間と費⽤を⼤幅に抑えられる</b>ので、⼊学を決断しました。</p>
+                        <p>コンコーディアでは、今の仕事に直結するような役に⽴つ内容が学べます。さらに、プレゼンを通して⼈前で話すことも多いので、スピーキング⼒と発⾳が強化されて、⾃分の英語に⾃信が持てるようになりました。</p>
+                        <p>スイスの⼤学に編⼊当初は、周囲のレベルの⾼さに圧倒されましたが、難しすぎるというわけではなく、<b>毎⽇学校に⾏って真剣に取り組めばほとんどの⼈が付いていけます。</b>スイスはどこの国よりも暮らしやすく、おしゃれで清潔は国です。</p>
+                        <p>⼤学在学中に2ヵ国経験できるプログラムだからこそ、スイスの良さに気が付けました。今は、<b>⽬標にしていた企業でインターンをした後に、夢だったスイスに在住</b>しています。こんな⾵になりたいと思って⾏動すれば、⾃然に⽬標が⾒つかるし、挑戦すれば誰でも実現できます。</p>
+                        <div class="review-footer">
+                            <p><span class="label">編⼊先⼤学</span><span>2019年1⽉BHMSを卒業</span><i><img src="./assets/img/flag02.png" alt="" /></i></p>
+                            <p><span class="label">卒業後の進路</span><span>スイス⼤⼿航空会社に就職し、グランドスタッフとして勤務中。</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cta-05" class="contact-link-dp cta">
+        <div class="consultation">
+            <h3>＼<span class="yellow-marker">憧れの海外大学を2年で費用を抑えて卒業！具体的に知りたい方は</span>／</h3>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span class="effect"></span><span class="btn-desc">海外大学進学の”不安な点”ご相談ください</span><span class="txt-anime1">留学相談をする</span><span class="txt-anime2">【無料】</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="contact-link-sp cta">
+        <div class="sec-inner">
+            <h3><span class="yellow-marker">憧れの海外大学を2年で卒業！</span><br><span>＼<span class="yellow-marker">具体的に知りたい方は</span>／</span></h3>
+            <div class="btn-container">
+                <a href="https://lin.ee/WX25TY3" class="button line-button"><span class="effect"></span><span class="btn-desc">24時間 無料受付中！</span><span class="txt-anime1">LINEで問い合わせ</span></a>
+                <a href="./sp/form.html" class="button btn-cta"><span class="effect"></span><span class="txt-anime1">メールで問い合わせ</span><span class="txt-anime2"><small>（無料）</small></span></a>
+            </div>
+        </div>
+    </div>
+
+    <section id="faq" class="faq">
+        <div class="sec-inner">
+            <h2 class="sec-ttl"><span class="ribbon">Q&A</span>よくある質問</h2>
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-title"><span>入学日は決まっていますか？</span></div>
+                    <div class="accordion-content">
+                        <p>はい。決まっています。年に４回入学のタイミングがあります。タイミングがありますので、詳細はお問い合わせください。</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title"><span>年齢制限や学歴制度はありますか？</span></div>
+                    <div class="accordion-content">
+                        <p>16歳〜受け入れをしています。また、高校卒業済み、または、高卒認定資格をお持ちであれば、入学可能です。</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title"><span>いつまでに編入大学を決めるべきですか？</span></div>
+                    <div class="accordion-content">
+                        <p>コンコーディアのカリキュラムを開始後2ヶ月以内にチューターと一緒に方向性を決めます。 編入の3ヶ月前までには志願書を送るので、それまでにIELTSを取得しましょう。詳細はお問い合わせ時にご相談ください。</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title"><span>奨学金や学生ローンの申請は可能ですか？</span></div>
+                    <div class="accordion-content">
+                        <p>はい、可能です。しかし、その場合に御渡しすべき書類がございますので、申請前に必ず一度、お問い合わせください。</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title"><span>コンコーディアを1年で卒業したあと、編入先の授業についていけるか心配です。</span></div>
+                    <div class="accordion-content">
+                        <p>ついていけないと不安に感じる理由の多くが英語に関する不安です。コンコーディアの多くの学生は1年以内にIELTS6.5を取得しています。英語力を飛躍的に、かつ効率的に伸ばすことに着目したカリキュラム内容になっています。<br>・2000時間以上の学習時間を確保<br>・実践的英語力を養えるインターン制度<br>・すぐに質問できるチューター制度<br>また、イギリスの大学の1、2年間で行われる内容を網羅しているので、”他の方よりも知識が少なくなる”という心配もありません。</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title"><span>2年間で大学を卒業すると短期大学とみなされますか？</span></div>
+                    <div class="accordion-content">
+                        <p>いいえ、4年制大学の卒業資格に値します。バチェラーズディクリーという学士は、海外の4年制大学の卒業資格に値し、2年間での同じ学士が得られます。そのため、短期大学だとみなされないのでご安心ください。海外では、早く社会に出るために卒業を早めるケースも多くあります。</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title"><span>2年で大学卒業後、どんなことをされている人が多いですか？</span></div>
+                    <div class="accordion-content">
+                        <p>その国から就労ビザが降り、そこで働き続ける人や、余った時間で、新たな資格を取得して強みを増やす方もいます。例えば、通訳の資格や、MBAなどのスキルや英語力を生かして、他の国に行って働いたり、ワーキングホリデーをされる方もいます。自国に戻る方も、留学関係のお仕事や、国際的な会社に入社された方等、様々です。海外大学から卒業証明書は世界中で通用する証明書です。自信をもってアピールできるストロングポイントです！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="company" class="company">
+        <div class="sec-inner">
+            <h2 class="sec-ttl"><span class="ribbon">Company</span>運営会社</h2>
+            <div class="js-scrollable">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>会社名</th>
+                            <td>株式会社　国際教育交流センター</td>
+                        </tr>
+                        <tr>
+                            <th>所在地</th>
+                            <td>東京都渋谷区千駄ヶ谷５－３３－８ サウスゲート新宿ビル９階＜H.I.S語学研修デスクカウンター＞</td>
+                        </tr>
+                        <tr>
+                            <th>設立</th>
+                            <td>1999年</td>
+                        </tr>
+                        <tr>
+                            <th>代表者</th>
+                            <td>平山大樹</td>
+                        </tr>
+                        <tr>
+                            <th>資本金</th>
+                            <td>1600万円</td>
+                        </tr>
+                        <tr>
+                            <th>事業内容</th>
+                            <td>
+                                <ul>
+                                    <li>留学情報提供、留学先の紹介およびカウンセリング</li>
+                                    <li>留学手続きの代行</li>
+                                    <li>海外傷害保険代理業、保険法に基づく保険代理業</li>
+                                    <li>就職サポート</li>
+                                    <li>ビザ申請代行サービス（学生ビザ/ワーキングホリデービザ/ETAS/ESTA）</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>主要取引先</th>
+                            <td>株式会社エイチ・アイ・エス／ＡＩG損害保険株式会社／クリエイト・エム株式会社／株式会社ビジョン／アクセス<br>プリペイドジャパン株式会社／株式会社アド・ジャパン</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div class="personal-info">
+        <div class="sec-inner">
+            <a href="https://ryugaku.net/privacy-policy"><span>個人情報の取り扱い</span></a>
+        </div>
+    </div>
+
+    <div id="sticky-footer" class="sticky-footer">
+        <div class="sec-inner sp-d-none">
+            <h3><img src="./assets/img/sticky-footer-ttl.png" alt="" /></h3>
+            <div class="btn-container">
+                <a href="./form.html" class="button btn-cta"><span class="btn-desc">24時間365日受付中！</span><span>メールで問い合わせ</span></a>
+                <img src="./assets/img/sticky-footer-logo.png" alt="" />
+            </div>
+        </div>
+        <div class="sec-inner d-none sp-d-flex">
+            <img src="./assets/img/footer-logo-SP.png" alt="" />
+            <div class="btn-container">
+                <a href="https://lin.ee/WX25TY3" class="button"><span class="btn-desc">24時間 無料受付中！</span><span>LINEで問い合わせ</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="to-top" class="to-move-btn"><i></i></div>
+
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            <p>Copyright © 留学タイムズ All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
