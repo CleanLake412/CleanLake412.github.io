@@ -1,0 +1,37 @@
+<!-- ChatBot Stylesheet files -->
+<link rel="stylesheet" href="./fchatb/css/style.css">
+
+<div class="bottom-help">
+    <a class="bottom-help__btn md-trigger" href="#" data-modal="modal-bottom-help" type="button">
+        チャットで問い合わせボタン
+    </a>
+    <div class="md-modal md-effect-1" id="modal-bottom-help">
+        <div class="md-content">
+            <h3 class="md-content__ttl">
+                モーダルタイトル：チャットで問い合わせ
+                <span style="float: right;">&times;</span>
+            </h3>
+            <div class="md-content-box is-bottom-help">
+                <div class="modal-bottom-help-wrap">
+                    ここにコンテンツを追加してください。
+                </div><!-- /.modal-bottom-help-wrap -->
+            </div>
+            <!--<button class="md-close u-spr">Close</button>-->
+        </div>
+    </div><!-- /.md-modal -->
+
+    <div class="md-overlay"></div><!-- the overlay element -->
+</div><!-- /.bottom-help -->
+
+<!-- jQuery 3.5.1 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<!-- ChatBot Javascript files -->
+<script src="./fchatb/js/fcb.js"></script>
+<script src="./fchatb/js/forkLoader.js"></script>
+<script>
+    $(".bottom-help__btn").click(function () {
+        openFCB('modal-bottom-help');
+        return false;
+    });
+</script>
