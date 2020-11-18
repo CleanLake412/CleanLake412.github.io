@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <title>Geo (spinning))</title>
+</head>
+
+<style>
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+</style>
+
+<body>
+  <div id="content">
+    <canvas width="800" height="400"></canvas>
+  </div>
+
+  <script src="d3-v4.2.2.min.js"></script>
+
+  <script>
+var geojson = {}
+
+var context = d3.select('#content canvas')
+  .node()
+  .getContext('2d');
+
+var projection = d3.geoOrthographic()
+  .scale(300);
+
+var geoGenerator = d3.geoPath()
+  .projection(projection)
+  .pointRadius(4)
+  .context(context);
+
+var yaw = 300;
+
+function update() {
+  projection.rotate([yaw, -45])
+
+  context.clearRect(0, 0, 800, 600);
+
+  context.lineWidth = 0.5;
+  context.strokeStyle = '#333';
+
+  context.beginPath();
+  geoGenerator({type: 'FeatureCollection', features: geojson.features})
+  context.stroke();
+
+  // Graticule
+  var graticule = d3.geoGraticule();
+  context.beginPath();
+  context.strokeStyle = '#ccc';
+  geoGenerator(graticule());
+  context.stroke();
+
+  yaw -= 0.2
+}
+
+
+
+// REQUEST DATA
+d3.json('ne_110m_land.json', function(err, json) {
+  geojson = json;
+  window.setInterval(update, 100);
+})
+
+  </script>
+</body>
+</html>

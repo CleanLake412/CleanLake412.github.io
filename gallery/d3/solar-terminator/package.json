@@ -1,0 +1,14 @@
+{
+  "name": "@mbostock/solar-terminator",
+  "main": "e4ddee682b0c2571@210.js",
+  "version": "210.0.0",
+  "homepage": "https://observablehq.com/@mbostock/solar-terminator",
+  "author": {
+    "name": "Mike Bostock",
+    "url": "https://observablehq.com/@mbostock"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
