@@ -1,0 +1,27 @@
+@charset "UTF-8";
+.help_contents {
+	display: block;
+	width: 100%;
+	height: 940px;
+	margin: 0;
+	padding: 0;
+	border-style: none;
+	overflow-y: visible;
+}
+.help_contents .contents_img{
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-style: none;
+}
+#help_page1 .help_contents .contents_img {
+	height: 1140px; /*570*2*/
+	background: url(../img/help/help1.png) no-repeat;
+	background-size: 100%;
+}
+#help_page2 .help_contents .contents_img {
+	height: 1744px; /*872*2*/
+	background: url(../img/help/help2.png) no-repeat;
+	background-size: 100%;
+}

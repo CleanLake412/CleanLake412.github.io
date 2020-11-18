@@ -1,0 +1,26 @@
+@charset "UTF-8";
+.measure_contents {
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border-style: none;
+}
+#measure_page1 .measure_contents {
+	height: 100%;
+	background: url(../img/subtitle6.png), url(../img/guide/guide_e1.png);
+	background-repeat: no-repeat, no-repeat;
+	background-position: 20px 20px, 0 100px;
+	background-size: auto 48px,100% auto;
+}
+#measure_page2 .measure_contents {
+	height: 100%;
+}
+
+#measure_canvas {
+	position: relative;
+	width: 640px;
+	height: 700px;
+	background-color: white;
+}

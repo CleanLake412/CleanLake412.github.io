@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<link rel="apple-touch-icon" href="assets/img/icon.png"/>
+	<link rel="apple-touch-startup-image" href="assets/img/ssjlogo.png">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>速読マスター</title>
+	<link rel="stylesheet" href="lib/jquery.mobile-1.1.1.min.css" />
+	<!-- media="(max-device-width: 640px)" <link rel="stylesheet" href="css/ipad.css" media="(min-device-width: 768px)" /> -->
+	<link rel="stylesheet" href="assets/css/iphone4_common.css" />
+	<link rel="stylesheet" href="assets/css/iphone4_prepare.css" />
+	<style>
+		/* App custom styles */
+	</style>
+	<script src="lib/jquery-1.8.1.min.js"></script>
+	<script src="lib/jquery.mobile-1.1.1.min.js"></script>
+	<script src="assets/js/utils.js"></script>
+	<script src="assets/js/common.js"></script>
+</head>
+<body>
+<!-- 速読準備 -->
+	<!-- Preparation Page1 -->
+	<div data-role="page" id="prepare_page1">
+		<!-- <div id="main_logo"></div> -->
+		<div data-role="content" class="prepare_contents"></div>
+		<div class="prepare_footer">
+			<a href="index.html" data-ajax="false" class="preback" title="戻る" data-transition="slide" ></a>
+			<a href="#prepare_page2" class="prenext" title="次へ" data-transition="slide"></a>
+		</div>
+	</div>
+	<!-- Preparation Page2 -->
+	<div data-role="page" id="prepare_page2">
+		<!-- <div id="main_logo"></div> -->
+		<div data-role="content" class="prepare_contents"></div>
+		<div class="prepare_footer">
+			<a href="#prepare_page1" class="preback" title="戻る" data-transition="slide" ></a>
+			<a href="index.html" data-ajax="false" class="prenext" title="次へ" data-transition="slide"></a>
+		</div>
+	</div>
+<!-- 速読準備：ＥＮＤ -->
+
+<!-- リソース -->
+	<audio id="cursor_sound">
+	  <source src="assets/sound/cursor.mp3" type="audio/mp3" />
+	  <source src="assets/sound/cursor.ogg" type="audio/ogg" />
+	</audio>
+	<audio id="ok_sound">
+	  <source src="assets/sound/ok.mp3" type="audio/mp3" />
+	  <source src="assets/sound/ok.ogg" type="audio/ogg" />
+	</audio>
+	<audio id="ng_sound">
+	  <source src="assets/sound/ng.mp3" type="audio/mp3" />
+	  <source src="assets/sound/ng.ogg" type="audio/ogg" />
+	</audio>
+
+	<div style="display: none;">
+		<img id="img_ok" src="assets/img/result/judgment_l1.png" alt="OK" />
+		<img id="img_ng" src="assets/img/result/judgment_l2.png" alt="NG" />
+	</div>
+<!-- リソース：ＥＮＤ -->
+
+	<script>
+		//App custom javascript
+	</script>
+</body>
+</html>

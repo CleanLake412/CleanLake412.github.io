@@ -1,0 +1,139 @@
+@charset "UTF-8";
+.mail_contents {
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border-style: none;
+}
+#mail_page1 .mail_contents {
+	height: 100%;
+	background: url(../img/subtitle2.png) no-repeat 20px 20px;
+	background-size: auto 48px;
+}
+#mail_guide {
+	display: block;
+	width: 100%;
+	height: 750px;
+	margin: 0;
+	padding: 100px 0 0 0;
+	background: url(../img/guide/guide_d1.png) no-repeat;
+	background-position: center 180px;
+	background-size: 100% auto;
+}
+#mail_guide ul {position: relative; padding:0; margin: 0; list-style: none;}
+#mail_guide ul li {float: left; padding: 0;}
+#mail_guide ul li:first-child {margin: 0 0 0 20px;}
+#mail_guide ul li a, #mail_guide ul li a:visited, #mail_guide ul li a:hover {
+	display:block;
+	padding: 0;
+	border:0;
+	height:48px;
+}
+
+li#mail_navi_prev {width: 40px;}
+li#mail_navi_prev a {
+	width: 100%;
+	background: url(../img/cursor/cursor31.png) no-repeat;
+	background-size: auto 32px;
+	background-position: 0 6px;
+	cursor: default;
+}
+li#mail_navi_prev a.mail_hoverable_prev {
+	width: 100%;
+	background: url(../img/cursor/cursor11.png) no-repeat;
+	background-size: auto 32px;
+	background-position: 0 6px;
+	cursor: pointer;
+}
+li#mail_navi_prev a.mail_hoverable_prev:hover {
+	width: 100%;
+	background: url(../img/cursor/cursor21.png) no-repeat;
+	background-size: auto 32px;
+	background-position: 0 6px;
+}
+li#mail_navi_step {
+	width: 148px; /*(54+16)*2+8(margin)*/
+	background: url(../img/step/step1.png) no-repeat;
+	background-position: 104px 0;
+	background-size: auto 100%;
+}
+li#mail_navi_step img{
+	border: 0;
+	width: 108px;
+	height: 48px;
+}
+
+li#mail_navi_next {width: 40px;}
+li#mail_navi_next a {
+	width: 100%;
+	background: url(../img/cursor/cursor32.png) no-repeat;
+	background-size: auto 32px;
+	background-position: 0 6px;
+	cursor: default;
+}
+li#mail_navi_next a.mail_hoverable_next{
+	width: 100%;
+	background: url(../img/cursor/cursor12.png) no-repeat;
+	background-size: auto 32px;
+	background-position: 0 6px;
+	cursor: pointer;
+}
+li#mail_navi_next a.mail_hoverable_next:hover {
+	width: 100%;
+	background: url(../img/cursor/cursor22.png) no-repeat;
+	background-size: auto 32px;
+	background-position: 0 6px;
+}
+
+#mail_page2 .mail_contents {
+	height: 100%;
+}
+#mail_canvas {
+	position: relative;
+	width: 640px;
+	height: 750px;
+	background-color: white;
+}
+#mail_buttons {
+	float: left;
+	margin: 20px 0 0 10px;
+}
+
+#mail_page3 .mail_contents {
+	height: 100%;
+	background: url(../img/subtitle2.png) no-repeat 20px 20px;
+	background-size: auto 48px;
+}
+#mail_rest {
+	display: block;
+	width: 100%;
+	height: 800px;
+	margin: 0;
+	padding: 0;
+}
+.mail_rest_1 {
+	background-image: url(../img/record/record_num1.png), url(../img/trainCountText.png), url(../img/guide/kyukei_txt_1.png);
+	background-repeat: no-repeat, no-repeat, no-repeat;
+	background-position: 308px 700px, 60px 700px, 0 180px;
+	background-size: 28px auto, 368px auto, 100% auto;
+}
+.mail_rest_2 {
+	background-image: url(../img/record/record_num2.png), url(../img/trainCountText.png), url(../img/guide/kyukei_txt_1.png);
+	background-repeat: no-repeat, no-repeat, no-repeat;
+	background-position: 308px 700px, 60px 700px, 0 180px;
+	background-size: 28px auto, 368px auto, 100% auto;
+}
+.mail_rest_3 {
+	background-image: url(../img/record/record_num3.png), url(../img/trainCountText.png), url(../img/guide/kyukei_txt_2.png);
+	background-repeat: no-repeat, no-repeat, no-repeat;
+	background-position: 308px 700px, 60px 700px, 0 180px;
+	background-size: 28px auto, 368px auto, 100% auto;
+}
+.mail_rest_end {
+	background-image: url(../img/record/record_num3.png), url(../img/trainCountText.png), url(../img/guide/kyukei_txt_3.png);
+	background-repeat: no-repeat, no-repeat, no-repeat;
+	background-position: 308px 750px, 60px 750px, 0 180px;
+	background-size: 28px auto, 368px auto, 100% auto;
+}

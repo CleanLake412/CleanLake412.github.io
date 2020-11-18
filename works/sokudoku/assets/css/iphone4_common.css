@@ -1,0 +1,206 @@
+@charset "UTF-8";
+html, body{
+	margin: 0;
+	padding: 0;
+}
+.ui-page {
+	position:relative;
+	margin:0;
+	width:640px !important;
+	height: 940px !important;
+	background: url(../img/default.png) no-repeat;
+	background-size: 100% auto;
+}
+
+.footer_navi {
+	display: block;
+	width: 100%;
+	height: 48px;
+	position:absolute;
+	left: 0;
+	top: 880px;
+}
+.footer_navi a, .footer_navi a:visited, .footer_navi a:hover {
+	display:block;
+	text-decoration:none;
+	position:relative;
+	float: left;padding: 0;
+	border:0;
+	width: 50%;
+	height: 48px;
+}
+.footer_navi a.btn_return {background: url(../img/softkey/soft_return1.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_return:hover {background: url(../img/softkey/soft_return2.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_start {background: url(../img/softkey/soft_start1.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_start:hover {background: url(../img/softkey/soft_start2.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_restart {background: url(../img/softkey/soft_restart1.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_restart:hover {background: url(../img/softkey/soft_restart2.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_stop {background: url(../img/softkey/soft_stop1.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_stop:hover {background: url(../img/softkey/soft_stop2.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_exit {background: url(../img/softkey/soft_exit1.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_exit:hover {background: url(../img/softkey/soft_exit2.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_next {background: url(../img/softkey/soft_next1.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+.footer_navi a.btn_next:hover {background: url(../img/softkey/soft_next2.png) no-repeat;background-position:30px 0;background-size:auto 48px;}
+
+.footer_navi a.btn_right {background-position:200px 0;}
+.footer_navi a.btn_right:hover {background-position:200px 0;}
+
+.spin_button {
+	position: relative;
+	float: left;
+	width: 175px;
+	height: 72px;
+	margin: 0 16px 0 16px;
+	padding: 0;
+	background: url(../img/btn/btnBack.png) no-repeat;
+	background-size: 100% auto;
+}
+a.spin_minus, a.spin_minus:visited, a.spin_minus:hover, a.spin_plus, a.spin_plus:visited, a.spin_plus:hover {
+	display:block;
+	text-decoration:none;
+	position:relative;
+	float: left;padding: 0;
+	border:0;
+	width: 56px; /*100:175=32:56*/
+	height: 72px;
+}
+a.spin_minus, a.spin_minus:visited, a.spin_minus:hover {}
+a.spin_plus, a.spin_plus:visited, a.spin_plus:hover {margin-left: 51px;}
+a.spin_minus:hover {
+	background: url(../img/btn/btnLeft.png) no-repeat;
+	background-size: 100% auto;
+}
+a.spin_plus:hover {
+	background: url(../img/btn/btnRight.png) no-repeat;
+	background-size: 100% auto;
+	background-position: right top;
+}
+.spin_value {
+	/*font-family: ;*/
+	display:block;
+	position: absolute;
+	left: 0;top: 0;
+	padding: 0;
+	width: 160px;
+	line-height: 50px;
+	font-size: 32px;
+	color: #FF0;
+	text-align: center;
+}
+
+.record_item {
+	float: right;
+	width: 28px;
+	height: 40px;
+}
+.record_num1 {
+	background: url(../img/record/record_num1.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num2 {
+	background: url(../img/record/record_num2.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num3 {
+	background: url(../img/record/record_num3.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num4 {
+	background: url(../img/record/record_num4.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num5 {
+	background: url(../img/record/record_num5.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num6 {
+	background: url(../img/record/record_num6.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num7 {
+	background: url(../img/record/record_num7.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num8 {
+	background: url(../img/record/record_num8.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num9 {
+	background: url(../img/record/record_num9.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num0 {
+	background: url(../img/record/record_num0.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_point {
+	background: url(../img/record/record_point.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+
+.record_item_s {
+	float: right;
+	width: 28px;
+	height: 32px;
+}
+.record_num1_s {
+	background: url(../img/unou/unou_training_result_num1.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num2_s {
+	background: url(../img/unou/unou_training_result_num2.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num3_s {
+	background: url(../img/unou/unou_training_result_num3.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num4_s {
+	background: url(../img/unou/unou_training_result_num4.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num5_s {
+	background: url(../img/unou/unou_training_result_num5.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num6_s {
+	background: url(../img/unou/unou_training_result_num6.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num7_s {
+	background: url(../img/unou/unou_training_result_num7.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num8_s {
+	background: url(../img/unou/unou_training_result_num8.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num9_s {
+	background: url(../img/unou/unou_training_result_num9.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}
+.record_num0_s {
+	background: url(../img/unou/unou_training_result_num0.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 0 0;
+}

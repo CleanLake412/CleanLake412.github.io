@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<link rel="apple-touch-icon" href="assets/img/icon.png"/>
+	<link rel="apple-touch-startup-image" href="assets/img/ssjlogo.png">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>速読マスター</title>
+	<link rel="stylesheet" href="lib/jquery.mobile-1.1.1.min.css" />
+	<!-- media="(max-device-width: 640px)" <link rel="stylesheet" href="css/ipad.css" media="(min-device-width: 768px)" /> -->
+	<link rel="stylesheet" href="assets/css/iphone4_common.css" />
+	<link rel="stylesheet" href="assets/css/iphone4_matrix.css" />
+	<style>
+		/* App custom styles */
+	</style>
+	<script src="lib/jquery-1.8.1.min.js"></script>
+	<script src="lib/jquery.mobile-1.1.1.min.js"></script>
+	<script src="assets/js/utils.js"></script>
+	<script src="assets/js/common.js"></script>
+	<script src="assets/js/matrix.js"></script>
+</head>
+<body>
+<!-- 右脳開発トレーニング マトリックス -->
+	<!-- Matrix Page1 -->
+	<div data-role="page" id="matrix_page1">
+		<div data-role="content" class="matrix_contents">
+			<div id="matrix_guide">
+				<ul>
+				  <li id="matrix_navi_prev"><a href="#" title="前に"></a></li>
+				  <li id="matrix_navi_step"><img src="assets/img/level.png" alt="LEVEL" /></li>
+				  <li id="matrix_navi_next"><a href="#" title="次へ"></a></li>
+				</ul>
+			</div>
+			<div id="matrix_result1"></div>
+			<div id="matrix_result2"></div>
+			<div id="matrix_result3"></div>
+			<div id="matrix_result4"></div>
+			<div id="matrix_result5"></div>
+		</div>
+		<div class="footer_navi">
+			<a href="index.html" data-ajax="false" class="btn_return" title="戻る" data-transition="slide" ></a>
+			<a href="#matrix_page2" class="btn_start btn_right" title="開始" data-transition="slide"></a>
+		</div>
+	</div>
+	<!-- Matrix Page2 -->
+	<div data-role="page" id="matrix_page2">
+		<div data-role="content" class="matrix_contents">
+			<canvas id="matrix_canvas" width="480" height="300"></canvas>
+			<div id="matrix_timebar">
+				<div></div>
+			</div>
+			<div id="matrix_comment"></div>
+			<div id="matrix_level_no"></div>
+			<div id="matrix_correct_cnt"></div>
+		</div>
+		<div class="footer_navi">
+			<a href="#" class="btn_stop" title="中断" data-transition="slide" ></a>
+			<a href="#matrix_page3" class="btn_exit" title="終了" data-transition="slide"></a>
+			<a href="#" class="btn_next btn_right" title="次へ" data-transition="slide"></a>
+		</div>
+	</div>
+	<!-- Matrix Page3 -->
+	<div data-role="page" id="matrix_page3">
+		<div data-role="content" class="matrix_contents">
+			<div id="matrix_page3_result1"></div>
+			<div id="matrix_page3_result2"></div>
+			<div id="matrix_page3_result3"></div>
+			<div id="matrix_page3_updated"></div>
+		</div>
+		<div class="footer_navi">
+			<a href="index.html" data-ajax="false" class="btn_return" title="戻る" data-transition="slide" style="visibility:hidden;"></a>
+			<a href="#matrix_page1" class="btn_exit btn_right" title="終了" data-transition="slide"></a>
+		</div>
+	</div>
+<!-- 右脳開発トレーニング マトリックス ： ＥＮＤ -->
+
+<!-- リソース -->
+	<audio id="cursor_sound">
+	  <source src="assets/sound/cursor.mp3" type="audio/mp3" />
+	  <source src="assets/sound/cursor.ogg" type="audio/ogg" />
+	</audio>
+	<audio id="ok_sound">
+	  <source src="assets/sound/ok.mp3" type="audio/mp3" />
+	  <source src="assets/sound/ok.ogg" type="audio/ogg" />
+	</audio>
+	<audio id="ng_sound">
+	  <source src="assets/sound/ng.mp3" type="audio/mp3" />
+	  <source src="assets/sound/ng.ogg" type="audio/ogg" />
+	</audio>
+
+	<div style="display: none;">
+		<img id="img_ok" src="assets/img/result/judgment_l1.png" alt="OK" />
+		<img id="img_ng" src="assets/img/result/judgment_l2.png" alt="NG" />
+	</div>
+<!-- リソース：ＥＮＤ -->
+
+	<script>
+		//App custom javascript
+	</script>
+</body>
+</html>
