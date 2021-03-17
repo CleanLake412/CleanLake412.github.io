@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+path {
+  stroke: #fff;
+}
+
+</style>
+<body>
+<svg id="sunburst"></svg>
+
+<script src="vendor/jquery-3.6.0.min.js"></script>
+<script src="vendor/d3.v6.min.js"></script>
+<script>
+
+    let width = 932;
+    let radius = width / 6;
+
+    const linksTSV = "tsv/The Crucial Local List _ Geneva Air Pollution_ Nodes and Links Datasets - links.tsv";
+    const nodesTSV = "tsv/The Crucial Local List _ Geneva Air Pollution_ Nodes and Links Datasets - nodes.tsv";
+
+    let graphData;
+    let color;
+    let rootTitle = "Causes of Air Pollution in Geneva ordered by number of inner causes so far identified";
+
+    let format = d3.format(",d");
+    let arc = d3.arc()
+        .startAngle(d => d.x0)
+        .endAngle(d => d.x1)
+        .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
+        .padRadius(radius * 1.5)
+        .innerRadius(d => d.y0 * radius)
+        .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1));
+
+    $(function() {
+        Promise.all([
+            d3.tsv(nodesTSV, {method: "get", cache: "force-cache"}),
+            d3.tsv(linksTSV, {method: "get", cache: "force-cache"})
+        ]).then(function(data) {
+
+            let nodes = data[0];
+            let links = data[1];
+
+            // custom root for all
+            let root = " ";
+            nodes
+                .filter(n => n.level === "0")
+                .forEach(n => links.push({ source: root, target: n.id }));
+            nodes.push({ id: root, name: root, description: root, category: root });
+
+            // prepare data to draw sunburst
+            graphData = convertNodesLinksToTree({ nodes, links })[0];
+            color = d3.scaleOrdinal(
+                d3.quantize(d3.interpolateRainbow, graphData.children.length + 1)
+            );
+
+            drawSunburst();
+            //selectNode();
+        });
+
+    });
+
+function drawSunburst() {
+
+    const root = partition(graphData);
+    root.each(d => (d.current = d));
+
+    const svg = d3
+        .select("svg#sunburst")
+        .attr("viewBox", [0, 0, width, width])
+        .attr("height", width)
+        .style("margin", "0 auto")
+        .style("display", "block")
+        .style("font", "10px sans-serif");
+
+    const g = svg
+        .append("g")
+        .attr("transform", `translate(${width / 2},${width / 2})`);
+
+    const path = g
+        .append("g")
+        .selectAll("path")
+        .data(root.descendants().slice(1))
+        .join("path")
+        .attr("fill", d => {
+            while (d.depth > 1) d = d.parent;
+            return color(d.data.name);
+        })
+        .attr("fill-opacity", d =>
+            arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0
+        )
+        .attr("d", d => arc(d.current));
+
+    path
+        .filter(d => d.children)
+        .style("cursor", "pointer")
+        .on("click", clicked);
+
+    path.append("title").text(d => getTitle(d));
+
+    const label = g
+        .append("g")
+        .attr("pointer-events", "none")
+        .attr("text-anchor", "middle")
+        .style("user-select", "none")
+        .selectAll("text")
+        .data(root.descendants().slice(1))
+        .join("text")
+        .attr("dy", "0.35em")
+        .attr("fill-opacity", d => +labelVisible(d.current))
+        .attr("transform", d => labelTransform(d.current))
+        .text(d =>
+            d.data.name.length > 30 ? d.data.name.substr(0, 30) + "..." : d.data.name
+        );
+
+    const parent = g
+        .append("circle")
+        .datum(root)
+        .attr("r", radius)
+        .attr("fill", "none")
+        .attr("pointer-events", "all")
+        .on("click", clicked);
+
+    const currentRootLabel = g
+        .append("text")
+        .datum(root)
+        .attr("pointer-events", "all")
+        .attr("text-anchor", "middle")
+        .style("user-select", "none")
+        .attr("font-size", "1.2em")
+        .attr("font-weight", "bold")
+        .on("click", clicked);
+
+    const currentRootTitle = currentRootLabel
+        .append("title")
+        .text(getTitle(root));
+
+    function displayRootLabel() {
+        displayLabel(rootTitle);
+    }
+
+    function displayLabel(label) {
+        const strings = splitString(label) || [];
+        let pos = (-strings.length * 1.2) / 2 - 0.6,
+            step = 1.2;
+        strings.forEach(s => {
+            currentRootLabel
+                .append("tspan")
+                .attr("x", 0)
+                .attr("y", `${pos}em`)
+                .attr("dy", "1.2em")
+                .text(s);
+            pos = pos + step;
+        });
+    }
+
+    function displayTitle(title) {
+        currentRootTitle.text(title);
+    }
+
+    displayRootLabel();
+
+    function clicked(event, p) {
+        if (!p) return; // avoid exception
+        parent.datum(p.parent || root);
+        //let rootLabelText = `${p.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(p.value)}`;
+        //currentRootLabel.text(rootLabelText);
+        currentRootLabel.selectAll("tspan").remove();
+        currentRootLabel.datum(p.parent);
+        if (p.depth === 0) {
+            displayRootLabel();
+            displayTitle("");
+        } else {
+            displayLabel(p.data.description);
+            displayTitle(getTitle(p));
+        }
+
+        root.each(
+            d =>
+                (d.target = {
+                    x0:
+                        Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) *
+                        2 *
+                        Math.PI,
+                    x1:
+                        Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) *
+                        2 *
+                        Math.PI,
+                    y0: Math.max(0, d.y0 - p.depth),
+                    y1: Math.max(0, d.y1 - p.depth)
+                })
+        );
+
+        const t = g.transition().duration(750);
+
+        // Transition the data on all arcs, even the ones that aren’t visible,
+        // so that if this transition is interrupted, entering arcs will start
+        // the next transition from the desired position.
+        path
+            .transition(t)
+            .tween("data", d => {
+                const i = d3.interpolate(d.current, d.target);
+                return t => (d.current = i(t));
+            })
+            .filter(function(d) {
+                return +this.getAttribute("fill-opacity") || arcVisible(d.target);
+            })
+            .attr("fill-opacity", d =>
+                arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0
+            )
+            .attrTween("d", d => () => arc(d.current));
+
+        label
+            .filter(function(d) {
+                return +this.getAttribute("fill-opacity") || labelVisible(d.target);
+            })
+            .transition(t)
+            .attr("fill-opacity", d => +labelVisible(d.target))
+            .attrTween("transform", d => () => labelTransform(d.current));
+    }
+
+    function arcVisible(d) {
+        return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;
+    }
+
+    function labelVisible(d) {
+        return d.y1 <= 3 && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.03;
+    }
+
+    function labelTransform(d) {
+        const x = (((d.x0 + d.x1) / 2) * 180) / Math.PI;
+        const y = ((d.y0 + d.y1) / 2) * radius;
+        return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+    }
+}
+
+function splitString(str = '', size = 35) {
+    const regex = new RegExp(String.raw`\S.{1,${size - 2}}\S(?= |$)`, 'g');
+    const chunks = str.match(regex);
+    return chunks;
+}
+
+function getTitle(p) {
+    return (
+        `${p.data.description}\n\n` +
+        p
+            .ancestors()
+            .filter(d => d.depth != 0)
+            .map(d => d.data.name)
+            .reverse()
+            .join(" <-- ") +
+        `\n\nNombre de causes identifiées: ${p.value}`
+    );
+}
+
+function partition(data) {
+    const root = d3.hierarchy(data)
+        .sum(d => d.value)
+        .sort((a, b) => b.value - a.value);
+    return d3.partition()
+        .size([2 * Math.PI, root.height + 1])
+        (root);
+}
+
+
+function convertNodesLinksToTree(object) {
+    let o = {},
+        children = {};
+
+    object.nodes.forEach(function(a, i) {
+        o[a.id] = {
+            name: a.name,
+            id: a.id,
+            description: a.description,
+            category: a.category,
+            value: 1
+        };
+    });
+
+    object.links.forEach(function(a) {
+        o[a.target].parent = o[a.source].name;
+        o[a.source].children = o[a.source].children || [];
+        o[a.source].children.push(o[a.target]);
+        children[a.target] = true;
+        o[a.source].value = 0; // if has children, set 0 to value
+    });
+
+    return Object.keys(o)
+        .filter(function(k) {
+            return !children[k];
+        })
+        .map(function(k) {
+            return o[k];
+        });
+}
+
+function selectNode(nodeName) {
+    // dispatch click event
+    let selectNode = path
+        .filter(d => d.data.name === nodeName);
+
+    if (selectNode && selectNode.size() > 0) {
+        let selData = selectNode.datum();
+        if (!selData.children) {
+            selData = selData.parent;
+            selectNode = path
+                .filter(d => d.data.name === selData.data.name);
+        }
+
+        if (selectNode && selectNode.size() > 0) {
+            //selectNode.on("click")();
+            clicked(null, selData);
+        }
+    }
+}
+
+</script>
