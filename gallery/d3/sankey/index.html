@@ -1098,7 +1098,7 @@
         function handleNodeClick(e, d){//console.log(d);
             e.stopPropagation();
             let nodeType = d.m_layer;
-            let nodeID = d.id - Math.floor(d.id / 10000) * 10000;console.log(d);return;
+            let nodeID = d.id - Math.floor(d.id / 10000) * 10000;
 
             location.href = `?type=${selectedNodeTypes},${nodeType}&id=${selectedNodeIds},${nodeID}`;
 
