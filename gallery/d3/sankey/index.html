@@ -30,62 +30,7 @@
 	<img src="assets/images/loading.gif" style="width: 100px; height:100px;">
 </div>
 <div class="container">
-	<!--nav class="navbar navbar-default">
-	  <div class="container-fluid">
-		<div class="navbar-header">
-		  <a class="navbar-brand" href="#">HumanImpacts</a>
-		</div>
-		<ul class="nav navbar-nav">
-		  <li class="active"><a href="http://diseaseproject.impactsofclimatechange.org/">Home</a></li>
-		  <li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Data Entry
-			<span class="caret"></span></a>
-			<ul class="dropdown-menu">
-			  <li><a href="http://diseaseproject.impactsofclimatechange.org/index.php/entry/add">Add</a></li>
-			  <li><a href="http://diseaseproject.impactsofclimatechange.org/index.php/entry/list">List</a></li>
-			</ul>
-		  </li>
-		</ul>
-	  </div>
-	</nav-->
-	
-	<div class="header"> 
-		<nav class="navbar navbar-default">
-			<div class="">
-			  <div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> 
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button> 
-			  </div>
-			  <div id="navbar" class="navbar-collapse collapse">
-				
-				<ul class="nav navbar-nav">
-					<!--li class=""><a href="http://diseaseproject.impactsofclimatechange.org/">Home</a></li-->
-											<li class=""><a href="http://www.soc.hawaii.edu/mora/">MoraLab</a></li>
-																<li class=""><a href="http://www.ImpactsOfClimateChange.info">ImpactsProject</a></li>
-										<li class=""><a href="http://diseaseproject.impactsofclimatechange.org/index.php/references">References</a></li>
-					<li class=""><a href="http://diseaseproject.impactsofclimatechange.org/index.php/entries">Entries</a></li>
-					<li class=""><a href="http://diseaseproject.impactsofclimatechange.org/index.php/info" class="show_popup">Info</a></li>
-					<li class=""><a href="http://diseaseproject.impactsofclimatechange.org/index.php/entries/users">Users</a></li>
-						
-				</ul>
-								
-				<form method="post" action="http://diseaseproject.impactsofclimatechange.org/">	
-				<ul class="nav navbar-nav navbar-right">				
-					<li class="cust-input"><input type="email" style="margin-top:0;" placeholder="E-mail" class="form-control" name="email" required></li>
-					<li class="cust-input"><input type="password" style="margin-top:0;margin-left:3%" placeholder="Password" class="form-control" name="pass" required></li>
-					<li><input type="submit" name="login" class="btn btn-primary" value="Login" style="margin-top:0;margin-left:18%" ></li>
-					<li><input type="button" name="register" class="btn btn-primary" value="Register" onclick="window.location.href = 'http://diseaseproject.impactsofclimatechange.org/index.php/register'"  style="margin-top:0;margin-left:20%;"></li>
-					<li style="margin-left:10px;" class="cust-link"><a href="http://diseaseproject.impactsofclimatechange.org/index.php/forget_password">Forgot password?</a></li>
-				</ul>
-				</form>	
-							  </div><!--/.nav-collapse -->
-			</div><!--/.container-fluid -->
-		</nav> 
-	</div>
-	
+
 	<div class="row">
 		<div class="col-md-12 cus-margin">
 			<h3 class='text-center'>Traceable evidence of the impacts of climate change on pathogenic human diseases</h3> 
@@ -203,11 +148,11 @@
     <div class="col-lg-12 text-center" style="margin-bottom: 10px;">
         Impact: <select name="filter_impact" class="input-sm">
             <option value="--">-- Select --</option>
-                            <option value="Negative" >Negative</option>
-                            <option value="None" >Unspecified</option>
-                            <option value="Neutral" >Neutral</option>
-                            <option value="Positive" >Positive</option>
-                    </select>
+			<option value="Negative" >Negative</option>
+			<option value="None" >Unspecified</option>
+			<option value="Neutral" >Neutral</option>
+			<option value="Positive" >Positive</option>
+		</select>
         <button type="button" id="btn-filter" class="btn btn-sm btn-primary">Filter</button>
     </div>
     <div class="col-lg-12">
@@ -229,6 +174,8 @@
     var g_ttGenerals = [];
     var g_pathogenGenerals = [];
     var g_sankeyNodeIDs = [];
+
+    var g_allEntries = [];
 
     // https://htmlcolorcodes.com/color-chart/material-design-color-chart/
     var blueColors = [
@@ -275,6 +222,7 @@
 <!--<script src="assets/js/sankey/d3-sankey.v0.12.3.min.js"></script>-->
 <script src="assets/js/sankey/d3-interpolate-path.min.js"></script>
 <!--<script src="assets/js/sankey/cndce-request.js"></script>-->
+<!--<script src="assets/js/gunzip.min.js"></script>-->
 <script>
     let NODE_MARGIN = 6;
     let NODE_CATEGORY_MARGIN = 35;
@@ -1098,7 +1046,7 @@
         function handleNodeClick(e, d){//console.log(d);
             e.stopPropagation();
             let nodeType = d.m_layer;
-            let nodeID = d.id - Math.floor(d.id / 10000) * 10000;
+            let nodeID = d.id - Math.floor(d.id / 10000) * 10000;//console.log(d);return;
 
             location.href = `?type=${selectedNodeTypes},${nodeType}&id=${selectedNodeIds},${nodeID}`;
 
@@ -1161,19 +1109,29 @@
 
     });
 
-    let layerFields = [
-        'climatic_changes_id',
-        'transmission_type_specific_id',
-        'transmission_type_specific_species_id',
-        'transmission_type_specific_additional_id',
-        'transmission_type_specific_additional_species_id',
-        'pathogen_specific_id',
-        'pathogen_agent_id'
+	// abbreviated field names
+	// cc    climatic_changes
+	// pg    pathogen_general
+	// ps    pathogen_specific
+	// pa    pathogen_agent
+	// ttg   transmission_type_general
+	// tts   transmission_type_specific
+	// ttss  transmission_type_specific_species
+	// ttsa  transmission_type_specific_additional
+	// ttsas transmission_type_specific_additional_species
+
+	let layerFields = [
+        'cc_id',
+        'tts_id',
+        'ttss_id',
+        'ttsa_id',
+        'ttsas_id',
+        'ps_id',
+        'pa_id'
     ];
 
     // Show entries for selected link
-    function getEntries(link)
-    {
+    function getEntries(link) {
         if (!link) {
             errordialog('Please choose entry first!');
             return;
@@ -1181,122 +1139,123 @@
         let sourceNode = link.source;
         let targetNode = link.target;
 
-        $.ajax({
-            url:"http://diseaseproject.impactsofclimatechange.org/index.php/home/getEntries",
-            data: {
-                sel_node_types: '',
-                sel_node_ids:   '',
-                rel_field1:    layerFields[sourceNode.m_layer],//'pathogen_specific_id',
-                rel_field1_id: (sourceNode.id - Math.floor(sourceNode.id / 10000) * 10000),
-                rel_field2:    layerFields[targetNode.m_layer],//'pathogen_specific_id',
-                rel_field2_id: (targetNode.id - Math.floor(targetNode.id / 10000) * 10000)
-            },
-            type:"post",
-            success:function(res){
-                res=jQuery.parseJSON(res);
-
-                if(res.length!==0)
-                {
-                    html='<div class="container"><h2 class="text-center text-bold"></h2><div class="panel-group">';
-                    $.each(res,function(ind,elm){
-                        subhtml='';
-                        htmlContent='';
-                        source='';
-                        climatic_changes='';
-                        pathogens='';
-                        transmission_types='';
-                        if(elm.climatic_changes!="" && elm.climatic_changes!=null)
-                        {
-                            climatic_changes=elm.climatic_changes;
-                        }
-
-                        if(elm.authors!="" && elm.authors!=null)
-                        {
-                            source+=elm.authors;
-                        }
-                        if(elm.year!="" && elm.year!=null)
-                        {
-                            source+=', '+elm.year;
-                        }
-                        if(elm.title!="" && elm.title!=null)
-                        {
-                            source+=', '+elm.title;
-                        }
-
-                        if(elm.pathogen_general!="" && elm.pathogen_general!=null)
-                        {
-                            pathogens+=elm.pathogen_general;
-                        }
-                        if(elm.pathogen_specific!="" && elm.pathogen_specific!=null)
-                        {
-                            pathogens+=', '+elm.pathogen_specific;
-                        }
-                        if(elm.pathogen_agent!="" && elm.pathogen_agent!=null)
-                        {
-                            pathogens+=', '+elm.pathogen_agent;
-                        }
-                        if(elm.transmission_type_general!="" && elm.transmission_type_general!=null)
-                        {
-                            transmission_types+=elm.transmission_type_general;
-                        }
-                        if(elm.transmission_type_specific!="" && elm.transmission_type_specific!=null)
-                        {
-                            transmission_types+=','+elm.transmission_type_specific;
-                        }
-                        if(elm.transmission_type_specific_species!="" && elm.transmission_type_specific_species!=null)
-                        {
-                            transmission_types+='('+elm.transmission_type_specific_species+')';
-                        }
-                        if(elm.transmission_type_specific_additional!="" && elm.transmission_type_specific_additional!=null)
-                        {
-                            transmission_types+=', '+elm.transmission_type_specific_additional;
-                        }
-                        if(elm.transmission_type_specific_additional_species!="" && elm.transmission_type_specific_additional_species!=null)
-                        {
-                            transmission_types+='('+elm.transmission_type_specific_additional_species+')';
-                        }
-
-
-                        subhtml+='<p><b>Entry ID:</b>'+elm.id+'</p>';
-                        subhtml+='<p><b>Source:</b>'+source+'</p>';
-                        subhtml+='<p><b>Climatic Change:</b>'+climatic_changes+'</p>';
-                        subhtml+='<p><b>Pathogen:</b>'+pathogens+'</p>';
-                        subhtml+='<p><b>Transmission Type:</b>'+transmission_types+'</p>';
-
-                        if(elm.impact!="" && elm.impact!=null)
-                        {
-                            subhtml+='<p><b>Impacts:</b>'+elm.impact+'</p>';
-                        }
-
-                        subhtml+='<p><b>Comments/Finding:</b><br>'+elm.comments+'</p>';
-
-                        subhtml+='<hr>';
-                        if(elm.user!="" && elm.user!=null)
-                        {
-                            linkGen=(elm.isLogin==="1"?"http://diseaseproject.impactsofclimatechange.org/index.php/paper/add/"+elm.reference_id+"/"+elm.id:"javascript:errordialog('Please Login First!');");
-                            subhtml+='<p class="text-right"><b>Enter By :</b><br>'+elm.user+'<br><a href="'+linkGen+'">Edit</a>';
-                            if(elm.PDF!="" && elm.PDF!=null)
-                            {
-                                subhtml+=' | <a target="_blank" href="http://diseaseproject.impactsofclimatechange.org/uploads/PDF/'+elm.PDF+'">download</a>';
-                            }
-                            subhtml+='</p>';
-                        }
-                        html+='<div class="panel panel-default">\
-                      <div id="collapse'+ind+'" class="panel-collapse">\
-                        <div class="panel-body">'+subhtml+'</div>\
-                      </div>\
-                      </div>';
-                    });
-                    html+='</div></div></div>';
-                    $.fancybox.open(html);
-                }
-                else
-                {
-                    warningdialog("Entries not found!");
-                }
-            }
-        });
+		loadEntries({
+			rel_field1:    layerFields[sourceNode.m_layer],//'pathogen_specific_id',
+			rel_field1_id: sourceNode.id,
+			rel_field2:    layerFields[targetNode.m_layer],//'pathogen_specific_id',
+			rel_field2_id: targetNode.id
+		});
     }
+
+    /**
+	 * Filter entries by link information
+	 */
+    function filterEntries(link) {
+    	let filters = {};
+    	for (let layer in selectedNodes) {
+			filters[layerFields[layer]] = selectedNodes[layer];
+		}
+		filters[link.rel_field1] = link.rel_field1_id; // overrideable
+		filters[link.rel_field2] = link.rel_field2_id; // overrideable
+		for (let field in filters) {
+			filters[field] = filters[field] - Math.floor(filters[field] / 10000) * 10000;
+		}
+
+    	let entries = g_allEntries.filter(function(entry) {
+    		for (let field in filters) {
+    			if (entry[field] != filters[field]) return false;
+			}
+    		return true;
+		});
+
+    	showEntries(entries);
+	}
+
+    /**
+	 * Display entries
+	 *
+	 * @param entries
+	 */
+    function showEntries(entries) {
+
+    	if (entries.length === 0) {
+			warningdialog("Entries not found!");
+			return;
+		}
+
+		let html='<div class="container"><h2 class="text-center text-bold"></h2><div class="panel-group">';
+		$.each(entries, function(idx, entry) {
+			let subhtml = '';
+			let source = '';
+			let climatic_changes = '';
+			let pathogens = '';
+			let transmission_types = '';
+
+			if (entry.cc!="" && entry.cc!=null) {
+				climatic_changes = entry.cc;
+			}
+			if (entry.authors!="" && entry.authors!=null) {
+				source += entry.authors;
+			}
+			if (entry.year!="" && entry.year!=null) {
+				source+=', '+entry.year;
+			}
+			if (entry.title!="" && entry.title!=null) {
+				source+=', '+entry.title;
+			}
+			if (entry.pg!="" && entry.pg!=null) {
+				pathogens += entry.pg;
+			}
+			if (entry.ps!="" && entry.ps!=null) {
+				pathogens+=', '+entry.ps;
+			}
+			if (entry.pa!="" && entry.pa!=null) {
+				pathogens+=', '+entry.pa;
+			}
+			if (entry.ttg!="" && entry.ttg!=null) {
+				transmission_types+=entry.ttg;
+			}
+			if (entry.tts!="" && entry.tts!=null) {
+				transmission_types+=','+entry.tts;
+			}
+			if (entry.ttss!="" && entry.ttss!=null) {
+				transmission_types+='('+entry.ttss+')';
+			}
+			if (entry.ttsa!="" && entry.ttsa!=null) {
+				transmission_types+=', '+entry.ttsa;
+			}
+			if (entry.ttsas!="" && entry.ttsas!=null)  {
+				transmission_types+='('+entry.ttsas+')';
+			}
+
+			subhtml+='<p><b>Entry ID:</b>'+entry.id+'</p>';
+			subhtml+='<p><b>Source:</b>'+source+'</p>';
+			subhtml+='<p><b>Climatic Change:</b>'+climatic_changes+'</p>';
+			subhtml+='<p><b>Pathogen:</b>'+pathogens+'</p>';
+			subhtml+='<p><b>Transmission Type:</b>'+transmission_types+'</p>';
+
+			if (entry.impact!="" && entry.impact!=null) {
+				subhtml+='<p><b>Impacts:</b>'+entry.impact+'</p>';
+			}
+			subhtml+='<p><b>Comments/Finding:</b><br>'+entry.comments+'</p>';
+			subhtml+='<hr>';
+			if (entry.user!="" && entry.user!=null) {
+				//let linkGen=(elm.isLogin==="1"?"http://diseaseproject.impactsofclimatechange.org/index.php/paper/add/"+elm.reference_id+"/"+elm.id:"javascript:errordialog('Please Login First!');");
+				subhtml+='<p class="text-right"><b>Enter By :</b><br>'+entry.user+'<br>'; // <a href="'+linkGen+'">Edit</a>
+				if (entry.PDF != "" && entry.PDF != null) {
+					subhtml+='<a target="_blank" href="http://diseaseproject.impactsofclimatechange.org/uploads/PDF/'+entry.PDF+'">Download</a>';
+				}
+				subhtml+='</p>';
+			}
+			html+='<div class="panel panel-default">\
+				  <div id="collapse'+idx+'" class="panel-collapse">\
+					<div class="panel-body">'+subhtml+'</div>\
+				  </div>\
+				  </div>';
+		});
+		html+='</div></div></div>';
+		$.fancybox.open(html);
+	}
 
     function sumHeight(parentHeight, nodeHeight) {
         return !parentHeight || parentHeight === 0 ? nodeHeight : parentHeight + NODE_MARGIN + nodeHeight;
@@ -1410,6 +1369,34 @@
 		return typeAndIds;
 	}
 
+	/**
+	 * Load entire entries
+	 *
+	 * @param link
+	 */
+	function loadEntries(link) {
+		if (g_allEntries.length > 0) {
+			filterEntries(link);
+			return;
+		}
+
+		$.ajax({
+			url: 'json/entries.json',
+			type: "get",
+			dataType: "json",
+			/*headers: {
+				'Content-Encoding': 'gzip',
+				'Accept-Encoding': 'deflate',
+			},*/
+			success: function(entries) {
+				g_allEntries = entries;
+				if (link) {
+					filterEntries(link);
+				}
+			}
+		});
+	}
+
 </script></div>
 </div>
 
@@ -1451,118 +1438,68 @@
 			<hr>			
 			<input type='button' class="btn btn-success text-bold text-white pull-right" value='OK' id='succBtn' />
 		</div>
-<!-- Custom Dialogs -->	  		
+
+<!-- Custom Dialogs -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-$(".ajax_loader").hide();
-$(document).ajaxStart(function(){
-  $(".ajax_loader").show();
-});
-$(document).ajaxComplete(function(){
-  $(".ajax_loader").hide();
-});	
+	$(".ajax_loader").hide();
+	$(document).ajaxStart(function(){
+		$(".ajax_loader").show();
+	});
+	$(document).ajaxComplete(function(){
+		$(".ajax_loader").hide();
+	});
 	$(document).ready(function(){
-	   $('.show_popup').click(function(e){
-		   e.preventDefault();
+		$('.show_popup').click(function(e){
+			e.preventDefault();
 			$('a.show_popup').fancybox({
 				'type' : 'iframe',
 			});
-		}); 
-	});
-	function validateForm(formId,submitForm=0)
-	{
-		runForm=true;
-		//console.log("FOrm "+formId);
-		$("#"+formId).find("input,textarea,select").parent().removeClass("has-error");
-		$("#"+formId).find("input,textarea,select").each(function(ind,elm){
-			if($(elm).attr("required")==="required" && $(elm).val()==="")
-			{
-				$(elm).parent().addClass('has-error');
-				$(elm).focus();
-				runForm=false;
-			}
 		});
-		if(submitForm==1 && runForm)
-		{
-			$("#"+formId).submit();
-		}
-		else
-		{
-			return runForm;
-		}
+	});
+
+	//warningdialog();
+	function warningdialog(message="Are You Sure?",btnYes="OK",dialTitle="Warning") {
+
+		$('#warnMsg').html(message);
+		$("#warnBtn").val(btnYes);
+		var warndialog = $('#warnDb').dialog();
+		$(".ui-dialog-title").text(dialTitle);
+		$(".ui-dialog-titlebar").attr("style","background-color:#E08E0B !important;color:white !important;");
+		$('#warnBtn').unbind().click(function(evt) {
+			evt.preventDefault();
+			warndialog.dialog('close');
+		});
 	}
-	
-	
-	
-	
-	
-	
-	
-	function confirmdialog(message="Are You Sure?", yesCallback=function(){ return true; }, noCallback=function(){ return false; },btnYes="Yes",btnNo="No",dialTitle="Confirmation") {
-	
-    $('#confirmMsg').html(message);
-	$("#confirmBtn").val(btnYes);
-	$("#cancelConfirmBtn").val(btnNo);
-    var dialog = $('#confirmDb').dialog();
-    $(".ui-dialog-title").text(dialTitle);
-	$(".ui-dialog-titlebar").attr("style","background-color:#00A65A !important;color:white !important;");
-	
-	// Yes
-	$('#confirmBtn').unbind().click(function(evt) {
-		evt.preventDefault();
-        dialog.dialog('close');
-		yesCallback();
-    });
-	
-	// No
-    $('#cancelConfirmBtn').unbind().click(function(evt) {
-		evt.preventDefault();
-        dialog.dialog('close');
-		noCallback();
-    });
-}
-//warningdialog();
-function warningdialog(message="Are You Sure?",btnYes="OK",dialTitle="Warning") {
-	
-    $('#warnMsg').html(message);
-	$("#warnBtn").val(btnYes);
-    var warndialog = $('#warnDb').dialog();
-    $(".ui-dialog-title").text(dialTitle);
-	$(".ui-dialog-titlebar").attr("style","background-color:#E08E0B !important;color:white !important;");
-	$('#warnBtn').unbind().click(function(evt) {
-		evt.preventDefault();
-        warndialog.dialog('close');
-    });
-}
-//errordialog();
-function errordialog(message="Are You Sure?",btnYes="OK",dialTitle="Error") {
-	
-    $('#errorMsg').html(message);
-	$("#errorBtn").val(btnYes);
-    var errordialog = $('#errorDb').dialog();
-    $(".ui-dialog-title").text(dialTitle);
-	$(".ui-dialog-titlebar").attr("style","background-color:#D73925 !important;color:white !important;");
-	$('#errorBtn').unbind().click(function(evt) {
-		evt.preventDefault();
-        errordialog.dialog('close');
-    });
-}
+	//errordialog();
+	function errordialog(message="Are You Sure?",btnYes="OK",dialTitle="Error") {
 
-//successdialog();
-function successdialog(message="Are You Sure?", btnYes="OK",dialTitle="Success") {
-	
-    $('#succMsg').html(message);
-	$("#succBtn").val(btnYes);
-    var succdialog = $('#successDb').dialog();
-    $(".ui-dialog-title").text(dialTitle);
-	$(".ui-dialog-titlebar").attr("style","background-color:#00A65A !important;color:white !important;");
-	$('#succBtn').unbind().click(function(evt) {
-		evt.preventDefault();
-        succdialog.dialog('close');
-    });
-}
+		$('#errorMsg').html(message);
+		$("#errorBtn").val(btnYes);
+		var errordialog = $('#errorDb').dialog();
+		$(".ui-dialog-title").text(dialTitle);
+		$(".ui-dialog-titlebar").attr("style","background-color:#D73925 !important;color:white !important;");
+		$('#errorBtn').unbind().click(function(evt) {
+			evt.preventDefault();
+			errordialog.dialog('close');
+		});
+	}
 
+	//successdialog();
+	function successdialog(message="Are You Sure?", btnYes="OK",dialTitle="Success") {
 
-	
+		$('#succMsg').html(message);
+		$("#succBtn").val(btnYes);
+		var succdialog = $('#successDb').dialog();
+		$(".ui-dialog-title").text(dialTitle);
+		$(".ui-dialog-titlebar").attr("style","background-color:#00A65A !important;color:white !important;");
+		$('#succBtn').unbind().click(function(evt) {
+			evt.preventDefault();
+			succdialog.dialog('close');
+		});
+	}
 </script>
+
 </body>
 </html>
