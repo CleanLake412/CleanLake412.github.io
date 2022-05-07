@@ -188,7 +188,7 @@
     var g_sankeyLinkCodes = [];
     var g_ttGenerals = [];
     var g_pathogenGenerals = [];
-    var g_sankeyNodeIDs = [];
+    var g_sankeyNodeIDs = {};
 
     var g_allEntries = [];
 
@@ -305,66 +305,122 @@
 			g_sankeyNodeIDs[val.id] = i;
 		});
 
+		// Get upper node for every nodes (Transmission type nodes / Pathogen nodes respectively)
 		if (!g_isEntireDiagram) {
-			let idxLinkCodes = [], sortedLinkCodes = [];
+			// linkCodes(node id) => linkIndexCodes(node idx)
+			let ttIdxLinkCodes = [];
+			let pathogenIdxLinkCodes = [];
 			g_sankeyLinkCodes.forEach((d, i) => {
-				let idxLinkCode = [];
+				let ttIdxLinkCode = [], pathogenIdxLinkCode = [];
 				let nodeIds = d.split('-');
-				for (let j = 0; j < 7; j++) {
-					idxLinkCode[j] = (nodeIds[j] in g_sankeyNodeIDs) ? ('0000' + (g_sankeyNodeIDs[nodeIds[j]]+1)).substr(-4) : '0000';
-				}
-				idxLinkCodes.push(idxLinkCode.join('-'));
-			});
-			idxLinkCodes.sort();
-			idxLinkCodes.forEach((d, i) => {
-				let linkCode = [];
-				let nodeIdxes = d.split('-'), idx;
-				for (let j = 0; j < 7; j++) {
-					idx = nodeIdxes[j] - 1;
-					linkCode[j] = idx < 0 ? '00000' : g_sankeyNodes[idx].id;
-				}
-				sortedLinkCodes.push(linkCode.join('-'));
-			});
-			g_sankeyLinkCodes = sortedLinkCodes;
-
-			// Analyze upper node for every nodes
-			let upperNodeIds, newUpperNodeIds;
-			let appearedNodes = {/*nodeId: 1*/};
-			g_sankeyLinkCodes.forEach((d, i) => {
-				let nodeIds = d.split('-'), nodeId, j, nodeIdx;
-				if (i === 0) {
-					for (j = 0; j < nodeIds.length; j++) {
-						nodeId = nodeIds[j];
-						if (nodeId === '00000') continue;
-
-						nodeIdx = g_sankeyNodeIDs[nodeId];
-						g_sankeyNodes[nodeIdx].upper_node = -1;
-
-						appearedNodes[nodeId] = 1;
-					}
-
-					upperNodeIds = nodeIds;
-					newUpperNodeIds = [...nodeIds];
-					return;
-				}
-
-				for (j = 0; j < nodeIds.length; j++) {
-					nodeId = nodeIds[j];
-					if (nodeId === '00000' || (nodeId in appearedNodes)) continue;
-
-					appearedNodes[nodeId] = 1;
-					newUpperNodeIds[j] = nodeId;
-
-					// What is upper node ?  same parent > other node on same layer(column),  or  other node on first layer
-					if (j > 0 && j < 5) { // transmission types
-						nodeIdx = g_sankeyNodeIDs[nodeId];
-						g_sankeyNodes[nodeIdx].upper_node = upperNodeIds[j] === '00000' ? -1 : upperNodeIds[j];
-					} else if (j > 4) { // pathogens
-						nodeIdx = g_sankeyNodeIDs[nodeId];
-						g_sankeyNodes[nodeIdx].upper_node = upperNodeIds[j] === '00000' ? -1 : upperNodeIds[j];
+				for (let j = 1; j < 7; j++) {
+					if (j < 5) { // transmission type nodes (1-4)
+						ttIdxLinkCode.push((nodeIds[j] in g_sankeyNodeIDs) ? ('0000' + (g_sankeyNodeIDs[nodeIds[j]]+1)).substr(-4) : '0000');
+					} else {
+						pathogenIdxLinkCode.push((nodeIds[j] in g_sankeyNodeIDs) ? ('0000' + (g_sankeyNodeIDs[nodeIds[j]]+1)).substr(-4) : '0000');
 					}
 				}
-				upperNodeIds = [...newUpperNodeIds];
+				ttIdxLinkCodes.push(ttIdxLinkCode.join('-'));
+				pathogenIdxLinkCodes.push(pathogenIdxLinkCode.join('-'));
+			});
+
+			// remove duplicates
+			let seen = {};
+			ttIdxLinkCodes = ttIdxLinkCodes.filter(function(item) {
+				return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+			});
+			seen = {};
+			pathogenIdxLinkCodes = pathogenIdxLinkCodes.filter(function(item) {
+				return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+			});
+			maxNodeCount = Math.max(maxNodeCount, ttIdxLinkCodes.length, pathogenIdxLinkCodes.length);
+
+			// sort linkIndexCodes and get linkCodes from that, and analyze upper node for every nodes
+			// sorted linkIndexCodes(node idx) => linkCodes(node id)
+			// --- transmission type nodes
+			ttIdxLinkCodes.sort();
+			let _prevIndexes = ['0000', '0000', '0000', '0000'], prevIdx;
+			let upperNodeIDs = {};
+			ttIdxLinkCodes.forEach((d) => {
+				if (d === '0000-0000-0000-0000') return; // skip empty
+
+				let indexes = d.split('-'), idx, nodeID;
+				let j, parentNodeIdx, parentNodeID, upperNodeID;
+				for (let i in indexes) {
+					idx = indexes[i];
+					if (idx === '0000') continue;
+					idx = idx - 1; // 0-based index
+
+					// node id
+					nodeID = g_sankeyNodes[idx].id;
+					if (upperNodeIDs.hasOwnProperty(nodeID)) continue;
+
+					// upper node's id (What is upper node ?  same parent > other node on same layer,  or  other node on first layer)
+					upperNodeIDs[nodeID] = -1;
+					parentNodeIdx = '0000';
+					for (j = 0; j < 4; j++) {
+						if (_prevIndexes[j] !== indexes[j] && _prevIndexes[j] !== '0000') {
+							prevIdx = _prevIndexes[j] - 1; // 0-based index
+							upperNodeID = g_sankeyNodes[prevIdx].id;
+							upperNodeIDs[nodeID] = upperNodeID;
+							break;
+						} else if (_prevIndexes[j] !== '0000' && indexes[j] !== '0000' && j < i) {
+							parentNodeIdx = indexes[j];
+						}
+					}
+					if (upperNodeIDs[nodeID] === -1 && parentNodeIdx !== '0000') {
+						parentNodeIdx = parentNodeIdx - 1; // 0-based index
+						parentNodeID = g_sankeyNodes[parentNodeIdx].id;
+						upperNodeIDs[nodeID] = upperNodeIDs[parentNodeID]; // upper node of parent node
+					}
+
+					g_sankeyNodes[idx].upper_node = upperNodeIDs[nodeID];
+				}
+
+				_prevIndexes = indexes;
+			});console.log(g_sankeyNodes);
+
+			// --- pathogen nodes
+			pathogenIdxLinkCodes.sort();
+			_prevIndexes = ['0000', '0000'];
+			upperNodeIDs = {};
+			pathogenIdxLinkCodes.forEach((d) => {
+				if (d === '0000-0000') return; // skip empty
+
+				let indexes = d.split('-'), idx, nodeID;
+				let j, parentNodeIdx, parentNodeID, upperNodeID;
+				for (let i in indexes) {
+					idx = indexes[i];
+					if (idx === '0000') continue;
+					idx = idx - 1; // 0-based index
+
+					// node id
+					nodeID = g_sankeyNodes[idx].id;
+					if (upperNodeIDs.hasOwnProperty(nodeID)) continue;
+
+					// upper node's id (What is upper node ?  same parent > other node on same layer,  or  other node on first layer)
+					upperNodeIDs[nodeID] = -1;
+					parentNodeIdx = '0000';
+					for (j = 0; j < 4; j++) {
+						if (_prevIndexes[j] !== indexes[j] && _prevIndexes[j] !== '0000') {
+							prevIdx = _prevIndexes[j] - 1; // 0-based index
+							upperNodeID = g_sankeyNodes[prevIdx].id;
+							upperNodeIDs[nodeID] = upperNodeID;
+							break;
+						} else if (_prevIndexes[j] !== '0000' && indexes[j] !== '0000' && j < i) {
+							parentNodeIdx = indexes[j];
+						}
+					}
+					if (upperNodeIDs[nodeID] === -1 && parentNodeIdx !== '0000') {
+						parentNodeIdx = parentNodeIdx - 1; // 0-based index
+						parentNodeID = g_sankeyNodes[parentNodeIdx].id;
+						upperNodeIDs[nodeID] = upperNodeIDs[parentNodeID]; // upper node of parent node
+					}
+
+					g_sankeyNodes[idx].upper_node = upperNodeIDs[nodeID];
+				}
+
+				_prevIndexes = indexes;
 			});
 
 			// For sub-diagram, hide filter item
@@ -373,7 +429,7 @@
 
 		// Begin of process-logic
         const WIDTH = Math.max(1300, document.body.clientWidth - 100);
-        const HEIGHT = g_isEntireDiagram ? 3000 : maxNodeCount * 10;
+        const HEIGHT = g_isEntireDiagram ? 3000 : (maxNodeCount < 5 ? 5 : (maxNodeCount < 20 ? maxNodeCount * 2 : maxNodeCount)) * 10;
         const MARGIN = {
             TOP: 30,
             BOTTOM: 10,
