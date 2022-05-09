@@ -162,7 +162,7 @@
 <div class="row">
     <div class="col-lg-12 text-center" style="margin-bottom: 10px;">
         Impact: <select name="filter_impact" class="input-sm">
-            <option value="--">-- Select --</option>
+            <option value="">-- Select --</option>
 			<option value="Negative" >Negative</option>
 			<option value="None" >Unspecified</option>
 			<option value="Neutral" >Neutral</option>
@@ -248,7 +248,8 @@
 	 * Parse url params (selected nodes' type & id)
 	 * @type {{}} {type(0-6) : id(int)}
 	 */
-	let selectedNodeTypes = '', selectedNodeIds = '';
+	let selectedNodeTypes = [], selectedNodeIds = [];
+	let selectedImpact = '';
     let selectedNodes = parseParams();
     let maxNodeCount = 531;
 
@@ -264,22 +265,30 @@
 		g_ttGenerals = data[2];
 		g_pathogenGenerals = data[3];
 
+		let hasSelectedNodes = Object.keys(selectedNodes).length > 0;
+		let hasImpactCondition = selectedImpact !== '';
+
 		// Filter by selected nodes
-		if (Object.keys(selectedNodes).length === 0) {
+		if (!hasSelectedNodes && !hasImpactCondition) { // no condition
 			g_sankeyNodes = data[0];
 			g_sankeyLinkCodes = data[1];
 		} else {
 			g_isEntireDiagram = false;
 			maxNodeCount = 0;
 
-			let nodeIdsByCol = [{}, {}, {}, {}, {}, {}, {}];
+			let nodeIdsByCol = [{}, {}, {}, {}, {}, {}, {}, {}];
 			let validNodes = {/*nodeId: true/false*/};
 			g_sankeyLinkCodes = data[1].filter(d => {
 				let nodeIds = d.split('-');
-				for (let type in selectedNodes) {
-					if (nodeIds[type]/*.substr(-4)*/ !== selectedNodes[type]) {
-						return false;
+				if (hasSelectedNodes) {
+					for (let type in selectedNodes) {
+						if (nodeIds[type]/*.substr(-4)*/ !== selectedNodes[type]) {
+							return false;
+						}
 					}
+				}
+				if (hasImpactCondition) {
+					if (nodeIds[7] !== selectedImpact) return false;
 				}
 				for (let i = 0; i < nodeIds.length; i ++) {
 					validNodes[nodeIds[i]] = true;
@@ -378,7 +387,7 @@
 				}
 
 				_prevIndexes = indexes;
-			});console.log(g_sankeyNodes);
+			});
 
 			// --- pathogen nodes
 			pathogenIdxLinkCodes.sort();
@@ -422,10 +431,14 @@
 
 				_prevIndexes = indexes;
 			});
+		}
 
+		// Hide Impact-filter, when one or more nodes have been selected
+		if (selectedNodeTypes.length > 0 && selectedNodeIds.length > 0) {
 			// For sub-diagram, hide filter item
 			$("select[name=filter_impact]").parent().hide();
 		}
+		$("select[name=filter_impact]").val(selectedImpact);
 
 		// Begin of process-logic
         const WIDTH = Math.max(1300, document.body.clientWidth - 100);
@@ -1087,7 +1100,7 @@
             }
 
             e.stopPropagation();
-            location.href = `?`;
+            location.href = (selectedImpact === '') ? '?' : '?impact=' + selectedImpact;
 
             // persistActive = false;
             // m_layerIndexes = {
@@ -1119,7 +1132,8 @@
             let nodeType = d.m_layer;
             let nodeID = d.id - Math.floor(d.id / 10000) * 10000;//console.log(d);return;
 
-            location.href = `?type=${selectedNodeTypes},${nodeType}&id=${selectedNodeIds},${nodeID}`;
+            location.href = `?type=${selectedNodeTypes},${nodeType}&id=${selectedNodeIds},${nodeID}`
+				+ (selectedImpact === '' ? '' : '&impact=' + selectedImpact);
 
             // persistActive = !persistActive;
             //
@@ -1415,7 +1429,8 @@
     }
 
     $("#btn-filter").click(function() {
-        location.href = '?impact=' + $("select[name=filter_impact]").val();
+    	let val = $("select[name=filter_impact]").val();
+        location.href = (val !== '') ? '?impact=' + val : '?';
     });
 
 	/**
@@ -1426,6 +1441,7 @@
 		const params = Object.fromEntries(urlSearchParams.entries());
 		selectedNodeTypes = params['type'] ? params['type'].split(',') : [];
 		selectedNodeIds = params['id'] ? params['id'].split(',') : [];
+		selectedImpact = params['impact'] ? params['impact'] : '';
 
 		let typeAndIds = {}, type;
 		for (let i = 0; i < selectedNodeTypes.length; i++) {
