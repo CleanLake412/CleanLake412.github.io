@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<body>      
+        <div id="wrapper">
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="key, words">
+        <meta name="description" content="description">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <title>Human Impacts</title>
+
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/style2.css" rel="stylesheet" type="text/css">
+        <link href="css/style_dev.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" media="all" type="text/css" href="css/skeleton.css">
+        <link rel="stylesheet" media="all" type="text/css" href="css/nzs-frame-media.css">
+        <link rel="stylesheet" media="all" type="text/css" href="font-awesome-4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" media="all" type="text/css" href="icofont/css/icofont.html">
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.22.2/minified.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css">
+        <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+        <script src="js/jquery.fancybox.js"></script>
+        <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css">
+
+
+<div class="container clearfix">
+    <h1 style="text-align: center;"> Traceable evidence of the impacts of climate change on humanity </h1> 
+    <h3 style="text-align: center;"> <u> References </u> </h3>
+    <p style="text-align: right;"><strong><a href="index.html">Back</a></strong></p>
+    <table class="table table-bordered ind_entry">
+        <thead>
+            <tr style="background: #c1d1f4;">
+                <th>Reference ID</th>
+                <th>User</th>
+                <th>Type</th>
+                <th>Authors</th>
+                <th>Year</th>
+                <th>Title</th>
+                <th>Journal</th>
+                <th>Volume</th>
+                <th>Pages</th>
+                <th>Book Title</th>
+                <th>Editor</th>
+                <th>Publisher</th>
+                <th>City</th>
+                <th>Institution</th>
+            </tr>
+        </thead>
+        <tbody>
+
+                </tbody>
+    </table>
+</div>
+<link href="css/toastr.min.css" rel="stylesheet" type="text/css">
+<script src="js/toastr.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.ind_entry').DataTable( {
+            "processing": true,
+            "searching": true,
+            columnDefs: [
+                { orderable: true, targets: [1,2,3,4,8,9,10,12,13] }
+            ],
+            ajax:  "json/references.json"
+        });
+    } );
+</script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+           $('.show_popup').click(function(e){
+                e.preventDefault();
+                $('a.show_popup').fancybox({
+                    'type' : 'iframe',
+                });
+            }); 
+        });
+</script>
+
+        </div>
+
+    </body>
+</html>
+
+
