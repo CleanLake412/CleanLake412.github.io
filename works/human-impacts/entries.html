@@ -53,7 +53,7 @@
                     <thead>
                     <tr style="background: #c1d1f4;">
                         <th>Reference ID</th>
-                        <th>Authors</th>
+                        <th>Authors </th>
                         <th>Year</th>
                         <th>Title</th>
                         <th>PDF</th>
@@ -62,10 +62,8 @@
                         <th>Primary Impact</th>
                         <th>Secondary Impact</th>
                         <th>Effect</th>
-                        <th>Comment/Finding</th>
+                        <th>Finding/Comment</th>
                         <th>Entered by</th>
-                        <th>Update</th>
-                        <th>Validate by</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -97,9 +95,6 @@
                     $('.ind_entry').DataTable({
                         "processing": true,
                         "searching": true,
-                        columnDefs: [
-                            {orderable: false, targets: [1, 2, 3, 4, 8, 9, 10, 12, 13]}
-                        ],
                         "ajax": "json/entries.json"
                     });
                 });

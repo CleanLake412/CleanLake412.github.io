@@ -56,6 +56,8 @@
                 <th>Publisher</th>
                 <th>City</th>
                 <th>Institution</th>
+                <th>PDF</th>
+                <th>Entries</th>
             </tr>
         </thead>
         <tbody>
@@ -87,6 +89,64 @@
                 });
             }); 
         });
+
+    function ckektest(refid){
+        var cid = cid;
+        var sid = sid;
+
+        $.ajax({
+            url: '/json/allref2.json',
+            type: 'GET',
+            success: function (data) {
+                var obj = data;
+
+                var html = '<div><div class="container"><h2 style="text-align:center;">Entries</h2><div class="panel-group" id="accordion">';
+                var cnt = 1;
+                $.each(obj,function(i,v) {
+                    if (v&&v.reference_id == refid){
+                        if ($(this)[0].description !='') {
+
+                            var description = '<strong> Comment/Findind </strong> <p>' + $(this)[0].description + ' </p> <br>';
+                        }else{
+                            var description ='';
+                        }
+
+                        if ($(this)[0].primary_impact !='' && $(this)[0].p_name !="undefined") {
+                            var primari_imp = '<br> <strong> Primary impact </strong> <p>' + $(this)[0].p_name + ' </p>';
+                        }else{
+                            var primari_imp ='';
+                        }
+
+                        if ($(this)[0].secondary_impact !='' && $(this)[0].s_name !="undefined") {
+                            var secondary_impact = '<br> <strong> Secondary impact </strong> <p>' + $(this)[0].s_name + ' </p>';
+                        }else{
+                            var secondary_impact ='';
+                        }
+                        if ($(this)[0].climatic_change !='' && $(this)[0].c_name !="undefined") {
+                            var climatic_change = '<br> <strong> Climatic change </strong> <p>' + $(this)[0].c_name + ' </p>';
+                        }else{
+                            var climatic_change ='';
+                        }
+
+                        if (cnt == '1') {
+                            var opn = 'in';
+                        }
+
+                        if ($(this)[0].interacting_factor) {
+                            html += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse'+$(this)[0].entry_id+'">Entry '+cnt+'</a></h4></div><div id="collapse'+$(this)[0].entry_id+'" class="panel-collapse collapse '+opn+'"><div class="panel-body"><div class="message"><strong>Source </strong> <p>' + $(this)[0].authors + ',' + $(this)[0].year + ',' + $(this)[0].title + '  </p><a target="_blank" href="upload/' + $(this)[0].PDF + '" > Download </a><hr style="border-top: 1px solid #000;">'+climatic_change+'<strong> Interacting factor </strong> <p> ' + $(this)[0].interacting_factor + ' </p>  '+primari_imp+''+secondary_impact+' <br>'+description+' <div style="float:right"><strong> Enter By : </strong> <p> ' + $(this)[0].name + ' ' + $(this)[0].last_name + ' </p> </div><div class="clearfix"></div> </div></div></div></div>';
+                        }else{
+                            html += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse'+$(this)[0].entry_id+'">Entry '+cnt+'</a></h4></div><div id="collapse'+$(this)[0].entry_id+'" class="panel-collapse collapse '+opn+'"><div class="panel-body"><div class="message"><strong>Source </strong> <p>' + $(this)[0].authors + ',' + $(this)[0].year + ',' + $(this)[0].title + '  </p><a target="_blank" href="upload/' + $(this)[0].PDF + '" > Download </a><hr style="border-top: 1px solid #000;">'+climatic_change+primari_imp+''+secondary_impact+''+description+' <div style="float:right"><strong> Enter By : </strong> <p> ' + $(this)[0].name + ' ' + $(this)[0].last_name + ' </p></div><div class="clearfix"></div> </div></div></div></div>';
+                        }
+                        cnt++;
+                    }
+                });
+                html += '</div></div></div>';
+                $.fancybox.open(html);
+
+            }
+        });
+
+    }
 </script>
 
         </div>

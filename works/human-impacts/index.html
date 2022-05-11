@@ -21,15 +21,11 @@
         <link rel="stylesheet" media="all" type="text/css" href="font-awesome-4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" media="all" type="text/css" href="icofont/css/icofont.html">
 
-
-        <script src="js/core.js"></script>
-
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-1.9.1.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
         <div>
-            <script src="js/jquery-1.9.1.js"></script>
             <script src="js/jquery.validate.min.js"></script>
 
             <link href="css/toastr.min.css" rel="stylesheet" type="text/css">
@@ -50,11 +46,7 @@
                 <html dir="ltr" lang="en">
 
     <body>
-    <div id="wrapper">
-
-
-        <!DOCTYPE html>
-        <html lang="en-US">
+    <div>
         <head>
             <meta charset="utf-8">
             <meta name="keywords" content="key, words">
@@ -69,14 +61,7 @@
             <link rel="stylesheet" media="all" type="text/css" href="css/nzs-frame-media.css">
             <link rel="stylesheet" media="all" type="text/css" href="font-awesome-4.3.0/css/font-awesome.min.css">
             <link rel="stylesheet" media="all" type="text/css" href="icofont/css/icofont.html">
-
-
-            <script src="js/core.js"></script>
-
-
             <link rel="stylesheet" href="css/bootstrap.min.css">
-            <script src="js/jquery.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
 
 
             <div>
@@ -95,7 +80,7 @@
 
                     <table class="table table-bordered" style="margin-top:3%;">
                         <thead>
-                        <tr>
+                            <tr>
                             <th style="background: #c1d1f4;"><strong>Climatic change <img src="images/forward.png"> <br>
                                 Impact<br> <img src="images/download.png"> </strong></th>
 
@@ -13153,9 +13138,6 @@
 
     </body>
 
-
-    </html>
-
 </div>
 
 <style>
@@ -13172,6 +13154,32 @@
 </style>
 
 <script>
+    function ckektest(cid,sid,effect){
+        var cid = cid;
+        var sid = sid;
+        var effect = effect;
+        $.ajax({
+            url: 'json/allref.json',
+            type: 'GET',
+            success: function (data) {
+                var html = '<div>';
+                $.each(data,function(i,v) {
+                    if (v){
+                        if (v.climatic_change == cid && v.secondary_impact == sid && v.effect==effect){
+                            if ($(this)[0].interacting_factor) {
+                                html += '<hr style="border-top: 1px solid #000;"><div class="message"><strong>Source </strong> <p>' + $(this)[0].authors + ',' + $(this)[0].year + ',' + $(this)[0].title + '  </p>    <br> <strong> Interacting factor </strong> <p> ' + $(this)[0].interacting_factor + ' </p>  <br> <strong> Comment/Findind </strong> <p>' + $(this)[0].description + ' </p> <br> <div style="float:right"><strong> Enter By : </strong> <p> ' + $(this)[0].name + ' ' + $(this)[0].last_name + ' </p>  &nbsp;&nbsp;&nbsp;&nbsp; <a target="_blank" href="upload/' + $(this)[0].PDF + '" > Download </a></div><div class="clearfix"></div> </div>';
+                            }else{
+                                html += '<hr style="border-top: 1px solid #000;"><div class="message"><strong>Source </strong> <p>' + $(this)[0].authors + ',' + $(this)[0].year + ',' + $(this)[0].title + '  </p> <br> <strong> Comment/Findind </strong> <p>' + $(this)[0].description + ' </p> <br> <div style="float:right"><strong> Enter By : </strong> <p> ' + $(this)[0].name + ' ' + $(this)[0].last_name + ' </p> &nbsp;&nbsp;&nbsp;&nbsp; <a target="_blank" href="upload/' + $(this)[0].PDF + '" > Download </a></div><div class="clearfix"></div> </div>';
+                            }
+                        }
+                    }
+                });
+                html += '</div>';
+                $.fancybox.open(html);
+
+            }
+        });
+    }
     $(document).ready(function () {
         $('.show_popup').click(function (e) {
             e.preventDefault();
@@ -13179,6 +13187,7 @@
                 'type': 'iframe',
             });
         });
+        $('.show_popup').click();
     });
 </script>
 <style>
