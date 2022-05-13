@@ -1538,12 +1538,13 @@
 		$(".ajax_loader").hide();
 	});
 	$(document).ready(function(){
-		$('.show_popup').click(function(e){
+		$('.show_popup').on("click", function(e){
 			e.preventDefault();
 			$('a.show_popup').fancybox({
 				'type' : 'iframe',
 			});
 		});
+		$('.show_popup').trigger("click");
 	});
 
 	//warningdialog();
