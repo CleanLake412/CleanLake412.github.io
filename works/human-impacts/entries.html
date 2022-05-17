@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Human Impacts</title>
 
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <!--<link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/style2.css" rel="stylesheet" type="text/css">
     <link href="css/style_dev.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" media="all" type="text/css" href="css/skeleton.css">
-    <link rel="stylesheet" media="all" type="text/css" href="css/nzs-frame-media.css">
+    <link rel="stylesheet" media="all" type="text/css" href="css/nzs-frame-media.css">-->
     <link rel="stylesheet" media="all" type="text/css" href="font-awesome-4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" media="all" type="text/css" href="icofont/css/icofont.html">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.22.2/minified.min.js"></script>
 
@@ -39,12 +38,22 @@
             /**border: 1px solid #b2b2b2;
             padding: 3%;*/
         }
+
+        .header {display: flex;justify-content:space-between;align-items:center;width:100%;}
+        .logo {text-decoration: none;}
+        .logo img {width: 200px;}
+        .header h1 {width: calc(100% - 220px);margin:0;padding:0;}
     </style>
 </head>
 <body>
 <div>
     <div class="container clearfix">
-        <h1 style="text-align: center;"> Traceable evidence of the impacts of climate change on humanity </h1>
+        <div class="header">
+            <a class="logo" href="https://camilo-mora.github.io/GEO309/" target="_blank">
+                <img src="https://camilo-mora.github.io/GEO309/images/MoraLab.png" />
+            </a>
+            <h1 style="text-align: center;" class="impact-title"> Traceable evidence of the impacts of climate change on humanity </h1>
+        </div>
         <h3 style="text-align: center;"><u> Entries </u></h3>
         <p style="text-align: right;"><strong><a href="index.html">back</a></strong></p>
         <table class="table table-bordered ind_entry">
