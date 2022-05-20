@@ -6894,6 +6894,14 @@
     "upper_node": "30744"
   },
   {
+    "id": "30983",
+    "name": "Biogenic isoprenes",
+    "type": "trans",
+    "parent": "30517",
+    "general_id": 16,
+    "upper_node": "30518"
+  },
+  {
     "id": "30853",
     "name": "Thunderstorm asthma",
     "type": "trans",
