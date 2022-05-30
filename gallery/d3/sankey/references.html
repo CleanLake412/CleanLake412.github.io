@@ -103,7 +103,7 @@
 						"data" : 16,
 						"render": function ( data, type, row, meta ) {
 							if (!data || data === 'NA') return '';
-							return '<a href="uploads/PDF/' + data + '" target="_blank">PDF</a>';
+							return '<a href="http://disease.gocarbonneutral.org/uploads/PDF/' + data + '" target="_blank">PDF</a>';
 						}
 					},{
 						"targets": 17,
@@ -179,7 +179,7 @@
 					entryHtml+='<p><b>Entry ID:</b>'+entry.id+'</p>';
 					entryHtml+='<p><b>Source:</b><br>'+source+'</p>';
 					if(!entry.PDF && entry.PDF!="NA") {
-						entryHtml+='<p><a target="_blank" href="uploads/PDF/' + entry.PDF + '">Download</a></p>';
+						entryHtml+='<p><a target="_blank" href="http://disease.gocarbonneutral.org/uploads/PDF/' + entry.PDF + '">Download</a></p>';
 					}
 					entryHtml+='<hr>';
 					if(entry.climatic_changes!="" && entry.cc!=null)
