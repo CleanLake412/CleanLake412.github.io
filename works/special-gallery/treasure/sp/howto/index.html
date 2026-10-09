@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>楽しみ方 | バーチャル展示室 | 大阪の宝</title>
+  <link rel="shortcut icon" href="../../../favicon.ico">
+
+  <meta property="og:title" content="楽しみ方 | バーチャル展示室 | 大阪の宝">
+  <meta property="og:description" content="デジタル大阪ミュージアムズは、大阪市内の6つの博物館・美術館の収蔵資料を閲覧・検索できるポータルサイトです。「大阪の宝」では、6館で選定された代表品から、収集に関わった先人や継承の履歴を通じて、それらを育んできた都市大阪の魅力を体感できるようなコンテンツを掲載しています。">
+  <meta property="og:image" content="../../../assets/images/og_image.png">
+
+  <meta name="description" content="デジタル大阪ミュージアムズは、大阪市内の6つの博物館・美術館の収蔵資料を閲覧・検索できるポータルサイトです。「大阪の宝」では、6館で選定された代表品から、収集に関わった先人や継承の履歴を通じて、それらを育んできた都市大阪の魅力を体感できるようなコンテンツを掲載しています。">
+  <meta name="keywords" content="大阪,博物館,美術館,データベース,デジタルアーカイブ,大阪の宝">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .viewer {
+      background: black url("../assets/images/bg-pattern.jpg") repeat;
+    }
+
+    .viewer-header, .frame-box {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    @media only screen and (max-width: 767.98px) {
+      .viewer-header, .frame-box {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="d-sm-flex min-vh-100">
+  <!-- ナビゲーションメニュー -->
+  <div class="menu d-flex flex-column text-white bg-black">
+    <!-- メニューのヘッダー -->
+    <div class="menu-header d-flex align-items-center gap-1 flex-shrink-0 d-sm-block">
+      <div>
+        <a href="../" class="title text-decoration-none text-white">バーチャル<br class="d-none d-sm-block">体験展示室</a>
+        <span class="d-block d-sm-none text-white-50 subtitle-en">- Virtual experience exhibition room -</span>
+      </div>
+      <h2 class="d-none d-sm-block m-0 fs-6">
+        <span class="d-block text-white-50 subtitle-en text-center m-2">- Virtual experience exhibition room -</span>
+      </h2>
+      <button id="show-menu-button" class="ms-auto"><span></span></button>
+      <button id="close-menu-button" class="d-none ms-auto"></button>
+    </div>
+    <!-- メニュー項目一覧 -->
+    <div class="menu-content d-none d-sm-block ps-4 pe-4 flex-grow overflow-auto">
+      <!-- 「楽しみ方」としての最初の項目 -->
+      <ul>
+        <li class="mt-2 py-1">
+          <a href="../howto/" data-title="楽しみ方"><span>楽しみ方</span><span class="menu-item-en">How to enjoy</span></a>
+        </li>
+      </ul>
+      <hr class="w-100 mt-4 mb-4">
+      <!-- 「全部見る」項目 -->
+      <ul>
+        <li class="mt-2 py-1">
+          <a href="../" data-title="全部見る"><span>全部見る</span><span class="menu-item-en">See All</span></a>
+        </li>
+      </ul>
+      <!-- 「カテゴリ」のセクション -->
+      <ul class="pt-5" id="category-group">
+        <li class="mt-2 mb-1 py-1 text-muted">
+          <a href="#">カテゴリ<br><span class="menu-item-en">Category</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大きくしてみよう"><span>大きくしてみよう</span><span class="menu-item-en">Zoom In</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="読んでみよう"><span>読んでみよう</span><span class="menu-item-en">Read Story</span></a>
+        </li>
+        <!-- <li class="mt-2 py-1">
+          <a href="#" data-title="めくって見てみよう"><span>めくって見てみよう</span><span class="menu-item-en">Flip Through</span></a>
+        </li> -->
+        <li class="mt-2 py-1">
+          <a href="#" data-title="動かしてみよう"><span>動かしてみよう</span><span class="menu-item-en">Move Object</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="バーチャルで見てみよう"><span>バーチャルで見てみよう</span><span class="menu-item-en">View Virtually</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="解説を聞いてみよう"><span>解説を聞いてみよう</span><span class="menu-item-en">Listen to Guide</span></a>
+        </li>
+      </ul>
+      <!-- 「施設」のセクション -->
+      <ul class="pt-5" id="facility-group">
+        <li class="mt-2 mb-1 py-1 text-muted">
+          <a href="#">施設<br><span class="menu-item-en">facility</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪市立美術館"><span>大阪市立美術館</span><span class="menu-item-en">Osaka City Museum of Fine Art</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪市立自然史博物館"><span>大阪市立自然史博物館</span><span class="menu-item-en">Osaka Museum of Natural History</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪市立東洋陶磁美術館"><span>大阪市立東洋陶磁美術館</span><span class="menu-item-en">The Museum of Oriental Ceramics, Osaka</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪市立科学館"><span>大阪市立科学館</span><span class="menu-item-en">Osaka Science Museum</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪歴史博物館"><span>大阪歴史博物館</span><span class="menu-item-en">Osaka Museum of History</span></a>
+        </li>
+      </ul>
+    </div>
+    <!-- Webアクセシビリティ -->
+    <div class="accessibility-header accessibility-header-sp offcanvas-body mx-4 d-none d-sm-none gap-5 align-items-center justify-content-center overflow-hidden bg-black">
+      <div class="link-to-treasure">
+        <a class="d-flex align-items-center gap-2 text-decoration-none" target="_blank">
+          大阪の宝
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M19.473 20.1599H5.0071C4.62733 20.1599 4.32007 19.8527 4.32007 19.4729V5.00698C4.32007 4.6272 4.62733 4.31995 5.0071 4.31995H11.0015C11.3813 4.31995 11.6885 4.6272 11.6885 5.00698C11.6885 5.38676 11.3813 5.69402 11.0015 5.69402H5.69414V18.7859H18.786V13.5091C18.786 13.1293 19.0933 12.822 19.473 12.822C19.8528 12.822 20.1601 13.1293 20.1601 13.5091V19.4729C20.1601 19.8527 19.8528 20.1599 19.473 20.1599Z" fill="white"/>
+            <path d="M20.1581 4.96364V4.95406C20.1562 4.92149 20.1504 4.89084 20.1447 4.86019C20.1447 4.85827 20.1447 4.85635 20.1428 4.85444C20.1351 4.82187 20.1255 4.79122 20.114 4.76057V4.75865C20.1025 4.728 20.0872 4.69926 20.0719 4.67053C20.0719 4.66861 20.07 4.66861 20.07 4.6667C20.0546 4.63988 20.0374 4.61305 20.0182 4.58815C20.0163 4.58623 20.0144 4.5824 20.0125 4.58049C20.0029 4.56899 19.9953 4.55941 19.9857 4.54792C19.9857 4.546 19.9838 4.546 19.9838 4.54409C19.9742 4.53259 19.9646 4.52301 19.9531 4.51344L19.9454 4.50577C19.9359 4.49619 19.9244 4.48662 19.9148 4.47704L19.9129 4.47512C19.9014 4.46554 19.8899 4.45596 19.8765 4.4483C19.8746 4.44639 19.8707 4.44447 19.8688 4.44255C19.842 4.4234 19.8152 4.40807 19.7864 4.39274L19.7845 4.39083C19.7539 4.3755 19.7232 4.36209 19.6906 4.35251C19.66 4.34294 19.6274 4.33336 19.5948 4.32953C19.5929 4.32953 19.591 4.32953 19.5891 4.32761L19.5431 4.32186H19.5374C19.524 4.31995 19.5125 4.31995 19.4991 4.31995H14.6443C14.263 4.31995 13.9546 4.62838 13.9546 5.00961C13.9546 5.39085 14.263 5.69928 14.6443 5.69928H17.8054L11.7226 11.7837C11.4525 12.0538 11.4525 12.4906 11.7226 12.7588C11.8567 12.8929 12.033 12.9599 12.2112 12.9599C12.3874 12.9599 12.5637 12.8929 12.6997 12.7588L18.7806 6.67631V9.79514C18.7806 10.1764 19.0891 10.4848 19.4703 10.4848C19.8516 10.4848 20.16 10.1764 20.16 9.79514V5.01153C20.16 4.9962 20.16 4.97896 20.1581 4.96364Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="size-color-switcher pe-3">
+        <a href="javascript:void(0)">
+          文字サイズ・色
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.59 0.589844L6 5.16984L1.41 0.589844L0 1.99984L6 7.99984L12 1.99984L10.59 0.589844Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <div class="switcher-content switcher-content-sp switcher-content-sp-size-color">
+          <div class="switcher switcher__font-size">
+            <h3>文字サイズ</h3>
+            <a href="javascript:void(0)" class="font-size__up">拡大</a>
+            <a href="javascript:void(0)" class="font-size__default">標準</a>
+          </div>
+          <div class="switcher switcher__theme">
+            <h3>背景色</h3>
+            <a href="javascript:void(0)" class="theme__light active" data-theme="light">白</a>
+            <a href="javascript:void(0)" class="theme__dark" data-theme="dark">黒</a>
+            <a href="javascript:void(0)" class="theme__blue" data-theme="blue">青</a>
+          </div>
+          <div class="d-flex justify-content-center">
+              <button type="button" class="btn" onClick="javascript:$('.switcher-content-sp-size-color').toggleClass('visible opacity-100');">閉じる</button>
+          </div>
+      </div>
+    </div>
+    </div>
+    <!-- Copyright -->
+    <div class="menu-copyright d-none d-sm-block flex-shrink-0 text-center text-white-50">
+      Copyright (C) City of Osaka All rights reserved.
+    </div>
+  </div>
+  <div class="viewer min-vh-100">
+    <div class="accessibility-header d-none d-sm-flex gap-5 align-items-center justify-content-end bg-black">
+      <div class="link-to-treasure">
+        <a class="d-flex align-items-center gap-2 text-decoration-none text-white" target="_blank">
+          大阪の宝
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M19.473 20.1599H5.0071C4.62733 20.1599 4.32007 19.8527 4.32007 19.4729V5.00698C4.32007 4.6272 4.62733 4.31995 5.0071 4.31995H11.0015C11.3813 4.31995 11.6885 4.6272 11.6885 5.00698C11.6885 5.38676 11.3813 5.69402 11.0015 5.69402H5.69414V18.7859H18.786V13.5091C18.786 13.1293 19.0933 12.822 19.473 12.822C19.8528 12.822 20.1601 13.1293 20.1601 13.5091V19.4729C20.1601 19.8527 19.8528 20.1599 19.473 20.1599Z" fill="white"/>
+            <path d="M20.1581 4.96364V4.95406C20.1562 4.92149 20.1504 4.89084 20.1447 4.86019C20.1447 4.85827 20.1447 4.85635 20.1428 4.85444C20.1351 4.82187 20.1255 4.79122 20.114 4.76057V4.75865C20.1025 4.728 20.0872 4.69926 20.0719 4.67053C20.0719 4.66861 20.07 4.66861 20.07 4.6667C20.0546 4.63988 20.0374 4.61305 20.0182 4.58815C20.0163 4.58623 20.0144 4.5824 20.0125 4.58049C20.0029 4.56899 19.9953 4.55941 19.9857 4.54792C19.9857 4.546 19.9838 4.546 19.9838 4.54409C19.9742 4.53259 19.9646 4.52301 19.9531 4.51344L19.9454 4.50577C19.9359 4.49619 19.9244 4.48662 19.9148 4.47704L19.9129 4.47512C19.9014 4.46554 19.8899 4.45596 19.8765 4.4483C19.8746 4.44639 19.8707 4.44447 19.8688 4.44255C19.842 4.4234 19.8152 4.40807 19.7864 4.39274L19.7845 4.39083C19.7539 4.3755 19.7232 4.36209 19.6906 4.35251C19.66 4.34294 19.6274 4.33336 19.5948 4.32953C19.5929 4.32953 19.591 4.32953 19.5891 4.32761L19.5431 4.32186H19.5374C19.524 4.31995 19.5125 4.31995 19.4991 4.31995H14.6443C14.263 4.31995 13.9546 4.62838 13.9546 5.00961C13.9546 5.39085 14.263 5.69928 14.6443 5.69928H17.8054L11.7226 11.7837C11.4525 12.0538 11.4525 12.4906 11.7226 12.7588C11.8567 12.8929 12.033 12.9599 12.2112 12.9599C12.3874 12.9599 12.5637 12.8929 12.6997 12.7588L18.7806 6.67631V9.79514C18.7806 10.1764 19.0891 10.4848 19.4703 10.4848C19.8516 10.4848 20.16 10.1764 20.16 9.79514V5.01153C20.16 4.9962 20.16 4.97896 20.1581 4.96364Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="size-color-switcher pe-3">
+        <a href="javascript:void(0)">
+          文字サイズ・色
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.59 0.589844L6 5.16984L1.41 0.589844L0 1.99984L6 7.99984L12 1.99984L10.59 0.589844Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <div class="switcher-content">
+          <div class="switcher switcher__font-size">
+            <h3>文字サイズ</h3>
+            <a href="javascript:void(0)" class="font-size__up">拡大</a>
+            <a href="javascript:void(0)" class="font-size__default">標準</a>
+          </div>
+          <div class="switcher switcher__theme">
+            <h3>背景色</h3>
+            <a href="javascript:void(0)" class="theme__light active" data-theme="light">白</a>
+            <a href="javascript:void(0)" class="theme__dark" data-theme="dark">黒</a>
+            <a href="javascript:void(0)" class="theme__blue" data-theme="blue">青</a>
+          </div>
+      </div>
+    </div>
+    </div>
+    <div class="viewer-header py-5">
+      <h2 class="h4 text-start">楽しみ方<br><span class="collection-title-en mt-2 h6">How to enjoy</span></h2>
+    </div>
+
+    <div class="frame-box pb-5">
+      <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe src="https://player.vimeo.com/video/1069432027?h=c5cf6fdbd6&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"
+          title="楽しみ方">
+        </iframe>
+      </div>
+    </div>
+  </div>
+  <!-- External JavaScripts -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="../../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../../vendor/fontawesome/js/all.min.js"></script>
+  <script src="../assets/js/common.js"></script>
+  <script src="../../../assets/js/script.js"></script>
+</body>
+</html>

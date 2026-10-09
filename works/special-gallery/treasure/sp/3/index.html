@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蟹子復讐之図 | バーチャル展示室 | 大阪の宝</title>
+  <link rel="shortcut icon" href="../../../favicon.ico">
+
+  <meta property="og:title" content="蟹子復讐之図 | バーチャル展示室 | 大阪の宝">
+  <meta property="og:description" content="デジタル大阪ミュージアムズは、大阪市内の6つの博物館・美術館の収蔵資料を閲覧・検索できるポータルサイトです。「大阪の宝」では、6館で選定された代表品から、収集に関わった先人や継承の履歴を通じて、それらを育んできた都市大阪の魅力を体感できるようなコンテンツを掲載しています。">
+  <meta property="og:image" content="../../../assets/images/og_image.png">
+
+  <meta name="description" content="デジタル大阪ミュージアムズは、大阪市内の6つの博物館・美術館の収蔵資料を閲覧・検索できるポータルサイトです。「大阪の宝」では、6館で選定された代表品から、収集に関わった先人や継承の履歴を通じて、それらを育んできた都市大阪の魅力を体感できるようなコンテンツを掲載しています。">
+  <meta name="keywords" content="大阪,博物館,美術館,データベース,デジタルアーカイブ,大阪の宝">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="d-sm-flex">
+  <!-- ナビゲーションメニュー -->
+  <div class="menu d-flex flex-column text-white bg-black">
+    <!-- メニューのヘッダー -->
+    <div class="menu-header d-flex align-items-center gap-1 flex-shrink-0 d-sm-block">
+      <div>
+        <a href="../" class="title text-decoration-none text-white">バーチャル<br class="d-none d-sm-block">体験展示室</a>
+        <span class="d-block d-sm-none text-white-50 subtitle-en">- Virtual experience exhibition room -</span>
+      </div>
+      <h2 class="d-none d-sm-block m-0 fs-6">
+        <span class="d-block text-white-50 subtitle-en text-center m-2">- Virtual experience exhibition room -</span>
+      </h2>
+      <button id="show-menu-button" class="ms-auto"><span></span></button>
+      <button id="close-menu-button" class="d-none ms-auto"></button>
+    </div>
+    <!-- メニュー項目一覧 -->
+    <div class="menu-content d-none d-sm-block ps-4 pe-4 flex-grow overflow-auto">
+      <!-- 「楽しみ方」としての最初の項目 -->
+      <ul>
+        <li class="mt-2 py-1">
+          <a href="../howto/" data-title="楽しみ方"><span>楽しみ方</span><span class="menu-item-en">How to enjoy</span></a>
+        </li>
+      </ul>
+      <hr class="w-100 mt-4 mb-4">
+      <!-- 「全部見る」項目 -->
+      <ul>
+        <li class="mt-2 py-1">
+          <a href="../" data-title="全部見る"><span>全部見る</span><span class="menu-item-en">See All</span></a>
+        </li>
+      </ul>
+      <!-- 「カテゴリ」のセクション -->
+      <ul class="pt-5" id="category-group">
+        <li class="mt-2 mb-1 py-1 text-muted">
+          <a href="#">カテゴリ<br><span class="menu-item-en">Category</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大きくしてみよう"><span>大きくしてみよう</span><span class="menu-item-en">Zoom In</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="読んでみよう"><span>読んでみよう</span><span class="menu-item-en">Read Story</span></a>
+        </li>
+        <!-- <li class="mt-2 py-1">
+          <a href="#" data-title="めくって見てみよう"><span>めくって見てみよう</span><span class="menu-item-en">Flip Through</span></a>
+        </li> -->
+        <li class="mt-2 py-1">
+          <a href="#" data-title="動かしてみよう"><span>動かしてみよう</span><span class="menu-item-en">Move Object</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="バーチャルで見てみよう"><span>バーチャルで見てみよう</span><span class="menu-item-en">View Virtually</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="解説を聞いてみよう"><span>解説を聞いてみよう</span><span class="menu-item-en">Listen to Guide</span></a>
+        </li>
+      </ul>
+      <!-- 「施設」のセクション -->
+      <ul class="pt-5" id="facility-group">
+        <li class="mt-2 mb-1 py-1 text-muted">
+          <a href="#">施設<br><span class="menu-item-en">facility</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪市立美術館"><span>大阪市立美術館</span><span class="menu-item-en">Osaka City Museum of Fine Art</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪市立自然史博物館"><span>大阪市立自然史博物館</span><span class="menu-item-en">Osaka Museum of Natural History</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪市立東洋陶磁美術館"><span>大阪市立東洋陶磁美術館</span><span class="menu-item-en">The Museum of Oriental Ceramics, Osaka</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪市立科学館"><span>大阪市立科学館</span><span class="menu-item-en">Osaka Science Museum</span></a>
+        </li>
+        <li class="mt-2 py-1">
+          <a href="#" data-title="大阪歴史博物館"><span>大阪歴史博物館</span><span class="menu-item-en">Osaka Museum of History</span></a>
+        </li>
+      </ul>
+    </div>
+    <!-- Webアクセシビリティ -->
+    <div class="accessibility-header accessibility-header-sp offcanvas-body mx-4 d-none d-sm-none gap-5 align-items-center justify-content-center overflow-hidden bg-black">
+      <div class="link-to-treasure">
+        <a class="d-flex align-items-center gap-2 text-decoration-none" target="_blank">
+          大阪の宝
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M19.473 20.1599H5.0071C4.62733 20.1599 4.32007 19.8527 4.32007 19.4729V5.00698C4.32007 4.6272 4.62733 4.31995 5.0071 4.31995H11.0015C11.3813 4.31995 11.6885 4.6272 11.6885 5.00698C11.6885 5.38676 11.3813 5.69402 11.0015 5.69402H5.69414V18.7859H18.786V13.5091C18.786 13.1293 19.0933 12.822 19.473 12.822C19.8528 12.822 20.1601 13.1293 20.1601 13.5091V19.4729C20.1601 19.8527 19.8528 20.1599 19.473 20.1599Z" fill="white"/>
+            <path d="M20.1581 4.96364V4.95406C20.1562 4.92149 20.1504 4.89084 20.1447 4.86019C20.1447 4.85827 20.1447 4.85635 20.1428 4.85444C20.1351 4.82187 20.1255 4.79122 20.114 4.76057V4.75865C20.1025 4.728 20.0872 4.69926 20.0719 4.67053C20.0719 4.66861 20.07 4.66861 20.07 4.6667C20.0546 4.63988 20.0374 4.61305 20.0182 4.58815C20.0163 4.58623 20.0144 4.5824 20.0125 4.58049C20.0029 4.56899 19.9953 4.55941 19.9857 4.54792C19.9857 4.546 19.9838 4.546 19.9838 4.54409C19.9742 4.53259 19.9646 4.52301 19.9531 4.51344L19.9454 4.50577C19.9359 4.49619 19.9244 4.48662 19.9148 4.47704L19.9129 4.47512C19.9014 4.46554 19.8899 4.45596 19.8765 4.4483C19.8746 4.44639 19.8707 4.44447 19.8688 4.44255C19.842 4.4234 19.8152 4.40807 19.7864 4.39274L19.7845 4.39083C19.7539 4.3755 19.7232 4.36209 19.6906 4.35251C19.66 4.34294 19.6274 4.33336 19.5948 4.32953C19.5929 4.32953 19.591 4.32953 19.5891 4.32761L19.5431 4.32186H19.5374C19.524 4.31995 19.5125 4.31995 19.4991 4.31995H14.6443C14.263 4.31995 13.9546 4.62838 13.9546 5.00961C13.9546 5.39085 14.263 5.69928 14.6443 5.69928H17.8054L11.7226 11.7837C11.4525 12.0538 11.4525 12.4906 11.7226 12.7588C11.8567 12.8929 12.033 12.9599 12.2112 12.9599C12.3874 12.9599 12.5637 12.8929 12.6997 12.7588L18.7806 6.67631V9.79514C18.7806 10.1764 19.0891 10.4848 19.4703 10.4848C19.8516 10.4848 20.16 10.1764 20.16 9.79514V5.01153C20.16 4.9962 20.16 4.97896 20.1581 4.96364Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="size-color-switcher pe-3">
+        <a href="javascript:void(0)">
+          文字サイズ・色
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.59 0.589844L6 5.16984L1.41 0.589844L0 1.99984L6 7.99984L12 1.99984L10.59 0.589844Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <div class="switcher-content switcher-content-sp switcher-content-sp-size-color">
+          <div class="switcher switcher__font-size">
+            <h3>文字サイズ</h3>
+            <a href="javascript:void(0)" class="font-size__up">拡大</a>
+            <a href="javascript:void(0)" class="font-size__default">標準</a>
+          </div>
+          <div class="switcher switcher__theme">
+            <h3>背景色</h3>
+            <a href="javascript:void(0)" class="theme__light active" data-theme="light">白</a>
+            <a href="javascript:void(0)" class="theme__dark" data-theme="dark">黒</a>
+            <a href="javascript:void(0)" class="theme__blue" data-theme="blue">青</a>
+          </div>
+          <div class="d-flex justify-content-center">
+              <button type="button" class="btn" onClick="javascript:$('.switcher-content-sp-size-color').toggleClass('visible opacity-100');">閉じる</button>
+          </div>
+      </div>
+    </div>
+    </div>
+    <!-- Copyright -->
+    <div class="menu-copyright d-none d-sm-block flex-shrink-0 text-center text-white-50">
+      Copyright (C) City of Osaka All rights reserved.
+    </div>
+  </div>
+  <div class="viewer">
+    <div class="accessibility-header d-none d-sm-flex gap-5 align-items-center justify-content-end bg-black">
+      <div class="link-to-treasure">
+        <a class="d-flex align-items-center gap-2 text-decoration-none text-white" target="_blank">
+          大阪の宝
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M19.473 20.1599H5.0071C4.62733 20.1599 4.32007 19.8527 4.32007 19.4729V5.00698C4.32007 4.6272 4.62733 4.31995 5.0071 4.31995H11.0015C11.3813 4.31995 11.6885 4.6272 11.6885 5.00698C11.6885 5.38676 11.3813 5.69402 11.0015 5.69402H5.69414V18.7859H18.786V13.5091C18.786 13.1293 19.0933 12.822 19.473 12.822C19.8528 12.822 20.1601 13.1293 20.1601 13.5091V19.4729C20.1601 19.8527 19.8528 20.1599 19.473 20.1599Z" fill="white"/>
+            <path d="M20.1581 4.96364V4.95406C20.1562 4.92149 20.1504 4.89084 20.1447 4.86019C20.1447 4.85827 20.1447 4.85635 20.1428 4.85444C20.1351 4.82187 20.1255 4.79122 20.114 4.76057V4.75865C20.1025 4.728 20.0872 4.69926 20.0719 4.67053C20.0719 4.66861 20.07 4.66861 20.07 4.6667C20.0546 4.63988 20.0374 4.61305 20.0182 4.58815C20.0163 4.58623 20.0144 4.5824 20.0125 4.58049C20.0029 4.56899 19.9953 4.55941 19.9857 4.54792C19.9857 4.546 19.9838 4.546 19.9838 4.54409C19.9742 4.53259 19.9646 4.52301 19.9531 4.51344L19.9454 4.50577C19.9359 4.49619 19.9244 4.48662 19.9148 4.47704L19.9129 4.47512C19.9014 4.46554 19.8899 4.45596 19.8765 4.4483C19.8746 4.44639 19.8707 4.44447 19.8688 4.44255C19.842 4.4234 19.8152 4.40807 19.7864 4.39274L19.7845 4.39083C19.7539 4.3755 19.7232 4.36209 19.6906 4.35251C19.66 4.34294 19.6274 4.33336 19.5948 4.32953C19.5929 4.32953 19.591 4.32953 19.5891 4.32761L19.5431 4.32186H19.5374C19.524 4.31995 19.5125 4.31995 19.4991 4.31995H14.6443C14.263 4.31995 13.9546 4.62838 13.9546 5.00961C13.9546 5.39085 14.263 5.69928 14.6443 5.69928H17.8054L11.7226 11.7837C11.4525 12.0538 11.4525 12.4906 11.7226 12.7588C11.8567 12.8929 12.033 12.9599 12.2112 12.9599C12.3874 12.9599 12.5637 12.8929 12.6997 12.7588L18.7806 6.67631V9.79514C18.7806 10.1764 19.0891 10.4848 19.4703 10.4848C19.8516 10.4848 20.16 10.1764 20.16 9.79514V5.01153C20.16 4.9962 20.16 4.97896 20.1581 4.96364Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+      <div class="size-color-switcher pe-3">
+        <a href="javascript:void(0)">
+          文字サイズ・色
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.59 0.589844L6 5.16984L1.41 0.589844L0 1.99984L6 7.99984L12 1.99984L10.59 0.589844Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <div class="switcher-content">
+          <div class="switcher switcher__font-size">
+            <h3>文字サイズ</h3>
+            <a href="javascript:void(0)" class="font-size__up">拡大</a>
+            <a href="javascript:void(0)" class="font-size__default">標準</a>
+          </div>
+          <div class="switcher switcher__theme">
+            <h3>背景色</h3>
+            <a href="javascript:void(0)" class="theme__light active" data-theme="light">白</a>
+            <a href="javascript:void(0)" class="theme__dark" data-theme="dark">黒</a>
+            <a href="javascript:void(0)" class="theme__blue" data-theme="blue">青</a>
+          </div>
+      </div>
+    </div>
+    </div>
+    <div class="viewer-header">
+      <h2 class="h4 text-start">蟹子復讐之図<br><span class="collection-title-en mt-2 h6">Battle between Crab and Monkey</span></h2>
+      <div class="collection-badge mt-4 mb-4 d-flex gap-4">
+        <p class="text-white pt-1 pb-1 ps-2 pe-2">読んでみよう</p>
+        <p class="text-white pt-1 pb-1 ps-2 pe-2">動かしてみよう</p>
+      </div>
+    </div>
+    <div class="frame-box">
+      <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe src="https://player.vimeo.com/video/1069487848?h=3b84224916&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+          frameborder="0"
+          allow="fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"
+          title="蟹子復讐之図">
+        </iframe>
+      </div>
+      <div class="w-100 d-none d-sm-flex justify-content-end pb-3 pt-3">
+        <button type="button" class="mb-2 p-2 btn d-flex" id="btn-share">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="_h-6 _w-6 mr-1 fill-current"><path d="M18 16.08C17.24 16.08 16.56 16.38 16.04 16.85L8.91 12.7C8.96 12.47 9 12.24 9 12C9 11.76 8.96 11.53 8.91 11.3L15.96 7.19C16.5 7.69 17.21 8 18 8C19.66 8 21 6.66 21 5C21 3.34 19.66 2 18 2C16.34 2 15 3.34 15 5C15 5.24 15.04 5.47 15.09 5.7L8.04 9.81C7.5 9.31 6.79 9 6 9C4.34 9 3 10.34 3 12C3 13.66 4.34 15 6 15C6.79 15 7.5 14.69 8.04 14.19L15.16 18.35C15.11 18.56 15.08 18.78 15.08 19C15.08 20.61 16.39 21.92 18 21.92C19.61 21.92 20.92 20.61 20.92 19C20.92 17.39 19.61 16.08 18 16.08Z"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div class="viewer-container">
+      <p class="text-white">
+        <span class="fw-bold">使い方</span>
+        <br><br>
+        蟹子復讐之図に描かれている物語を動画で見ることができます。
+        <br><br><br>
+        <span class="fw-bold">How to use</span>
+        <br><br>
+        You can watch a video of the story depicted in the Battle between Crab and Monkey.
+      </p>
+      <div class="description-box pt-5 pb-5">
+        <div class="description text-black bg-white">
+          <p class="mb-5">
+            <span class="fw-bold">所蔵：大阪市立美術館</span>
+            <br><br>
+            大坂の画家・上田公長（一七八八～一八五〇）による作。猿に硬い柿を投げられて死んだ母蟹の復讐のため、子の蟹が臼や鋏（はさみ）、針、栗を従者として仇討ちを遂げるというお伽話を主題とする。山中で羽織のようなものを着て腰に刀らしきものを提げる蟹が、栗にきび団子を与え従者としている場面が描かれる。ひざまずいて団子を受け取る栗のきりりとした眼差し、隣で針を杖代わりにして立つ鋏のへの字口、坂の下から遅れて姿を現す臼の下がり目など、それぞれの表情がユーモラスで面白い。<br>
+            この猿蟹合戦を描いた作品は複数伝わり、なかでもかつて大坂の私塾であった懐徳堂が所蔵した「解師伐袁図（かいしばつえんず）」（大阪大学附属図書館・懐徳堂文庫蔵）に賦された中井履軒の賛はよく知られており、本作もこの履軒の賛を、同じく大坂の儒学者である篠崎小竹が写したものである。中国古代の歴史注釈書の形式、文体にならって書いたものとされ、猿蟹合戦の昔噺をことさら鯱張って記すことで諧謔味を狙ったものであろう。懐徳堂周辺の人々の知的な遊びのさまが感じられる。
+          </p>
+          <p class="pt-5">
+            <span class="fw-bold">Collection: Osaka City Museum of Fine Art</span>
+            <br><br>
+            This painting was created by the Osaka artist Kocho Ueda (1788–1850). Its theme is a fairy tale about a crab who seeks revenge for its mother, who was killed when a monkey threw a hard persimmon at her. Crab enlists the services of Mortar, Scissors, Needle, and Chestnut. The scene depicted in the painting shows Crab in the mountains wearing something like a <span class="fst-italic">haori</span> coat and carrying what appears to be a sword on its waist, giving Chestnut, his attendant, millet dumplings. Each character’s facial expression is humorous, from the tense gaze of Chestnut as he kneels to receive the dumplings, to the frown of Scissors standing close by and using Needle as a walking stick, to the drooping eyes of Mortar at the bottom of the hill. Several other works depict the battle of Monkey and Crab. One of the most well known is the legend by Riken Nakai on <span class="fst-italic">Kaishi batsuen zu</span> (The Crab Army Attacks Monkey; Kaitokudo Bunko, Osaka University Library), once owned by Kaitokudo, a private school in Osaka. In the present work, the Osaka Confucian scholar Shochiku Shinozaki copied this legend in the inscription. The inscription’s style is that of ancient Chinese historical commentaries. This historical use of the old tale “The Battle between Monkey and Crab” was likely intended to provide a humorous touch. The inscription gives a sense of the intellectual amusements of the people associated with Kaitokudo.
+          </p>
+        </div>
+        <div class="mt-5 d-flex justify-content-center">
+          <a class="link-detail-page p-3 btn text-white" target="_blank" href="https://dom.ocm.osaka/treasure/database/202">大阪の宝 詳細ページを見る</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal show" id="snsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <div>シェア</div>
+                <button type="button" class="btn-close" data-bs-dismiss="sns-modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center justify-content-center gap-5">
+                    <div class="text-center">
+                        <button class="bg-transparent border-0 p-0" id="btn-twitter">
+                            <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="32" fill="#000000"></circle><path d="M 41.116 18.375 h 4.962 l -10.8405 12.39 l 12.753 16.86 H 38.005 l -7.821 -10.2255 L 21.235 47.625 H 16.27 l 11.595 -13.2525 L 15.631 18.375 H 25.87 l 7.0695 9.3465 z m -1.7415 26.28 h 2.7495 L 24.376 21.189 H 21.4255 z" fill="white"></path></svg>
+                        </button>
+                        <div class="font-16 font-neue">X</div>
+                    </div>
+                    <div class="text-center">
+                        <button class="bg-transparent border-0 p-0" id="btn-facebook">
+                            <img alt="" loading="lazy" width="48" height="48" decoding="async" data-nimg="1" src="../assets/images/facebook_share.png">
+                        </button>
+                        <div class="font-16 font-neue">Facebook</div>
+                    </div>
+                    <div class="text-center">
+                        <button class="bg-transparent border-0 p-0" id="btn-line">
+                            <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="32" fill="#00b800"></circle><path d="M52.62 30.138c0 3.693-1.432 7.019-4.42 10.296h.001c-4.326 4.979-14 11.044-16.201 11.972-2.2.927-1.876-.591-1.786-1.112l.294-1.765c.069-.527.142-1.343-.066-1.865-.232-.574-1.146-.872-1.817-1.016-9.909-1.31-17.245-8.238-17.245-16.51 0-9.226 9.251-16.733 20.62-16.733 11.37 0 20.62 7.507 20.62 16.733zM27.81 25.68h-1.446a.402.402 0 0 0-.402.401v8.985c0 .221.18.4.402.4h1.446a.401.401 0 0 0 .402-.4v-8.985a.402.402 0 0 0-.402-.401zm9.956 0H36.32a.402.402 0 0 0-.402.401v5.338L31.8 25.858a.39.39 0 0 0-.031-.04l-.002-.003-.024-.025-.008-.007a.313.313 0 0 0-.032-.026.255.255 0 0 1-.021-.014l-.012-.007-.021-.012-.013-.006-.023-.01-.013-.005-.024-.008-.014-.003-.023-.005-.017-.002-.021-.003-.021-.002h-1.46a.402.402 0 0 0-.402.401v8.985c0 .221.18.4.402.4h1.446a.401.401 0 0 0 .402-.4v-5.337l4.123 5.568c.028.04.063.072.101.099l.004.003a.236.236 0 0 0 .025.015l.012.006.019.01a.154.154 0 0 1 .019.008l.012.004.028.01.005.001a.442.442 0 0 0 .104.013h1.446a.4.4 0 0 0 .401-.4v-8.985a.402.402 0 0 0-.401-.401zm-13.442 7.537h-3.93v-7.136a.401.401 0 0 0-.401-.401h-1.447a.4.4 0 0 0-.401.401v8.984a.392.392 0 0 0 .123.29c.072.068.17.111.278.111h5.778a.4.4 0 0 0 .401-.401v-1.447a.401.401 0 0 0-.401-.401zm21.429-5.287c.222 0 .401-.18.401-.402v-1.446a.401.401 0 0 0-.401-.402h-5.778a.398.398 0 0 0-.279.113l-.005.004-.006.008a.397.397 0 0 0-.111.276v8.984c0 .108.043.206.112.278l.005.006a.401.401 0 0 0 .284.117h5.778a.4.4 0 0 0 .401-.401v-1.447a.401.401 0 0 0-.401-.401h-3.93v-1.519h3.93c.222 0 .401-.18.401-.402V29.85a.401.401 0 0 0-.401-.402h-3.93V27.93h3.93z" fill="white"></path></svg>
+                        </button>
+                        <div class="font-16 font-neue">LINE</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex gap-2">
+                <input type="text" class="border-gray-400 w-100 grow rounded-2 border px-3 py-1" readonly id="txt-copylink">
+                <button type="button" class="btn btn-contained d-flex items-center" id="btn-copylink">コピー</button>
+            </div>
+        </div>
+    </div>
+  <!-- External JavaScripts -->
+  <script src="../../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../../vendor/fontawesome/js/all.min.js"></script>
+  <script src="../assets/js/common.js"></script>
+  <script src="../../../assets/js/script.js"></script>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+</body>
+</html>

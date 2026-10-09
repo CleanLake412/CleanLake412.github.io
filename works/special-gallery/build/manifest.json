@@ -1,0 +1,37 @@
+{
+  "resources/images/database-bg.jpg": {
+    "file": "assets/database-bg-voi9Tsph.jpg",
+    "src": "resources/images/database-bg.jpg"
+  },
+  "resources/images/treasure-bg.jpg": {
+    "file": "assets/treasure-bg-ge7w-R3g.jpg",
+    "src": "resources/images/treasure-bg.jpg"
+  },
+  "resources/images/treasure/bg.jpg": {
+    "file": "assets/bg-snOoSl54.jpg",
+    "src": "resources/images/treasure/bg.jpg"
+  },
+  "resources/images/treasure/treasure-item-bg.jpg": {
+    "file": "assets/treasure-item-bg-J9P0Nn0E.jpg",
+    "src": "resources/images/treasure/treasure-item-bg.jpg"
+  },
+  "resources/images/treasure/treasure-pattern1.png": {
+    "file": "assets/treasure-pattern1-QOEGXJQx.png",
+    "src": "resources/images/treasure/treasure-pattern1.png"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-ecWDpuvf.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/scss/nft.scss": {
+    "file": "assets/nft-0e3zueX2.css",
+    "isEntry": true,
+    "src": "resources/scss/nft.scss"
+  },
+  "resources/scss/style.scss": {
+    "file": "assets/style-B2xNRylw.css",
+    "isEntry": true,
+    "src": "resources/scss/style.scss"
+  }
+}
